@@ -1,0 +1,57 @@
+/*Login Page*/
+
+#modal-login {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#login-logo{
+	display: block;
+    margin: auto;
+    width: 50%;
+    height: 50%;
+}
+
+#login-page {
+	background-image: url("../images/austin.jpg");
+	background-size: 1480px 1053px;
+	background-repeat: no-repeat;
+}
+
+#login {
+	margin-top: 20px;
+}
+
+.nav {
+	color: black;
+}
+
+#logo-text {
+	color: black;
+}
+
+
+
+.navbar-default {
+	color: orange;
+}
+
+.category {
+	height: 300px;
+	width: 100%;
+}
+
+.navbar-logo {
+    width: 30px;
+    height: 30px;
+}
+
+#event-date {
+	color: green;
+}
+
+#event-title {
+	color: purple;
+}
