@@ -6,154 +6,141 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="assets/css/topher.css">
 <link rel="stylesheet" type="text/css" href="assets/css/morgan.css">
+<link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
 </head>
 <body>
 
 <nav class="navbar navbar-default navbar-fixed-top">
 <div class="container">
-  <ul class="nav navbar-nav navbar-left">
-        <li class="logo"><a href="#"><img src="assets/images/cowboy.png" height="50px"> All+Y'all</a></li>
-  </ul>
-  <ul class="nav navbar-nav navbar-right">
-        <li class="main-nav"><a href="preferences.html">Preferences</a></li>
-        <li class="main-nav"><a href="suggestions.html">Suggestions</a></li>
-        <li class="main-nav"><a href="#">Logout</a></li>
-  </ul>
+<ul class="nav navbar-nav navbar-left">
+<li class="logo"><a href="#"><img src="assets/images/cowboy.png" height="50px"> All+Y'all</a></li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li class="main-nav"><a href="preferences.html">Preferences</a></li>
+<li class="main-nav"><a href="suggestions.html">Suggestions</a></li>
+<li class="main-nav"><a href="#">Logout</a></li>
+</ul>
 </div>
 </nav>
 
+<div class="container">
 <div class="jumbotron">
-<h1>Welcome [username]</h1><br/>
-<div class="container">
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ornare odio quis suscipit porttitor. Donec a molestie urna. Phasellus tempor scelerisque consectetur. Fusce at commodo ex, eget lacinia tortor. Fusce accumsan molestie risus, eget iaculis velit. Aliquam consectetur nisi nec gravida commodo.</p>
+<h1>[username]'s Suggestions</h1><br/>
+<!-- <div class="container">
+<p>Check out what we've found for you & enjoy!</p>
+</div> -->
 </div>
 </div>
 
 <div class="container">
-<div class="row">
+	<div class="col-md-12">
+		<div class="row">
+			<div class="suggestions-hero">
+				<img class="hero-image" src="assets/images/restaurants.jpg" alt="restaurants hero image"> 
+				<h2 class="hero-title">Eats</h2>
+			</div>
+		</div>
+	</div>	
+		
+	<div class="col-md-12 suggestions-list-items">
+		<div class="row">
+			<div class="col-md-4">
+			  <a href="#"><img class="thumbnail" src="https://placehold.it/250x200" alt="test"></a>
+			</div>
+			<div class="col-md-8">
+			    <h2>Here's a title</h2>
+			    <h4>Here's an address</h4>
+			    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ornare odio quis suscipit porttitor. Donec a molestie urna. Phasellus tempor scelerisque consectetur. Fusce at commodo ex, eget lacinia tortor. Fusce accumsan molestie risus, eget iaculis velit. Aliquam consectetur nisi nec gravida commodo.</p>
+			    <br/><br/>
+			    <p><a class="btn btn-site btn-lg" data-name="alamo" href="#" role="button">More Info</a>
+			    &nbsp;&nbsp;&nbsp;
+				<a class="btn btn-map btn-lg" href="#" role="button">Directions</a>	
+			    </p>
+			    <a href="#"><p class="suggestion" data-name="alamo">This is actually Topher's test: Click Me at Alamo Drafthouse</p></a>
+			</div>
+		</div>
+	</div>
 
-<div class="row">
-<div class="suggestions-hero">
-  <img class="hero-image" src="assets/images/restaurants.jpg" alt="restaurants hero image"> 
-  <h2 class="hero-title">Eats</h2>
-</div>
-<div class="col-md-12 beer-suggestions">
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="row">
-        <div class="col-md-4">
-          <a href="#" class="thumbnail">
-            <img src="https://placehold.it/250x200" alt="test">
-          </a>
-        </div>
-        <div class="col-md-8">
-            <h2>Here's a title</h2>
-            <h4>Here's an address</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ornare odio quis suscipit porttitor. Donec a molestie urna. Phasellus tempor scelerisque consectetur. Fusce at commodo ex, eget lacinia tortor. Fusce accumsan molestie risus, eget iaculis velit. Aliquam consectetur nisi nec gravida commodo.</p>
-            <a href="#"><p class="suggestion" data-name="alamo">This is actually Topher's test: Click Me at Alamo Drafthouse</p></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="col-md-12 beer-suggestions">
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="row">
-        <div class="col-md-4">
-          <a href="#" class="thumbnail">
-            <img src="https://placehold.it/250x200" alt="test">
-          </a>
-        </div>
-        <div class="col-md-8">
-            <h2>Here's a title</h2>
-            <h4>Here's an address</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ornare odio quis suscipit porttitor. Donec a molestie urna. Phasellus tempor scelerisque consectetur. Fusce at commodo ex, eget lacinia tortor. Fusce accumsan molestie risus, eget iaculis velit. Aliquam consectetur nisi nec gravida commodo.</p>
-            <a href="#"><p class="suggestion" data-name="alamo">This is actually Topher's test: Click Me at Alamo Drafthouse</p></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>  
-</div>
+	<div class="col-md-12 suggestions-list-items">
+		<div class="row">
+			<div class="col-md-4">
+			  <a href="#"><img class="thumbnail" src="https://placehold.it/250x200" alt="test"></a>
+			</div>
+			<div class="col-md-8">
+			    <h2>Here's a title</h2>
+			    <h4>Here's an address</h4>
+			    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ornare odio quis suscipit porttitor. Donec a molestie urna. Phasellus tempor scelerisque consectetur. Fusce at commodo ex, eget lacinia tortor. Fusce accumsan molestie risus, eget iaculis velit. Aliquam consectetur nisi nec gravida commodo.</p>
+			    <a href="#"><p class="suggestion" data-name="alamo">This is actually Topher's test: Click Me at Alamo Drafthouse</p></a>
+			</div>
+		</div>
+	</div>  
 
-<div class="row">
-<div class="suggestions-hero">
-  <img class="hero-image" src="assets/images/bar.jpg" alt="bar hero image"> 
-  <h2 class="hero-title">Drinks</h2>
-</div>
-<div class="col-md-12 restaurant-suggestions">
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="row">
-        <div class="col-md-4">
-          <a href="#" class="thumbnail">
-            <img src="https://placehold.it/250x200" alt="test">
-          </a>
-        </div>
-        <div class="col-md-8">
-          <h2>Here's a title</h2>
-            <h4>Here's an address</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ornare odio quis suscipit porttitor. Donec a molestie urna. Phasellus tempor scelerisque consectetur. Fusce at commodo ex, eget lacinia tortor. Fusce accumsan molestie risus, eget iaculis velit. Aliquam consectetur nisi nec gravida commodo.</p>
-            <a href="#"><p class="suggestion" data-name="alamo">This is actually Topher's test: Click Me at Alamo Drafthouse</p></a>
-        </div>
-      </div>
-    </div>
-  </div>
+	<div class="col-md-12">	
+		<div class="row">
+			<div class="suggestions-hero">
+				<img class="hero-image" src="assets/images/bar.jpg" alt="bar hero image"> 
+				<h2 class="hero-title">Drinks</h2>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-12 suggestions-list-items">
+		<div class="row">
+			<div class="col-md-4">
+			  <a href="#"><img class="thumbnail" src="https://placehold.it/250x200" alt="test"></a>
+			</div>
+			<div class="col-md-8">
+			  <h2>Here's a title</h2>
+			    <h4>Here's an address</h4>
+			    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ornare odio quis suscipit porttitor. Donec a molestie urna. Phasellus tempor scelerisque consectetur. Fusce at commodo ex, eget lacinia tortor. Fusce accumsan molestie risus, eget iaculis velit. Aliquam consectetur nisi nec gravida commodo.</p>
+			    <a href="#"><p class="suggestion" data-name="alamo">This is actually Topher's test: Click Me at Alamo Drafthouse</p></a>
+			</div>
+		</div>
+	</div> 
+
+	<div class="col-md-12 suggestions-list-items">
+		<div class="row">
+			<div class="col-md-4">
+			  <a href="#"><img class="thumbnail" src="https://placehold.it/250x200" alt="test">
+			  </a>
+			</div>
+			<div class="col-md-8">
+			  <h2>Here's a title</h2>
+			    <h4>Here's an address</h4>
+			    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ornare odio quis suscipit porttitor. Donec a molestie urna. Phasellus tempor scelerisque consectetur. Fusce at commodo ex, eget lacinia tortor. Fusce accumsan molestie risus, eget iaculis velit. Aliquam consectetur nisi nec gravida commodo.</p>
+			    <a href="#"><p class="suggestion" data-name="alamo">This is actually Topher's test: Click Me at Alamo Drafthouse</p></a>
+			</div>
+		</div>
+	</div>  
+
+	<div class="col-md-12 restaurant-suggestions">
+		<div class="row">
+			<div class="suggestions-hero">
+				<img class="hero-image" src="assets/images/event.jpg" alt="event hero image"> 
+				<h2 class="hero-title">Events</h2>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-12 suggestions-list-items">
+		<div class="row">
+			<div class="col-md-4">
+			  <a href="#"><img class="thumbnail" src="https://placehold.it/250x200" alt="test">
+			  </a>
+			</div>
+			<div class="col-md-8">
+			  <h2>Here's a title</h2>
+			    <h4>Here's an address</h4>
+			    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ornare odio quis suscipit porttitor. Donec a molestie urna. Phasellus tempor scelerisque consectetur. Fusce at commodo ex, eget lacinia tortor. Fusce accumsan molestie risus, eget iaculis velit. Aliquam consectetur nisi nec gravida commodo.</p>
+			    <a href="#"><p class="suggestion" data-name="alamo">This is actually Topher's test: Click Me at Alamo Drafthouse</p></a>
+			</div>
+		</div>
+	</div>    
 </div> 
-<div class="col-md-12 restaurant-suggestions">
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="row">
-        <div class="col-md-4">
-          <a href="#" class="thumbnail">
-            <img src="https://placehold.it/250x200" alt="test">
-          </a>
-        </div>
-        <div class="col-md-8">
-          <h2>Here's a title</h2>
-            <h4>Here's an address</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ornare odio quis suscipit porttitor. Donec a molestie urna. Phasellus tempor scelerisque consectetur. Fusce at commodo ex, eget lacinia tortor. Fusce accumsan molestie risus, eget iaculis velit. Aliquam consectetur nisi nec gravida commodo.</p>
-            <a href="#"><p class="suggestion" data-name="alamo">This is actually Topher's test: Click Me at Alamo Drafthouse</p></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>  
-</div>
 
-<div class="row">
-<div class="suggestions-hero">
-  <img class="hero-image" src="assets/images/event.jpg" alt="event hero image"> 
-  <h2 class="hero-title">Events</h2>
-</div>
-<div class="col-md-12 event-suggestions">
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="row">
-        <div class="col-md-4">
-          <a href="#" class="thumbnail">
-            <img src="https://placehold.it/250x200" alt="test">
-          </a>
-        </div>
-        <div class="col-md-8">
-          <h2>Here's a title</h2>
-            <h4>Here's an address</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ornare odio quis suscipit porttitor. Donec a molestie urna. Phasellus tempor scelerisque consectetur. Fusce at commodo ex, eget lacinia tortor. Fusce accumsan molestie risus, eget iaculis velit. Aliquam consectetur nisi nec gravida commodo.</p>
-            <a href="#"><p class="suggestion" data-name="alamo">This is actually Topher's test: Click Me at Alamo Drafthouse</p></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>    
-</div>
-</div>
-</div>  
-
-<div class="container">
-<div class="preferences">
-  <div class="col-md-12 display-preferences"></div>
-</div>
+<div class="container"></div>
+<div class="preferences"></div>
+<div class="col-md-12 display-preferences"></div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>

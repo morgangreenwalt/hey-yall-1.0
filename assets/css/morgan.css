@@ -1,15 +1,30 @@
+body {
+	background-color: #DEE4E0;
+}
+
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'Oswald', sans-serif;
+}
+
+h4 {
+	color: #78A5B3;
 }
 
 p {
 	font-family: 'Open-sans', sans-serif;
 }
 
+.navbar {
+	background-color: #DEE4E0;
+}
+
 .jumbotron {
 	text-align: center;
 	width: 100%;
 	padding-top: 100px;
+	background-color: #78A5B3;
+	color: #E1D6BA;
+	margin-top: 35px;
 }
 
 .jumbotron p {
@@ -23,6 +38,11 @@ p {
 	font-weight: 300px;
 }
 
+.navbar-default .navbar-nav>li>a {
+    color: #3E322B;
+    letter-spacing: .8px;
+}
+
 .main-nav {
 	padding-top: 12px;
 }
@@ -32,6 +52,11 @@ p {
 	margin-left: 0px;
 }
 
+.col-md-12 {
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
 .thumbnail {
     padding: 0px;
     margin-bottom: 0px;
@@ -39,32 +64,39 @@ p {
     border: none; 
 }
 
+.suggestions-list-items {
+	margin-top: 10px;
+	margin-bottom: 30px;
+}
+
 .suggestions-hero {
 	/*background-image: url("images/drinks.png");*/
 	background-repeat: none;
 	background-position: center;
-	padding-left: 85px;
+	/*padding-left: 85px;*/
 	position: relative;
 	margin-bottom: 20px;
 }
 
 .hero-image {
-	opacity: .6;
+	opacity: .75;
+	width: 1140px;
+	border-radius: 4px;
 }
 
 .hero-title {
 	position: absolute;
-    /*left: 485px;
-    top: 90px;
-    color: #443636;*/
     letter-spacing: 3px;
     font-size: 70px;
     text-transform: uppercase;
     font-weight: bold;
     position: absolute;
-    left: 100px;
+    left: 30px;
+    top: 225px;
+    color: #E1D6BA;
+	/*left: 100px;
     top: 190px;
-    color: #ffffff;
+    color: #ffffff;*/
 }
 
 .panel-default>.panel-heading {
@@ -86,10 +118,27 @@ p {
 	border-radius: 0px;
 }
 
+.preference-btns {
+	text-align: center;
+}
+
+.pref-btn {
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
 /*Suggestions*/
-.panel {
-    border: none; 
-    border-radius: 0px; 
-    -webkit-box-shadow: none; 
-    box-shadow: none; 
+
+.btn-site {
+    font-weight: 300;
+    border-radius: 10px;
+    border: 3px solid #78A5B3;
+    color: #3E322B;
+}
+
+.btn-map {
+    font-weight: 300;
+    border-radius: 10px;
+    background-color: #78A5B3;
+    color: #3E322B;
 }
