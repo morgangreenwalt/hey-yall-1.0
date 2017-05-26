@@ -63,3 +63,7 @@
 #venue {
 	margin-left: 10px;
 }
+
+.panel-heading {
+	padding-top: 80px;
+}

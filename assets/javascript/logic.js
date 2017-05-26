@@ -10,7 +10,7 @@ $(".suggestion").on("click", function(){
 		var venue = snapshot.val().venue;
 		var details = snapshot.val().details;
 
-		var newURL = new URL(window.location.href.split("suggestions-click.html")[0] + "event.html");
+		var newURL = new URL(window.location.href.split("suggestions.html")[0] + "event.html");
 
 		newURL.searchParams.set("address", address)
 		newURL.searchParams.set("image", image)
