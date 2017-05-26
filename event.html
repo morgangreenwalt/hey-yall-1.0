@@ -1,53 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Your Events</title>
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald" rel="stylesheet">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="assets/css/topher.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/morgan.css">
+<title>Your Events</title>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="assets/css/topher.css">
+<link rel="stylesheet" type="text/css" href="assets/css/morgan.css">
 </head>
 <body>
-    
-    <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-      <ul class="nav navbar-nav navbar-left">
-            <li class="logo"><a href="#"><img src="assets/images/cowboy.png" height="50px"> All+Y'all</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-            <li class="main-nav"><a href="preferences.html">Preferences</a></li>
-            <li class="main-nav"><a href="suggestions.html">Suggestions</a></li>
-            <li class="main-nav"><a href="#">Logout</a></li>
-      </ul>
-    </div>
-  </nav>
-  <div class="container">
-		
-		<div class="row">
-			<div class="col-md-12">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<img id="image" class="img-rounded category" alt="event-header">
-						<div class="row">
-							<div class="col-md-2">
-								<h2 id="date"></h2>
-							</div>
-							<div class="col-md-10">
-								<h2 id="title"></h2>
-							</div>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="container">
+  <ul class="nav navbar-nav navbar-left">
+        <li class="logo"><a href="#"><img src="assets/images/cowboy.png" height="50px"> All+Y'all</a></li>
+  </ul>
+  <ul class="nav navbar-nav navbar-right">
+        <li class="main-nav"><a href="preferences.html">Preferences</a></li>
+        <li class="main-nav"><a href="suggestions.html">Suggestions</a></li>
+        <li class="main-nav"><a href="#">Logout</a></li>
+  </ul>
+</div>
+</nav>
+<div class="container">
+	
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<img id="image" class="img-rounded category" alt="event-header">
+					<div class="row">
+						<div class="col-md-2">
+							<h2 id="date"></h2>
+						</div>
+						<div class="col-md-10">
+							<h2 id="title"></h2>
 						</div>
 					</div>
-					<div class="panel-body">
-						<div class="row">
-							<div class="col-md-12">
-								<span class="glyphicon glyphicon-time" aria-hidden="true"></span><span id="time"></span>
-								<br>
-								<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span><span id="venue">Venue Here</span>
-								<div class="row">
-								<br>
-									<div class="col-md-12">
-										<iframe id="map" width=100% height='450' frameborder='0' style='border:0' allowfullscreen></iframe>
-									</div>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-12">
+							<span class="glyphicon glyphicon-time" aria-hidden="true"></span><span id="time"></span>
+							<br>
+							<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span><span id="venue">Venue Here</span>
+							<div class="row">
+							<br>
+								<div class="col-md-12">
+									<iframe id="map" width=100% height='450' frameborder='0' style='border:0' allowfullscreen></iframe>
 								</div>
 							</div>
 						</div>
@@ -55,39 +54,40 @@
 				</div>
 			</div>
 		</div>
+	</div>
 
-		<div class="row">
-			<div class="col-md-12">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h4>Details</h4>
-					</div>
-					<div class="panel-body">
-						<p id="details">You are invited to Austin's Official Debut of the brand new Austin Eastciders Blood Orange Cider! Featuring: Cider Specials All Night (for 21+), Small bites and Cider Flights. Come and get it or you'll super regret it and you'll be like woah what am I even doing with my life?</p>
-					</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4>Details</h4>
+				</div>
+				<div class="panel-body">
+					<p id="details">You are invited to Austin's Official Debut of the brand new Austin Eastciders Blood Orange Cider! Featuring: Cider Specials All Night (for 21+), Small bites and Cider Flights. Come and get it or you'll super regret it and you'll be like woah what am I even doing with my life?</p>
 				</div>
 			</div>
 		</div>
-		</div>
+	</div>
+	</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
-	window.onload = function() {
-		var address = (new URL(window.location)).searchParams.get("address");
-		var image = (new URL(window.location)).searchParams.get("image");
-		var date = (new URL(window.location)).searchParams.get("date");
-		var title = (new URL(window.location)).searchParams.get("title");
-		var time = (new URL(window.location)).searchParams.get("time");
-		var venue = (new URL(window.location)).searchParams.get("venue");
-		var details = (new URL(window.location)).searchParams.get("details");
-		$("#map").attr("src","https://www.google.com/maps/embed/v1/place?key=AIzaSyBL1Wsf3IjgTAZTFcHhbDFQ-wo5vGnsP70&q=" + address);
-		$("#image").attr("src","assets/images/" + image);
-		$("#date").html(date);
-		$("#title").html(title);
-		$("#time").text(time);
-		$("#venue").text(venue);
-		$("#details").text(details);
-	}
+window.onload = function() {
+	var address = (new URL(window.location)).searchParams.get("address");
+	var image = (new URL(window.location)).searchParams.get("image");
+	var date = (new URL(window.location)).searchParams.get("date");
+	var title = (new URL(window.location)).searchParams.get("title");
+	var time = (new URL(window.location)).searchParams.get("time");
+	var venue = (new URL(window.location)).searchParams.get("venue");
+	var details = (new URL(window.location)).searchParams.get("details");
+	$("#map").attr("src","https://www.google.com/maps/embed/v1/place?key=AIzaSyBL1Wsf3IjgTAZTFcHhbDFQ-wo5vGnsP70&q=" + address);
+	$("#image").attr("src","assets/images/" + image);
+	$("#date").html(date);
+	$("#title").html(title);
+	$("#time").text(time);
+	$("#venue").text(venue);
+	$("#details").text(details);
+}
 </script>
 </body>
 </html>

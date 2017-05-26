@@ -1,88 +1,88 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>AllY'all Application Preferences | Project #1</title>
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald" rel="stylesheet">
-	<script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
-	<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="assets/css/morgan.css">
-	<script type="text/javascript" src="assets/javascript/app.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js"></script>
+<title>AllY'all Application Preferences | Project #1</title>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald" rel="stylesheet">
+<script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="assets/css/morgan.css">
+<script type="text/javascript" src="assets/javascript/app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js"></script>
 
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top">
-		<div class="container">
-			<ul class="nav navbar-nav navbar-left">
-		        <li class="logo"><a href="#"><img src="assets/images/cowboy.png" height="50px"> All+Y'all</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-		        <li class="main-nav"><a href="preferences.html">Preferences</a></li>
-		        <li class="main-nav"><a href="suggestions.html">Suggestions</a></li>
-		        <li class="main-nav"><a href="#">Logout</a></li>
-			</ul>
-		</div>
-	</nav>
-
-	<div class="jumbotron">
-		<h1>Welcome [username]</h1><br/>
-		<div class="container">
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ornare odio quis suscipit porttitor. Donec a molestie urna. Phasellus tempor scelerisque consectetur. Fusce at commodo ex, eget lacinia tortor. Fusce accumsan molestie risus, eget iaculis velit. Aliquam consectetur nisi nec gravida commodo.</p>
-		</div>
-	</div>
-
+<nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container">
-		<div class="row">
-			<!-- <div class="col-md-6 offset-md-3 beer-search"> -->
-				
-				<div class="panel panel-default">
-					<div class="btn-group btn-group-justified" role="group" aria-label="...">
-						  <div class="btn-group" role="group">
-						    <button type="button" class="btn btn-default">Question #1: Drinks</button>
-						  </div>
-						  <div class="btn-group" role="group">
-						    <button type="button" class="btn btn-default">Question #2: Restaurants</button>
-						  </div>
-						  <div class="btn-group" role="group">
-						    <button type="button" class="btn btn-default">Question #3: Events</button>
-						  </div>
-					</div>
+		<ul class="nav navbar-nav navbar-left">
+	        <li class="logo"><a href="#"><img src="assets/images/cowboy.png" height="50px"> All+Y'all</a></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+	        <li class="main-nav"><a href="preferences.html">Preferences</a></li>
+	        <li class="main-nav"><a href="suggestions.html">Suggestions</a></li>
+	        <li class="main-nav"><a href="#">Logout</a></li>
+		</ul>
+	</div>
+</nav>
 
-				  <div class="progress">
-						<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 33.5%;"> 33%
-	  					</div>
-					</div>
-					  <div class="panel-body">
-						<form>
-							<div class="form-group">
-							    <label for="beer-venue">Beer Venue</label>
-							    <input type="text" class="form-control" id="beer-venue" placeholder="micro brewery, macro brewery, prewpub, tasting, restaurant, cidery, meadery">
-							</div>
+<div class="jumbotron">
+	<h1>Welcome [username]</h1><br/>
+	<div class="container">
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ornare odio quis suscipit porttitor. Donec a molestie urna. Phasellus tempor scelerisque consectetur. Fusce at commodo ex, eget lacinia tortor. Fusce accumsan molestie risus, eget iaculis velit. Aliquam consectetur nisi nec gravida commodo.</p>
+	</div>
+</div>
 
-							<div class="form-group">
-							    <label for="venue-zip">Zip Code</label>
-							    <input type="text" class="form-control" id="venue-zip" placeholder="78704">
-			  				</div>
-
-			  				<button type="submit" id="searchBtn" class="btn btn-primary">Submit</button>
-						</form>
-					</div>
+<div class="container">
+	<div class="row">
+		<!-- <div class="col-md-6 offset-md-3 beer-search"> -->
+			
+			<div class="panel panel-default">
+				<div class="btn-group btn-group-justified" role="group" aria-label="...">
+					  <div class="btn-group" role="group">
+					    <button type="button" class="btn btn-default">Question #1: Drinks</button>
+					  </div>
+					  <div class="btn-group" role="group">
+					    <button type="button" class="btn btn-default">Question #2: Restaurants</button>
+					  </div>
+					  <div class="btn-group" role="group">
+					    <button type="button" class="btn btn-default">Question #3: Events</button>
+					  </div>
 				</div>
-			<!-- </div> -->
-		</div> 
-		
-		<div class="row">
-			<div class="col-md-12 venue-options"></div>
-		</div>
 
-	</div>	
+			  <div class="progress">
+					<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 33.5%;"> 33%
+  					</div>
+				</div>
+				  <div class="panel-body">
+					<form>
+						<div class="form-group">
+						    <label for="beer-venue">Beer Venue</label>
+						    <input type="text" class="form-control" id="beer-venue" placeholder="micro brewery, macro brewery, prewpub, tasting, restaurant, cidery, meadery">
+						</div>
 
-	<div class="container">
-		<div class="preferences">
-			<div class="col-md-12 display-preferences"></div>
-		</div>
+						<div class="form-group">
+						    <label for="venue-zip">Zip Code</label>
+						    <input type="text" class="form-control" id="venue-zip" placeholder="78704">
+		  				</div>
+
+		  				<button type="submit" id="searchBtn" class="btn btn-primary">Submit</button>
+					</form>
+				</div>
+			</div>
+		<!-- </div> -->
+	</div> 
+	
+	<div class="row">
+		<div class="col-md-12 venue-options"></div>
 	</div>
+
+</div>	
+
+<div class="container">
+	<div class="preferences">
+		<div class="col-md-12 display-preferences"></div>
+	</div>
+</div>
 
 </body>
 </html>
