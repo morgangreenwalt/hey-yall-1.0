@@ -32,8 +32,6 @@
 	color: black;
 }
 
-
-
 .navbar-default {
 	color: orange;
 }
@@ -48,10 +46,20 @@
     height: 30px;
 }
 
-#event-date {
+/*Event Page*/
+
+#date {
 	color: green;
 }
 
-#event-title {
+#title {
 	color: purple;
+}
+
+#time {
+	margin-left: 10px;
+}
+
+#venue {
+	margin-left: 10px;
 }
