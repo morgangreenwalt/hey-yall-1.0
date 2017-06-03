@@ -1,5 +1,8 @@
+$(document).ready(function(){
+
 var suggestionsRef = firebase.database().ref("suggestions")
 
+function displayInfo(){
 $(".suggestion").on("click", function(){
 	suggestionsRef.child($(this).data("name")).once("value").then(function(snapshot) {
 		var address = snapshot.val().address;
@@ -23,3 +26,10 @@ $(".suggestion").on("click", function(){
 		window.location = newURL;
 	})
 })
+}
+
+$("#infoBtn").on("click", function(){
+	displayInfo();
+})
+
+});

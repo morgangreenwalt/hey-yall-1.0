@@ -2,27 +2,45 @@
 <html lang="en">
 <head>
 <title>All Y'all!</title>
-<link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Muli|Poppins|Open+Sans|Oswald" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="assets/css/topher.css">
 <script src="https://use.fontawesome.com/fcbf3ec2ad.js"></script>
 </head>
-<body id="login-page">
-	<h2>Hello</h2>
+<body>
+
+<div id="konami"></div>
+
+<div class="homepage-hero-module">
+    <div class="video-container">
+    	<div class="btn btn-default" id="login-button">
+		<h4>Log in</h4>
+		</div>
+        <div class="filter"></div>
+        <video autoplay loop class="fillWidth">
+            <source src="assets/images/Background-Video/MP4/Austin.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser to Google Chrome.
+            <source src="assets/images/Background-Video/WEBM/Austin.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser to Google Chrome.
+        </video>
+        <div class="poster hidden">
+            <img src="assets/images/austin.jpg" alt="Austin skyline">
+        </div>
+    </div>
+</div>
+
+
 
 <div class="container">
 	<div class="row">
-		<div class="col-md-10"></div>
-		<div class="col-md-2">
-			<div class="btn btn-default" id="login">Log in</div>
-		</div>
+		<!-- <div class="btn btn-default" id="login-button">
+		<h4>Log in</h4>
+		</div> -->
 	</div>	
 	<!-- MODAL -->
     <div id="modal-login">
     		<div class="modal-content">
     			<div class="modal-header">
-    				<img id="login-logo" src="assets/images/cowboy.png" alt="All Y'all logo">
-    				<h3 class="modal-title text-center" id="modal-login-label">Welcome to All Y'all</h3>
+    				<img id="login-logo" src="assets/images/orangehat.png" alt="All Y'all logo">
+    				<h1 class="modal-title text-center" id="modal-login-label">Welcome to All Y'all</h1>
     				<p class="text-center">Austin's local source for local events</p>
     			</div>
     			<div class="modal-body">
@@ -51,7 +69,91 @@
 </div>    
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="assets/javascript/logic.js"></script>
+<!-- easter egg library -->
+<script type="text/javascript" src="https://cdn.rawgit.com/mikeflynn/egg.js/master/egg.min.js"></script>
+<script type="text/javascript">
+// video
+	$( document ).ready(function() {
+
+    scaleVideoContainer();
+
+    initBannerVideoSize('.video-container .poster img');
+    initBannerVideoSize('.video-container .filter');
+    initBannerVideoSize('.video-container video');
+
+    $(window).on('resize', function() {
+        scaleVideoContainer();
+        scaleBannerVideoSize('.video-container .poster img');
+        scaleBannerVideoSize('.video-container .filter');
+        scaleBannerVideoSize('.video-container video');
+    });
+
+});
+
+function scaleVideoContainer() {
+
+    var height = $(window).height() + 5;
+    var unitHeight = parseInt(height) + 'px';
+    $('.homepage-hero-module').css('height',unitHeight);
+
+}
+
+function initBannerVideoSize(element){
+
+    $(element).each(function(){
+        $(this).data('height', $(this).height());
+        $(this).data('width', $(this).width());
+    });
+
+    scaleBannerVideoSize(element);
+
+}
+
+function scaleBannerVideoSize(element){
+
+    var windowWidth = $(window).width(),
+    windowHeight = $(window).height() + 5,
+    videoWidth,
+    videoHeight;
+
+    // console.log(windowHeight);
+
+    $(element).each(function(){
+        var videoAspectRatio = $(this).data('height')/$(this).data('width');
+
+        $(this).width(windowWidth);
+
+        if(windowWidth < 1000){
+            videoHeight = windowHeight;
+            videoWidth = videoHeight / videoAspectRatio;
+            $(this).css({'margin-top' : 0, 'margin-left' : -(videoWidth - windowWidth) / 2 + 'px'});
+
+            $(this).width(videoWidth).height(videoHeight);
+        }
+
+        $('.homepage-hero-module .video-container video').addClass('fadeIn animated');
+
+    });
+}
+
+// konami easter egg
+var egg = new Egg();
+egg
+  .addCode("up,up,down,down,left,right,left,right,b,a", function() {
+    jQuery('#egggif').fadeIn(500, function() {
+      window.setTimeout(function() { jQuery('#egggif').hide(); }, 5000);
+    });
+  })
+  .addHook(function(){
+    console.log("Hook called for: " + this.activeEgg.keys);
+    console.log(this.activeEgg.metadata);
+    alert("HOWDY PARTNER!")
+
+  }).listen();
+    
+
+
+</script>
 
 </body>
 </html>

@@ -1,69 +1,101 @@
 /*Login Page*/
 
+/*video*/
+.homepage-hero-module {
+    border-right: none;
+    border-left: none;
+    position: relative;
+}
+.no-video .video-container video,
+.touch .video-container video {
+    display: none;
+}
+.no-video .video-container .poster,
+.touch .video-container .poster {
+    display: block !important;
+}
+.video-container {
+    position: relative;
+    bottom: 0%;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background: #000;
+}
+.video-container .poster img {
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+}
+.video-container .filter {
+    z-index: 100;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.4);
+    width: 100%;
+}
+.video-container video {
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+}
+.video-container video.fillWidth {
+    width: 100%;
+}
+
+/*upper right hand log in button*/
+#login-button {
+	float: right;
+	position: relative;
+	z-index: 101;
+	margin-right: 150px;
+	margin-top: 20px;
+	padding: 0px 9px 0px 9px;
+}
+
+/*module*/
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Poppins', sans-serif;
+}
+
+button, input, a, p, span {
+	font-family: 'Muli', sans-serif;
+}
+
+/*Facebook and Google Buttons*/
+.signin {
+	margin-left: 9px;
+	margin-right: 9px;
+}
+
+.form-group {
+	margin-left: 25px;
+	margin-right: 25px;
+}
+
+#addUser {
+	background-color: #e56746;
+	color: white;
+	margin-left: 25px;
+	margin-right: 25px;
+	border: none;
+}
+
 #modal-login {
 	position: fixed;
 	top: 50%;
 	left: 50%;
+	width: 30%;
 	transform: translate(-50%, -50%);
 }
 
-#login-logo{
+#login-logo {
 	display: block;
     margin: auto;
-    width: 50%;
-    height: 50%;
+    width: 35%;
+    height: 35%;
 }
 
-#login-page {
-	background-image: url("../images/austin.jpg");
-	background-size: 1480px 1053px;
-	background-repeat: no-repeat;
-}
-
-#login {
-	margin-top: 20px;
-}
-
-.nav {
-	color: black;
-}
-
-#logo-text {
-	color: black;
-}
-
-.navbar-default {
-	color: orange;
-}
-
-.category {
-	height: 300px;
-	width: 100%;
-}
-
-.navbar-logo {
-    width: 30px;
-    height: 30px;
-}
-
-/*Event Page*/
-
-#date {
-	color: green;
-}
-
-#title {
-	color: purple;
-}
-
-#time {
-	margin-left: 10px;
-}
-
-#venue {
-	margin-left: 10px;
-}
-
-.panel-heading {
-	padding-top: 80px;
+#modal-login-label {
+	font-weight: bold;
 }

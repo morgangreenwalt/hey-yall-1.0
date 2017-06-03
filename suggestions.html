@@ -1,161 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Suggestions Click Test</title>
-<link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald" rel="stylesheet">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="assets/css/topher.css">
-<link rel="stylesheet" type="text/css" href="assets/css/morgan.css">
-<link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
+	<title>Suggestions Click Test</title>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="assets/css/topher.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/morgan.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
 </head>
 <body>
 
-<nav class="navbar navbar-default navbar-fixed-top">
-<div class="container">
-<ul class="nav navbar-nav navbar-left">
-<li class="logo"><a href="#"><img src="assets/images/cowboy.png" height="50px"> All+Y'all</a></li>
-</ul>
-<ul class="nav navbar-nav navbar-right">
-<li class="main-nav"><a href="preferences.html">Preferences</a></li>
-<li class="main-nav"><a href="suggestions.html">Suggestions</a></li>
-<li class="main-nav"><a href="#">Logout</a></li>
-</ul>
-</div>
-</nav>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<ul class="nav navbar-nav navbar-left">
+				<li class="logo"><a href="index.html"><img src="assets/images/cowboy.png" height="50px"> AllY'all</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="main-nav"><a href="preferences.html">Preferences</a></li>
+				<li class="main-nav"><a href="suggestions.html">Suggestions</a></li>
+				<li class="main-nav"><a href="#">Logout</a></li>
+			</ul>
+		</div>
+	</nav>
 
-<div class="container">
-<div class="jumbotron">
-<h1>[username]'s Suggestions</h1><br/>
-<!-- <div class="container">
-<p>Check out what we've found for you & enjoy!</p>
-</div> -->
-</div>
-</div>
+	<div class="container">
+		<div class="jumbotron">
+			<h1>[username]'s Suggestions</h1><br/>
+		</div>
+	</div>
 
-<div class="container">
-	<div class="col-md-12">
-		<div class="row">
-			<div class="suggestions-hero">
-				<img class="hero-image" src="assets/images/restaurants.jpg" alt="restaurants hero image"> 
-				<h2 class="hero-title">Eats</h2>
+	<!-- Modal -->
+	<div id="myModalInfo" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-lg">
+
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">More Info</h4>
+				</div>
+				
+				<div class="modal-body">
+					<p>Hours:</p>
+					<button id="parking">Find Parking</button>
+					<div id="map"></div>
+				</div>
+				
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
 			</div>
 		</div>
-	</div>	
+	</div>
+	<!-- Modal -->
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="suggestions-hero">
+					<img class="hero-image" src="assets/images/restaurants.jpg" alt="restaurants hero image"> 
+					<h2 class="hero-title">Eats</h2>
+				</div>
+			</div>
+		</div>	
 		
-	<div class="col-md-12 suggestions-list-items">
 		<div class="row">
-			<div class="col-md-4">
-			  <a href="#"><img class="thumbnail" src="https://placehold.it/250x200" alt="test"></a>
-			</div>
-			<div class="col-md-8">
-			    <h2>Here's a title</h2>
-			    <h4>Here's an address</h4>
-			    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ornare odio quis suscipit porttitor. Donec a molestie urna. Phasellus tempor scelerisque consectetur. Fusce at commodo ex, eget lacinia tortor. Fusce accumsan molestie risus, eget iaculis velit. Aliquam consectetur nisi nec gravida commodo.</p>
-			    <br/><br/>
-			    <p><a class="btn btn-site btn-lg" data-name="alamo" href="#" role="button">More Info</a>
-			    &nbsp;&nbsp;&nbsp;
-				<a class="btn btn-map btn-lg" href="#" role="button">Directions</a>	
-			    </p>
-			    <a href="#"><p class="suggestion" data-name="alamo">This is actually Topher's test: Click Me at Alamo Drafthouse</p></a>
-			</div>
-		</div>
-	</div>
+			<div class="col-md-12">	
+				<div class="row">
+					<div class="col-md-6 suggestions-list-items">
+						<div class="col-md-6">
+							<a href="#"><img class="thumbnail-suggestions" src="https://placehold.it/250x200" alt="test"></a>
+						</div>
+						<div class="col-md-6">
+							<h2 class="suggestions-h2">Here's a title</h2>
+							<h4>Here's an address</h4>
+							<br/>
+							<p><a class="btn btn-site btn-lg" href="#" id="infoBtn" role="button" data-toggle="modal" data-target="#myModalInfo">More Info</a>
 
-	<div class="col-md-12 suggestions-list-items">
-		<div class="row">
-			<div class="col-md-4">
-			  <a href="#"><img class="thumbnail" src="https://placehold.it/250x200" alt="test"></a>
-			</div>
-			<div class="col-md-8">
-			    <h2>Here's a title</h2>
-			    <h4>Here's an address</h4>
-			    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ornare odio quis suscipit porttitor. Donec a molestie urna. Phasellus tempor scelerisque consectetur. Fusce at commodo ex, eget lacinia tortor. Fusce accumsan molestie risus, eget iaculis velit. Aliquam consectetur nisi nec gravida commodo.</p>
-			    <a href="#"><p class="suggestion" data-name="alamo">This is actually Topher's test: Click Me at Alamo Drafthouse</p></a>
-			</div>
-		</div>
-	</div>  
+							</p>
+						</div>
+					</div>
 
-	<div class="col-md-12">	
-		<div class="row">
-			<div class="suggestions-hero">
-				<img class="hero-image" src="assets/images/bar.jpg" alt="bar hero image"> 
-				<h2 class="hero-title">Drinks</h2>
+					<div class="col-md-6 suggestions-list-items">
+						<div class="col-md-6">
+							<a href="#"><img class="thumbnail-suggestions" src="https://placehold.it/250x200" alt="test"></a>
+						</div>
+						<div class="col-md-6">
+							<h2 class="suggestions-h2">Here's a title</h2>
+							<h4>Here's an address</h4>
+							<br/>
+							<a href="#"><p class="suggestion" data-name="alamo">This is actually Topher's test: Click Me at Alamo Drafthouse</p></a>
+							<p><a class="btn btn-site btn-lg" data-name="infoBtn" id="infoBtn" href="#" role="button">More Info</a>
+							</p>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="col-md-12 suggestions-list-items">
 		<div class="row">
-			<div class="col-md-4">
-			  <a href="#"><img class="thumbnail" src="https://placehold.it/250x200" alt="test"></a>
-			</div>
-			<div class="col-md-8">
-			  <h2>Here's a title</h2>
-			    <h4>Here's an address</h4>
-			    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ornare odio quis suscipit porttitor. Donec a molestie urna. Phasellus tempor scelerisque consectetur. Fusce at commodo ex, eget lacinia tortor. Fusce accumsan molestie risus, eget iaculis velit. Aliquam consectetur nisi nec gravida commodo.</p>
-			    <a href="#"><p class="suggestion" data-name="alamo">This is actually Topher's test: Click Me at Alamo Drafthouse</p></a>
+			<div class="col-md-12">	
+				<div class="row">
+					<div class="col-md-6 suggestions-list-items">
+						<div class="col-md-6">
+							<a href="#"><img class="thumbnail-suggestions" src="https://placehold.it/250x200" alt="test"></a>
+						</div>
+						<div class="col-md-6">
+							<h2 class="suggestions-h2">Here's a title</h2>
+							<h4>Here's an address</h4>
+							<br/>
+							<a href="#"><p class="suggestion" data-name="alamo">This is actually Topher's test: Click Me at Alamo Drafthouse</p></a>
+							<p><a class="btn btn-site btn-lg" data-name="infoBtn" id="infoBtn" href="#" role="button">More Info</a>
+							</p>
+						</div>
+					</div>
+
+					<div class="col-md-6 suggestions-list-items">
+						<div class="col-md-6">
+							<a href="#"><img class="thumbnail-suggestions" src="https://placehold.it/250x200" alt="test"></a>
+						</div>
+						<div class="col-md-6">
+							<h2 class="suggestions-h2">Here's a title</h2>
+							<h4>Here's an address</h4>
+							<br/>
+							<a href="#"><p class="suggestion" data-name="alamo">This is actually Topher's test: Click Me at Alamo Drafthouse</p></a>
+							<p><a class="btn btn-site btn-lg" data-name="infoBtn" id="infoBtn" href="#" role="button">More Info</a>
+							</p>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
+
+		<div class="row">
+			<div class="col-md-12">	
+				<div class="suggestions-hero">
+					<img class="hero-image" src="assets/images/bar.jpg" alt="bar hero image"> 
+					<h2 class="hero-title">Drinks</h2>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12 suggestions-list-items">
+				<div class="col-md-4">
+					<a href="#"><img class="thumbnail-suggestions" src="https://placehold.it/350x200" alt="test"></a>
+				</div>
+				<div class="col-md-8">
+					<h2 class="suggestions-h2">Here's a title</h2>
+					<h4>Here's an address</h4>
+					<a href="#"><p class="suggestion" data-name="alamo">This is actually Topher's test: Click Me at Alamo Drafthouse</p></a><br/><br/>
+					<p><a class="btn btn-site btn-lg" data-name="infoBtn" id="infoBtn" href="#" role="button">More Info</a></p>
+				</div>
+			</div>
+		</div> 
+
+		<div class="row">
+			<div class="col-md-12 suggestions-list-items">
+				<div class="col-md-4">
+					<a href="#"><img class="thumbnail-suggestions" src="https://placehold.it/350x200" alt="test"></a>
+				</div>
+				<div class="col-md-8">
+					<h2 class="suggestions-h2">Here's a title</h2>
+					<h4>Here's an address</h4>
+					<a href="#"><p class="suggestion" data-name="alamo">This is actually Topher's test: Click Me at Alamo Drafthouse</p></a><br/><br/>
+					<p><a class="btn btn-site btn-lg" data-name="infoBtn" id="infoBtn" href="#" role="button">More Info</a></p>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12 suggestions-list-items">
+				<div class="col-md-4">
+					<a href="#"><img class="thumbnail-suggestions" src="https://placehold.it/350x200" alt="test"></a>
+				</div>
+				<div class="col-md-8">
+					<h2 class="suggestions-h2">Here's a title</h2>
+					<h4>Here's an address</h4>
+					<a href="#"><p class="suggestion" data-name="alamo">This is actually Topher's test: Click Me at Alamo Drafthouse</p></a><br/><br/>
+					<p><a class="btn btn-site btn-lg" data-name="infoBtn" id="infoBtn" href="#" role="button">More Info</a></p>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12 suggestions-list-items">
+				<div class="col-md-4">
+					<a href="#"><img class="thumbnail-suggestions" src="https://placehold.it/350x200" alt="test"></a>
+				</div>
+				<div class="col-md-8">
+					<h2 class="suggestions-h2">Here's a title</h2>
+					<h4>Here's an address</h4>
+					<a href="#"><p class="suggestion" data-name="alamo">This is actually Topher's test: Click Me at Alamo Drafthouse</p></a><br/><br/>
+					<p><a class="btn btn-site btn-lg" data-name="infoBtn" id="infoBtn" href="#" role="button">More Info</a></p>
+				</div>
+			</div>
+		</div>  
+
+		<div class="col-md-12 restaurant-suggestions">
+			<div class="row">
+				<div class="suggestions-hero">
+					<img class="hero-image" src="assets/images/event.jpg" alt="event hero image"> 
+					<h2 class="hero-title">Events</h2>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-12 suggestions-list-items">
+			<div class="row">
+				<div class="col-md-4">
+					<a href="#"><img class="thumbnail-suggestions" src="https://placehold.it/250x200" alt="test">
+					</a>
+				</div>
+				<div class="col-md-8">
+					<h2 class="suggestions-h2">Here's a title</h2>
+					<h4>Here's an address</h4>
+					<a href="#"><p class="suggestion" data-name="alamo">This is actually Topher's test: Click Me at Alamo Drafthouse</p></a>
+				</div>
+			</div>
+		</div>    
 	</div> 
 
-	<div class="col-md-12 suggestions-list-items">
-		<div class="row">
-			<div class="col-md-4">
-			  <a href="#"><img class="thumbnail" src="https://placehold.it/250x200" alt="test">
-			  </a>
-			</div>
-			<div class="col-md-8">
-			  <h2>Here's a title</h2>
-			    <h4>Here's an address</h4>
-			    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ornare odio quis suscipit porttitor. Donec a molestie urna. Phasellus tempor scelerisque consectetur. Fusce at commodo ex, eget lacinia tortor. Fusce accumsan molestie risus, eget iaculis velit. Aliquam consectetur nisi nec gravida commodo.</p>
-			    <a href="#"><p class="suggestion" data-name="alamo">This is actually Topher's test: Click Me at Alamo Drafthouse</p></a>
-			</div>
-		</div>
-	</div>  
+	<div class="container"></div>
+	<div class="preferences"></div>
+	<div class="col-md-12 display-preferences"></div>
 
-	<div class="col-md-12 restaurant-suggestions">
-		<div class="row">
-			<div class="suggestions-hero">
-				<img class="hero-image" src="assets/images/event.jpg" alt="event hero image"> 
-				<h2 class="hero-title">Events</h2>
-			</div>
-		</div>
-	</div>
 
-	<div class="col-md-12 suggestions-list-items">
-		<div class="row">
-			<div class="col-md-4">
-			  <a href="#"><img class="thumbnail" src="https://placehold.it/250x200" alt="test">
-			  </a>
-			</div>
-			<div class="col-md-8">
-			  <h2>Here's a title</h2>
-			    <h4>Here's an address</h4>
-			    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ornare odio quis suscipit porttitor. Donec a molestie urna. Phasellus tempor scelerisque consectetur. Fusce at commodo ex, eget lacinia tortor. Fusce accumsan molestie risus, eget iaculis velit. Aliquam consectetur nisi nec gravida commodo.</p>
-			    <a href="#"><p class="suggestion" data-name="alamo">This is actually Topher's test: Click Me at Alamo Drafthouse</p></a>
-			</div>
-		</div>
-	</div>    
-</div> 
+	<script>
+		var lat1, lat2, lat3, lat4, lng1, lng2, lng3, lng4, parking1, parking2, parking3, parking4, me, map, contentString, infowindow;
+		function initMap() {
+			var uluru = {lat: 30.2672, lng: -97.7431};
+			parking1 = {lat: Number(lat1), lng: Number(lng1)};
+			parking2 = {lat: Number(lat2), lng: Number(lng2)};
+			parking3 = {lat: Number(lat3), lng: Number(lng3)};
+			parking4 = {lat: Number(lat4), lng: Number(lng4)};
+			map = new google.maps.Map(document.getElementById('map'), {
+				zoom: 13,
+				center: uluru
+			});
+			var marker = new google.maps.Marker({
+				position: uluru,
+				map: map
+			});
 
-<div class="container"></div>
-<div class="preferences"></div>
-<div class="col-md-12 display-preferences"></div>
+			var marker1 = new google.maps.Marker({
+				position: parking2,
+				map: map
+			});
+			marker1.addListener('click', function() {
+				infowindow.open(map, marker1);
+			});
+			var marker2 = new google.maps.Marker({
+				position: parking3,
+				map: map
+			});
+			marker2.addListener('click', function() {
+				infowindow.open(map, marker2);
+			});
+			var marker3 = new google.maps.Marker({
+				position: parking4,
+				map: map
+			});
+			marker3.addListener('click', function() {
+				infowindow.open(map, marker3);
+			});
+			
+		}
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
-<script>
-// Initialize Firebase
-var config = {
-apiKey: "AIzaSyBNHcZ5U4BW0JLhBl-WwZp5_0hqm03_y0I",
-authDomain: "allyall-2befd.firebaseapp.com",
-databaseURL: "https://allyall-2befd.firebaseio.com",
-projectId: "allyall-2befd",
-storageBucket: "allyall-2befd.appspot.com",
-messagingSenderId: "5516575407"
-};
-firebase.initializeApp(config);
+		$('#myModalInfo').on('shown.bs.modal', function() {
+        var currentCenter = map.getCenter();  // Get current center before resizing
+        google.maps.event.trigger(map, "resize");
+                map.setCenter(currentCenter); // Re-set previous center
+            });
+
+		$("#parking").on("click", function() {
+			console.log("hello")
+			var url = "https://api.parkwhiz.com/search/?lat=30.267153&lng=-97.7430608"
+			var apiKey = "&key=874619822654f3bbbf0587277df3bfbb167be451"
+
+			$.ajax({
+				url: url+apiKey,
+				method: "GET"
+			}).done(function(data){
+				var parkingListing = data.parking_listings;
+		// console.log(parkingListing)
+
+		for (var i =0; i < 4; i++) {
+			// console.log(parkingListing[i])
+
+			var street = parkingListing[i].address;
+			var city = parkingListing[i].city;
+			var state = parkingListing[i].state;
+
+			lat1 = parkingListing[1].lat
+			lng1 = parkingListing[1].lng
+
+			lat2 = parkingListing[2].lat
+			lng2 = parkingListing[2].lng
+
+			lat3 = parkingListing[3].lat
+			lng3 = parkingListing[3].lng
+
+			lat4 = parkingListing[4].lat
+			lng4 = parkingListing[4].lng
+            // console.log(lat1, lng1)
+            
+            contentString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">'+parkingListing[1].location_name+'</h1>'+
+            '<div id="bodyContent">'+
+            '<p><b>'+parkingListing[1].address+'<br>'+parkingListing[1].city+'<br>'+parkingListing[1].state+'</b></p>'+
+            '<p>Price: $'+parkingListing[1].price+'</p>'+
+            '<p>Available Spots: '+parkingListing[1].available_spots+'</p>'+
+            '<p>Buy Parking: '+ '<a href='+parkingListing[1].www_reserve_url+'>ParkWhiz</>'+'</p>'+
+            '</div>'+
+            '</div>';
+
+            infowindow = new google.maps.InfoWindow({
+            	content: contentString
+            });
+
+            initMap()
+        }
+    });
+
+		})
+
+	</script>
+	<script async defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXgCkayPHIbeRCWDQX_UG_cPL0yUKP_GI&callback=initMap">
 </script>
-<script type="text/javascript" src="assets/javascript/logic.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 </body>
+
 </html>

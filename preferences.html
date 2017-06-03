@@ -7,6 +7,7 @@
 <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="assets/css/morgan.css">
+<!-- <link rel="stylesheet" type="text/css" href="assets/css/responsive.css"> -->
 <script type="text/javascript" src="assets/javascript/app.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js"></script>
 
@@ -15,7 +16,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container">
 		<ul class="nav navbar-nav navbar-left">
-	        <li class="logo"><a href="#"><img src="assets/images/cowboy.png" height="50px"> All+Y'all</a></li>
+	        <li class="logo"><a href="index.html"><img src="assets/images/cowboy.png" height="50px"> All+Y'all</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 	        <li class="main-nav"><a href="preferences.html">Preferences</a></li>
@@ -35,38 +36,146 @@
 </div>
 
 <div class="container">
+	<div class="questions">
 		<div class="row">
-			<p class="preference-btns"><a class="btn btn-site btn-lg pref-btn" data-name="alamo" href="#" role="button">Question #1: Restaurants</a>
-			<a class="btn btn-site btn-lg pref-btn" data-name="alamo" href="#" type="button">Question #2: Drinks</a>
-			<a class="btn btn-site btn-lg pref-btn" data-name="alamo" href="#" role="button">Question #3: Events</a></p>
+			<p class="preference-btns"><a class="btn btn-site btn-lg pref-btn" data-name="restaurants" href="#" role="button">Question #1: Restaurants</a>
+			<a class="btn btn-site btn-lg pref-btn" data-name="drinks" href="#" type="button">Question #2: Drinks</a>
+			<a class="btn btn-site btn-lg pref-btn" data-name="events" href="#" role="button">Question #3: Events</a></p>
 		</div>
 		
 
 		<div class="row">
-		  <div class="progress">
+			<!-- <div class="progress">
 				<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 33.5%;"> 33%
 				</div>
-			</div>
-			  <div class="panel-body">
-				<form>
-					<div class="form-group">
-					    <label for="beer-venue">Beer Venue</label>
-					    <input type="text" class="form-control" id="beer-venue" placeholder="micro brewery, macro brewery, prewpub, tasting, restaurant, cidery, meadery">
-					</div>
-
-					<div class="form-group">
-					    <label for="venue-zip">Zip Code</label>
-					    <input type="text" class="form-control" id="venue-zip" placeholder="78704">
-	  				</div>
-
-	  				<button type="submit" id="searchBtn" class="btn btn-primary">Submit</button>
-				</form>
+			</div> -->
+			<div class="panel-body">
+				<h2 class="text-center">Select the type of food(s) you are craving:</h2> 
 			</div>
 		</div> 
-	
-	<div class="row">
-		<div class="col-md-12 venue-options"></div>
 	</div>
+	
+<!-- Food Section -->
+		<div class="row">
+			<div class="col-md-3 thumbnail text-center">
+				<img class="food preference-images img-responsive" data-name="Indian" src="assets/images/indian.jpeg">
+				<h3 class="caption">Indian</h3>
+			</div>
+			<div class="col-md-3 thumbnail text-center">
+				<img class="food preference-images img-responsive" data-name="Thai" src="assets/images/thai.jpeg">
+				<h3 class="caption">Thai</h3>
+			</div>
+			<div class="col-md-3 thumbnail text-center">
+				<img class="food preference-images img-responsive" data-name="Mexican" src="assets/images/mexican.jpeg">
+				<h3 class="caption">Mexican</h3>
+			</div>
+			<div class="col-md-3 thumbnail text-center">
+				<img class="food preference-images img-responsive" data-name="American" src="assets/images/american.jpeg">
+				<h3 class="caption">American</h3>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-3 thumbnail text-center">
+				<img class="food preference-images img-responsive" data-name="Japenese" src="assets/images/japenese.jpeg">
+				<h3 class="caption">Japenese</h3>
+			</div>
+			<div class="col-md-3 thumbnail text-center">
+				<img class="food preference-images img-responsive" data-name="BBQ" src="assets/images/bbq.jpg">
+				<h3 class="caption">BBQ</h3>
+			</div>
+			<div class="col-md-3 thumbnail text-center">
+				<img class="food preference-images img-responsive" data-name="Italian" src="assets/images/italian.jpeg">
+				<h3 class="caption">Italian</h3>
+			</div>
+			<div class="col-md-3 thumbnail text-center">
+				<img class="food preference-images img-responsive" data-name="Chinese" src="assets/images/chinese.jpeg">
+				<h3 class="caption">Chinese</h3>
+			</div>
+		</div>
+
+<!-- Drinks Section -->
+		<div class="row">
+			<div class="col-md-3 thumbnail text-center">
+				<img class="drinks preference-images img-responsive" data-name="Coffee" src="assets/images/coffee.jpg">
+				<h3 class="caption">Coffee Bar</h3>
+			</div>
+			<div class="col-md-3 thumbnail text-center">
+				<img class="drinks preference-images img-responsive" data-name="Juice" src="assets/images/juice.jpeg">
+				<h3 class="caption">Juice Bar</h3>
+			</div>
+			<div class="col-md-3 thumbnail text-center">
+				<img class="drinks preference-images img-responsive" data-name="Brewery" src="assets/images/brewery.jpg">
+				<h3 class="caption">Brewery</h3>
+			</div>
+			<div class="col-md-3 thumbnail text-center">
+				<img class="drinks preference-images img-responsive" data-name="Wine" src="assets/images/wine_bar.jpeg">
+				<h3 class="caption">Wine Bar</h3>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-3 thumbnail text-center">
+				<img class="drinks preference-images img-responsive" data-name="BeerGarden" src="assets/images/beer_garden.jpg">
+				<h3 class="caption">Beer Garden</h3>
+			</div>
+			<div class="col-md-3 thumbnail text-center">
+				<img class="drinks preference-images img-responsive" data-name="Bar" src="assets/images/bar_preferences.jpeg">
+				<h3 class="caption">Bar</h3>
+			</div>
+			<div class="col-md-3 thumbnail text-center">
+				<img class="drinks preference-images img-responsive" data-name="Speakeasy" src="assets/images/speakeasy.jpeg">
+				<h3 class="caption">Speakeasy</h3>
+			</div>
+			<div class="col-md-3 thumbnail text-center">
+				<img class="drinks preference-images img-responsive" data-name="Pub" src="assets/images/pub.jpeg">
+				<h3 class="caption">Pub</h3>
+			</div>
+		</div>
+
+<!-- Events section -->
+		<div class="row">
+			<div class="col-md-3 thumbnail text-center">
+				<img class="events preference-images img-responsive" data-name="Sports" src="assets/images/sports.jpeg">
+				<h3 class="caption">Sports</h3>	
+			</div>
+			<div class="col-md-3 thumbnail text-center">
+				<img class="events preference-images img-responsive" data-name="Theater" src="assets/images/theater.jpeg">
+				<h3 class="caption">Theater</h3>
+			</div>
+			<div class="col-md-3 thumbnail text-center">
+				<img class="events preference-images img-responsive" data-name="Comedy" src="assets/images/comedy.jpeg">
+				<h3 class="caption">Comedy</h3>
+			</div>
+			<div class="col-md-3 thumbnail text-center">
+				<img class="events preference-images img-responsive" data-name="Country" src="assets/images/country.jpg">
+				<h3 class="caption">Country</h3>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-3 thumbnail text-center">
+				<img class="events preference-images img-responsive" data-name="Rock" src="assets/images/rock.jpeg">
+				<h3 class="caption">Rock</h3>
+			</div>
+			<div class="col-md-3 thumbnail text-center">
+				<img class="events preference-images img-responsive" data-name="Rap" src="assets/images/rap.jpeg">
+				<h3 class="caption">Rap</h3>
+			</div>
+			<div class="col-md-3 thumbnail text-center">
+				<img class="events preference-images img-responsive" data-name="Pop" src="assets/images/pop.jpeg">
+				<h3 class="caption">Pop</h3>	
+			</div>
+			<div class="col-md-3 thumbnail text-center">
+				<img class="events preference-images img-responsive" data-name="EDM" src="assets/images/edm.jpeg">
+				<h3 class="caption">EDM</h3>	
+			</div>
+		</div>
+
+	<form class="text-right">
+		<button type="submit" id="nextBtn" class="btn btn-site btn-lg pref-btn">Next</button>
+		<button type="submit" id="submitBtn" class="btn btn-site btn-lg pref-btn">Submit</button>
+	</form>	
 
 </div>	
 

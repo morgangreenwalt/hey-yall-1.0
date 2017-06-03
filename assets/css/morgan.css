@@ -1,5 +1,5 @@
 body {
-	background-color: #DEE4E0;
+	background-color: #fff;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -7,7 +7,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h4 {
-	color: #78A5B3;
+	color: #FB7722;
 }
 
 p {
@@ -15,15 +15,19 @@ p {
 }
 
 .navbar {
-	background-color: #DEE4E0;
+	background-color: #fff;
+}
+
+.navbar-default {
+	border: none;
 }
 
 .jumbotron {
 	text-align: center;
 	width: 100%;
 	padding-top: 100px;
-	background-color: #78A5B3;
-	color: #E1D6BA;
+	background-color: #FB7722;
+	color: #fff;
 	margin-top: 35px;
 }
 
@@ -52,28 +56,91 @@ p {
 	margin-left: 0px;
 }
 
-.col-md-12 {
+.col-md-12, .col-md-4, .col-md-6 {
 	padding-right: 0px;
 	padding-left: 0px;
 }
 
+.btn {
+	font-weight: 300;
+	border-radius: 0px;
+	padding: 7px 14px;
+	background: #fff;
+}
+
+/*Preferences Page*/
+
+.thumbnail:hover {
+	transform: scale(1.1, 1.1); /** default is 1, scale it to 1.5 */
+    opacity: 1;
+}
+
+.preference-images {
+	opacity: .75;
+	position: relative;
+}
+
 .thumbnail {
-    padding: 0px;
-    margin-bottom: 0px;
+    position: relative;
+    background: none;
+    width: 265px;
+	height: 140px;
+	margin: 10px;
+	padding: 0px;
+	overflow: hidden;
     background-color: none; 
     border: none; 
 }
 
+.caption {
+    position: absolute;
+    top: 45%;
+    left: 0;
+    width: 100%;
+    background-color: rgba(210, 210, 210, 0.65);
+}
+
+.panel-default>.panel-heading {
+    color: #333;
+    background-color: #f5f5f5;
+    border: none;
+}
+
+.panel-heading {
+    padding: 15px 15px;
+}
+
+.progress {
+	border-radius: 0px;
+}
+
+.preference-btns {
+	text-align: center;
+}
+
+.pref-btn {
+	margin: 10px;
+}
+
+/*Suggestions*/
+
+#map {
+    height: 500px;
+    width: 870px;
+}
+
 .suggestions-list-items {
-	margin-top: 10px;
+	margin-top: 15px;
 	margin-bottom: 30px;
 }
 
+.suggestions-h2 {
+	margin-top: 0px;
+}
+
 .suggestions-hero {
-	/*background-image: url("images/drinks.png");*/
 	background-repeat: none;
 	background-position: center;
-	/*padding-left: 85px;*/
 	position: relative;
 	margin-bottom: 20px;
 }
@@ -93,52 +160,25 @@ p {
     position: absolute;
     left: 30px;
     top: 225px;
-    color: #E1D6BA;
-	/*left: 100px;
-    top: 190px;
-    color: #ffffff;*/
+    color: #fff;
 }
-
-.panel-default>.panel-heading {
-    color: #333;
-    background-color: #f5f5f5;
-    border: none;
-}
-
-.panel-heading {
-    padding: 15px 15px;
-}
-
-.progress {
-	border-radius: 0px;
-}
-
-.btn {
-	font-weight: 300;
-	border-radius: 0px;
-}
-
-.preference-btns {
-	text-align: center;
-}
-
-.pref-btn {
-	margin-right: 10px;
-	margin-left: 10px;
-}
-
-/*Suggestions*/
 
 .btn-site {
     font-weight: 300;
     border-radius: 10px;
-    border: 3px solid #78A5B3;
+    border: 3px solid #FB7722;
     color: #3E322B;
 }
 
 .btn-map {
     font-weight: 300;
     border-radius: 10px;
-    background-color: #78A5B3;
-    color: #3E322B;
+    background-color: #FB7722;
+    color: #fff;
+}
+
+@media only screen and (max-width: 1200px){
+	.thumbnail {
+		width: 100%;
+	}
 }

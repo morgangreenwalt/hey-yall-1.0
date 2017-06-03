@@ -1,36 +1,43 @@
 $(document).ready(function(){
 
-// 48c20a29b24ad9e41687aa187b365e80 << API for beer mapping
-// 966de8eba0a47cbb7dc4edba95834768 << API for breweryDB
-console.log("test");
+var foodArray = [];
+var drinksArray = [];
+var eventsArray = [];
 
-$("#searchBtn").on("click", function(){
-	event.preventDefault();
-	
-	var location = $("#beer-venue").val().trim();
-	var zipCode = $("#venue-zip").val().trim();
-	var queryURL = "http://api.brewerydb.com/v2/locations?locality=austin&locationType="+location+"&postalCode="+zipCode+"&key=966de8eba0a47cbb7dc4edba95834768";
+// document.getElementById("defaultOpen").click();
+function food() {
+	$(".food").on("click", function(){
+		var selection = $(this).attr("data-name");
+		foodArray.push(selection);
 
-	$.ajax ({
-		url: queryURL,
-		method: "GET"
-	}).done(function(results){
+		$(this).css("border", "5px solid #FB7722");
+	    console.log(foodArray);
+	});
+}
 
-		var beerVenue = results.data;
+function drinks() {
+	$(".drinks").on("click", function(){
+		var selection = $(this).attr("data-name");
+		drinksArray.push(selection);
 
-		for (var i = 0; i < beerVenue.length; i++) {
+		$(this).css("border", "5px solid #FB7722");
+	    console.log(drinksArray);
+	});
+}
 
-			var bName = beerVenue[i].brewery.name;
-			var bLocation = beerVenue[i].brewery.location;
-			var bLogo = beerVenue[i].brewery.images.icon;
-			var bWebsite = beerVenue[i].brewery.website;
+function events() {
+	$(".events").on("click", function(){
+		var selection = $(this).attr("data-name");
+		eventsArray.push(selection);
 
-			console.log(bName);
-			console.log(bLocation);
-			console.log(bLogo);
-			console.log(bWebsite);
-		}
-	})
-});
+		$(this).css("border", "5px solid #FB7722");
+	    console.log(eventsArray);
+	});
+}
+
+food();
+drinks();
+events();
+
 
 });
