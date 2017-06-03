@@ -176,6 +176,9 @@ p {
     background-color: #FB7722;
     color: #fff;
 }
+.clicked{
+	border: 5px solid #FB7722;
+}
 
 @media only screen and (max-width: 1200px){
 	.thumbnail {
