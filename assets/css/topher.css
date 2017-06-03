@@ -68,6 +68,11 @@ button, input, a, p, span {
 	margin-right: 9px;
 }
 
+#facebook-btn {
+	padding-left: 9px;
+	padding-right: 9px;
+}
+
 .form-group {
 	margin-left: 25px;
 	margin-right: 25px;
@@ -98,4 +103,18 @@ button, input, a, p, span {
 
 #modal-login-label {
 	font-weight: bold;
+}
+
+/*responsive*/
+@media only screen and (max-width: 1428px) {
+	.signin {
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+}
+
+@media only screen and (max-width: 1308px) {
+	#facebook-btn {
+		margin-bottom: 10px;
+	}
 }

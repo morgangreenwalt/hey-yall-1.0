@@ -38,24 +38,21 @@
 <div class="container">
 	<div class="questions">
 		<div class="row">
-			<p class="preference-btns"><a class="btn btn-site btn-lg pref-btn" data-name="restaurants" href="#" role="button">Question #1: Restaurants</a>
-			<a class="btn btn-site btn-lg pref-btn" data-name="drinks" href="#" type="button">Question #2: Drinks</a>
-			<a class="btn btn-site btn-lg pref-btn" data-name="events" href="#" role="button">Question #3: Events</a></p>
+			<p class="preference-btns"><a class="btn btn-site btn-lg pref-btn" data-name="restaurants" id="food-question" role="button">Question #1: Restaurants</a>
+			<a class="btn btn-site btn-lg pref-btn" data-name="drinks" id="drinks-question" type="button">Question #2: Drinks</a>
+			<a class="btn btn-site btn-lg pref-btn" data-name="events" id="events-question" role="button">Question #3: Events</a></p>
 		</div>
 		
 
 		<div class="row">
-			<!-- <div class="progress">
-				<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 33.5%;"> 33%
-				</div>
-			</div> -->
 			<div class="panel-body">
-				<h2 class="text-center">Select the type of food(s) you are craving:</h2> 
+				<h2 class="section-title text-center">Select the type of food(s) you are craving:</h2> 
 			</div>
 		</div> 
 	</div>
-	
+
 <!-- Food Section -->
+	<div class="food-section">
 		<div class="row">
 			<div class="col-md-3 thumbnail text-center">
 				<img class="food preference-images img-responsive" data-name="Indian" data-state="unclicked" src="assets/images/indian.jpeg">
@@ -93,8 +90,10 @@
 				<h3 class="caption">Chinese</h3>
 			</div>
 		</div>
+	</div>	
 
 <!-- Drinks Section -->
+	<div class="drinks-section">
 		<div class="row">
 			<div class="col-md-3 thumbnail text-center">
 				<img class="drinks preference-images img-responsive" data-name="Coffee" data-state="unclicked" src="assets/images/coffee.jpg">
@@ -132,8 +131,10 @@
 				<h3 class="caption">Pub</h3>
 			</div>
 		</div>
+	</div>
 
 <!-- Events section -->
+	<div class="events-section">
 		<div class="row">
 			<div class="col-md-3 thumbnail text-center">
 				<img class="events preference-images img-responsive" data-name="Sports" data-state="unclicked" src="assets/images/sports.jpeg">
@@ -171,19 +172,13 @@
 				<h3 class="caption">EDM</h3>	
 			</div>
 		</div>
+	</div>	
 
 	<form class="text-right">
-		<button type="submit" id="nextBtn" class="btn btn-site btn-lg pref-btn">Next</button>
+		<!-- <button type="submit" id="nextBtn" class="btn btn-site btn-lg pref-btn">Next</button> -->
 		<button type="submit" id="submitBtn" class="btn btn-site btn-lg pref-btn">Submit</button>
 	</form>	
-
-</div>	
-
-<div class="container">
-	<div class="preferences">
-		<div class="col-md-12 display-preferences"></div>
-	</div>
 </div>
-
+<script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>	
 </body>
 </html>

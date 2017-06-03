@@ -1,10 +1,47 @@
 $(document).ready(function(){
 
+ // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDbb4OYFm4EDFMLBPUSvSib8xQ38x6CVKE",
+    authDomain: "project-app-43963.firebaseapp.com",
+    databaseURL: "https://project-app-43963.firebaseio.com",
+    projectId: "project-app-43963",
+    storageBucket: "project-app-43963.appspot.com",
+    messagingSenderId: "416945318872"
+  };
+  firebase.initializeApp(config);
+
+var database = firebase.database();
+var ref = database.ref("preferences");
 var foodArray = [];
 var drinksArray = [];
 var eventsArray = [];
 
-// document.getElementById("defaultOpen").click();
+
+$(".drinks-section").hide();
+$(".events-section").hide();
+
+$("#drinks-question").on("click", function(){
+	$(".drinks-section").show();
+	$(".food-section").hide();
+	$(".events-section").hide();
+	$(".section-title").html("<h2> Select the type of drinks(s) you are thirsty for: </h2> <p style='font-size: 16px;''>Select up to two (2) drinks only.</p>");
+});
+
+$("#events-question").on("click", function(){
+	$(".events-section").show();
+	$(".food-section").hide();
+	$(".drinks-section").hide();
+	$(".section-title").html("<h2> Select the type of event(s) you are interested in: </h2>");
+});
+
+$("#food-question").on("click", function(){
+	$(".food-section").show();
+	$(".events-section").hide();
+	$(".drinks-section").hide();
+	$(".section-title").html("<h2> Select the type of food(s) you are craving: </h2>");
+});
+
 function food() {
 	$(".food").on("click", function(){
 		if($(this).attr("data-state")=="unclicked"){
@@ -73,7 +110,6 @@ function events() {
 food();
 drinks();
 events();
-
 
 });
 
