@@ -17,7 +17,6 @@ var foodArray = [];
 var drinksArray = [];
 var eventsArray = [];
 
-
 $(".drinks-section").hide();
 $(".events-section").hide();
 
@@ -73,6 +72,7 @@ function food() {
 			$(this).attr("data-state","unclicked");
 		}
 		console.log(foodArray);
+
 	});
 }
 
@@ -152,12 +152,20 @@ food();
 drinks();
 events();
 
+function submit(){
+	$("#submitBtn").on("click", function(event){
+		event.preventDefault();
+	    console.log(eventsArray);
+	    console.log(foodArray);
+	    console.log(drinksArray);
+
+	   	ref.update({
+	   		food : foodArray,
+	   		drinks : drinksArray,
+	   		events : eventsArray
+	   	});	   
+	});
+}
+
+submit();
 });
-
-
-
-
-
-
-
-
