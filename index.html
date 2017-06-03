@@ -41,7 +41,7 @@
     			<div class="modal-header">
     				<img id="login-logo" src="assets/images/orangehat.png" alt="All Y'all logo">
     				<h1 class="modal-title text-center" id="modal-login-label">Welcome to All Y'all</h1>
-    				<p class="text-center">Austin's local source for local events</p>
+    				<p id="tagline" class="text-center">Austin's local source for local events</p>
     			</div>
     			<div class="modal-body">
                     <form role="form">
@@ -51,15 +51,15 @@
 						<div class="form-group">
 							<input type="email" class="form-control" id="emailInput" placeholder="Email">
 						</div>
-						<div class="form-group">
-							<input type="password" class="form-control" id="passwordInput" placeholder="Create a password">
+						<div id="form-redo" class="form-group">
+							<input type="password" class="form-control" id="createPasswordInput" placeholder="Create a password">
 						</div>
 						<button type="submit" class="btn btn-default" id="addUser">Continue</button>
 						<hr>
 						<div class="row">
 							<div class="col-md-12 text-center">
-								<button type="submit" data="facebook" class="signin btn btn-primary"><i class="fa fa fa-facebook" aria-hidden="true"></i> Sign up with Facebook</button>
-								<button type="submit" data="google" class="signin btn btn-danger"><i class="fa fa-google-plus" aria-hidden="true"></i> Sign up with Google</button>
+								<button id="facebook-btn" type="submit" data="facebook" class="signin btn btn-primary"><i class="fa fa fa-facebook" aria-hidden="true"></i> Sign up with Facebook</button>
+								<button id="google-btn" type="submit" data="google" class="signin btn btn-danger"><i class="fa fa-google-plus" aria-hidden="true"></i> Sign up with Google</button>
 							</div>
 						</div>
 					</form> 
@@ -72,6 +72,18 @@
 <!-- easter egg library -->
 <script type="text/javascript" src="https://cdn.rawgit.com/mikeflynn/egg.js/master/egg.min.js"></script>
 <script type="text/javascript">
+// click login - load existing user prompt
+$("#login-button").on("click", function(){
+	$("#modal-login-label").html("Log in to see more");
+	$("#tagline").remove();
+	$("#nameInput").remove();
+	$("#form-redo").html('<input type="password" class="form-control" id="PasswordInput" placeholder="Password">')
+	$("#facebook-btn").html('<i class="fa fa fa-facebook" aria-hidden="true"></i> Sign in with Facebook')
+	$("#google-btn").html('<i class="fa fa-google-plus" aria-hidden="true"></i> Sign in with Google</button>')
+})
+
+
+
 // video
 	$( document ).ready(function() {
 
