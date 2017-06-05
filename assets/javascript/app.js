@@ -17,7 +17,6 @@ var foodArray = [];
 var drinksArray = [];
 var eventsArray = [];
 
-
 $(".drinks-section").hide();
 $(".events-section").hide();
 
@@ -47,8 +46,14 @@ function food() {
 		if($(this).attr("data-state")=="unclicked"){
 			var selection = $(this).attr("data-name");
 			foodArray.push(selection);
-
-			$(this).addClass("clicked");
+			if($(this).attr("data-type")!="caption"){
+				$(this).addClass("clicked");
+				$("#caption"+$(this).attr("data-name")).attr("data-state","clicked");
+			}
+			else if($(this).attr("data-type")=="caption"){
+				$("#"+$(this).attr("data-name")).addClass("clicked");
+				$("#"+$(this).attr("data-name")).attr("data-state","clicked");
+			}
 			$(this).attr("data-state","clicked");
 		}
 		else if ($(this).attr("data-state")=="clicked"){
@@ -56,10 +61,18 @@ function food() {
 			var index = foodArray.indexOf(selection);
 			foodArray.splice(index, 1);
 
-			$(this).removeClass("clicked");
+			if($(this).attr("data-type")!="caption"){
+				$(this).removeClass("clicked");
+				$("#caption"+$(this).attr("data-name")).attr("data-state","unclicked");
+			}
+			else if($(this).attr("data-type")=="caption"){
+				$("#"+$(this).attr("data-name")).removeClass("clicked");
+				$("#"+$(this).attr("data-name")).attr("data-state","unclicked");
+			}
 			$(this).attr("data-state","unclicked");
 		}
 		console.log(foodArray);
+
 	});
 }
 
@@ -70,16 +83,30 @@ function drinks() {
 				var selection = $(this).attr("data-name");
 				drinksArray.push(selection);
 
-				$(this).addClass("clicked");
+				if($(this).attr("data-type")!="caption"){
+					$(this).addClass("clicked");
+					$("#caption"+$(this).attr("data-name")).attr("data-state","clicked");
+				}
+				else if($(this).attr("data-type")=="caption"){
+					$("#"+$(this).attr("data-name")).addClass("clicked");
+					$("#"+$(this).attr("data-name")).attr("data-state","clicked");
+				}
 				$(this).attr("data-state","clicked");
 			}
 		}
 		else if ($(this).attr("data-state")=="clicked"){
 			var selection = $(this).attr("data-name");
-			var index = foodArray.indexOf(selection);
+			var index = drinksArray.indexOf(selection);
 			drinksArray.splice(index, 1);
 			
-			$(this).removeClass("clicked");
+			if($(this).attr("data-type")!="caption"){
+				$(this).removeClass("clicked");
+				$("#caption"+$(this).attr("data-name")).attr("data-state","unclicked");
+			}
+			else if($(this).attr("data-type")=="caption"){
+				$("#"+$(this).attr("data-name")).removeClass("clicked");
+				$("#"+$(this).attr("data-name")).attr("data-state","unclicked");
+			}
 			$(this).attr("data-state","unclicked");
 		}
 	    console.log(drinksArray);
@@ -92,15 +119,29 @@ function events() {
 			var selection = $(this).attr("data-name");
 			eventsArray.push(selection);
 
-			$(this).addClass("clicked");
+			if($(this).attr("data-type")!="caption"){
+				$(this).addClass("clicked");
+				$("#caption"+$(this).attr("data-name")).attr("data-state","clicked");
+			}
+			else if($(this).attr("data-type")=="caption"){
+				$("#"+$(this).attr("data-name")).addClass("clicked");
+				$("#"+$(this).attr("data-name")).attr("data-state","clicked");
+			}
 			$(this).attr("data-state","clicked");
 		}
 		else if ($(this).attr("data-state")=="clicked"){
 			var selection = $(this).attr("data-name");
-			var index = foodArray.indexOf(selection);
+			var index = eventsArray.indexOf(selection);
 			eventsArray.splice(index, 1);
 			
-			$(this).removeClass("clicked");
+			if($(this).attr("data-type")!="caption"){
+				$(this).removeClass("clicked");
+				$("#caption"+$(this).attr("data-name")).attr("data-state","unclicked");
+			}
+			else if($(this).attr("data-type")=="caption"){
+				$("#"+$(this).attr("data-name")).removeClass("clicked");
+				$("#"+$(this).attr("data-name")).attr("data-state","unclicked");
+			}
 			$(this).attr("data-state","unclicked");
 		}
 	    console.log(eventsArray);
@@ -111,6 +152,7 @@ food();
 drinks();
 events();
 
+<<<<<<< HEAD
 
 
 
@@ -1259,6 +1301,24 @@ $('#submitBtn').on('click', function() {
 
 
 
+=======
+function submit(){
+	$("#submitBtn").on("click", function(event){
+		event.preventDefault();
+	    console.log(eventsArray);
+	    console.log(foodArray);
+	    console.log(drinksArray);
+>>>>>>> 3f24b8d698f7c6555ef5781cb142af6d4d0e6b96
+
+	   	ref.update({
+	   		food : foodArray,
+	   		drinks : drinksArray,
+	   		events : eventsArray
+	   	});	   
+	});
+}
+
+<<<<<<< HEAD
 
 
 
@@ -1277,5 +1337,7 @@ $('#submitBtn').on('click', function() {
 
 
 
-
-
+=======
+submit();
+});
+>>>>>>> 3f24b8d698f7c6555ef5781cb142af6d4d0e6b96
