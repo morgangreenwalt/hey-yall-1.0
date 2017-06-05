@@ -160,12 +160,17 @@ function submit(){
  	    console.log(eventsArray);
  	    console.log(foodArray);
  	    console.log(drinksArray);
-  
+
  	   	ref.update({
  	   		food : foodArray,
  	   		drinks : drinksArray,
  	   		events : eventsArray
- 	   	});	   
+ 	   	});	
+
+ 	   	//sets events ajax query url
+ 	   	eventsFunction();
+
+
  	});
  }
   
@@ -496,7 +501,7 @@ var image = 0;
 
 	
 //category buttons, adds taxonomies to search ryanQueryURL
-
+function eventsFunction(){
 
 for (var z = 0; z < events.length ; z++)
 
@@ -621,7 +626,7 @@ for (var z = 0; z < events.length ; z++)
 
         	
 //         });
-
+}
       
 });
 
