@@ -154,6 +154,22 @@ events();
 
 
 
+function submit(){
+ 	$("#submitBtn").on("click", function(event){
+ 		event.preventDefault();
+ 	    console.log(eventsArray);
+ 	    console.log(foodArray);
+ 	    console.log(drinksArray);
+  
+ 	   	ref.update({
+ 	   		food : foodArray,
+ 	   		drinks : drinksArray,
+ 	   		events : eventsArray
+ 	   	});	   
+ 	});
+ }
+  
+ submit();
 
 
 
@@ -469,7 +485,7 @@ events();
 
 var ryanQueryURL = "https://api.seatgeek.com/2/events?venue.city=Austin";
 
-var images = ['', 'images/music.jpg', 'images/sports.jpg', 'images/theater.jpg', 'images/comedy.jpg'];
+//var images = ['', 'images/music.jpg', 'images/sports.jpg', 'images/theater.jpg', 'images/comedy.jpg'];
 var image = 0;
 
 
@@ -555,63 +571,63 @@ for (var z = 0; z < events.length ; z++)
 
 
 
-//btn click that begins our ajax call
+// //btn click that begins our ajax call
 
 
-$('#submitBtn').on('click', function() {
+// //$('#submitBtn').on('click', function() {
 
 
 
-        // Creates AJAX call for the specific movie button being clicked
-        $.ajax({
-          url: ryanQueryURL,
-          method: "GET"
-        }).done(function(response) {
+//         // Creates AJAX call for the specific movie button being clicked
+//         $.ajax({
+//           url: ryanQueryURL,
+//           method: "GET"
+//         }).done(function(response) {
 
-        	console.log(response);
+//         	console.log(response);
         
-        	for (var i=0;i<6;i++)
-        	{
-        		for (var j=0;j<response.events[i].performers.length;j++)
-        		{
+//         	for (var i=0;i<6;i++)
+//         	{
+//         		for (var j=0;j<response.events[i].performers.length;j++)
+//         		{
 
-		//checks if the event performer has a saved image,
-		//if it doesn't, print a default pic
+// 		//checks if the event performer has a saved image,
+// 		//if it doesn't, print a default pic
 
-        		//	if (response.events[i].performers[j].image===null)
+//         		//	if (response.events[i].performers[j].image===null)
         			
 
-        				//performer image
-        				//response.events[i].performers[j].image
+//         				//performer image
+//         				//response.events[i].performers[j].image
 
-                		//performer name
-						//response.events[i].performers[j].name      
+//                 		//performer name
+// 						//response.events[i].performers[j].name      
 
-						//event type
-						//response.events[i].type 
+// 						//event type
+// 						//response.events[i].type 
 
-						//local date and time
-						//response.events[i].datetime_local
+// 						//local date and time
+// 						//response.events[i].datetime_local
 
-						//venue address
-						//response.events[i].venue.extended_address
+// 						//venue address
+// 						//response.events[i].venue.extended_address
 
-						//event url
-						//response.events[i].url
-        			}
-        		}
-        	}
+// 						//event url
+// 						//response.events[i].url
+//         			}
+//         		}
+//         	}
 
 
         	
-        });
+//         });
 
       
 });
 
 
 
-});
+
 
 
 
