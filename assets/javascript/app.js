@@ -518,7 +518,9 @@ for (var z = 0; z < events.length ; z++)
 
 	if (events[z] === 'Rap')
 	{
-		
+		ryanQueryURL += "&taxonomies.name=concert";
+						                        
+		ryanQueryURL += "&genres.slug=rap&genres.slug=hip-hop&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0";
 	}
 
 	if (events[z] === 'EDM')
