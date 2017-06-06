@@ -591,8 +591,12 @@ function eventsFunction(){
 		        			var performerName = response.events[i].performers[j].name;
 		        			var eventType = response.events[i].type;
 		        			var dateTime = response.events[i].datetime_local;
+		        			var venueName = response.events[i].venue.extended_address;
 		        			var venueAddress = response.events[i].venue.extended_address;
+		        			var venueLat = response.events[i].venue.location.lat;
+		        			var venueLon = response.events[i].venue.location.lon;
 		        			var ticketLink = response.events[i].url;
+
 
 		        			if (picker === 0 || picker === 2 || picker === 4)
 		        			{
@@ -619,7 +623,9 @@ function eventsFunction(){
 											<h2 class="suggestions-h2">'+performerName+'</h2>\
 											<h4>'+venueAddress+'</h4>\
 											<p class="suggestion" data-name="alamo">'+dateTime+'</p>\
-											<a href="'+ticketLink+'" target="_blank"><p class="suggestion" data-name="alamo">Click here to buy tickets!</p></a>\
+											<a href="'+ticketLink+'" target="_blank"><p class="suggestion" data-name="alamo">Click here to buy tickets!</p></a><br>\
+											<p><a class="btn btn-site btn-lg" href="#" id="infoBtn" role="button" data-toggle="modal" \
+											data-target="#myModalInfo" data-lat="'+venueLat+'" data-lon="'+venueLon+'">More Info</a></p>\
 										</div>\
 									</div>');
 		        			}
@@ -635,9 +641,11 @@ function eventsFunction(){
 									</div>\
 									<div class="col-md-6">\
 										<h2 class="suggestions-h2">'+performerName+'</h2>\
-										<h4>'+venueAddress+'</h4>\
+										<h4>'+venueName+' '+venueAddress+'</h4>\
 										<p class="suggestion" data-name="alamo">'+dateTime+'</p>\
 										<a href="'+ticketLink+'" target="_blank"><p class="suggestion" data-name="alamo">Click here to buy tickets!</p></a>\
+										<p><a class="btn btn-site btn-lg" href="#" id="infoBtn" role="button" data-toggle="modal" \
+										data-target="#myModalInfo" data-lat="'+venueLat+'" data-lon="'+venueLon+'">More Info</a></p>\
 									</div>\
 								</div>');
 
