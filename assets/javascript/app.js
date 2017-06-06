@@ -15,7 +15,7 @@ var database = firebase.database();
 var ref = database.ref("preferences");
 var foodArray = [];
 var drinksArray = [];
-var eventsArray = ['Rock','Pop','Country'];
+var eventsArray = ['Rock','Country','Sports'];
 
 $(".drinks-section").hide();
 $(".events-section").hide();
@@ -28,6 +28,7 @@ $("#drinks-question").on("click", function(){
 });
 
 $("#events-question").on("click", function(){
+
 	$(".events-section").show();
 	$(".food-section").hide();
 	$(".drinks-section").hide();
@@ -114,7 +115,10 @@ function drinks() {
 }
 
 function events() {
+
+
 	$(".events").on("click", function(){
+
 		if($(this).attr("data-state")=="unclicked"){
 			var selection = $(this).attr("data-name");
 			eventsArray.push(selection);
@@ -575,7 +579,10 @@ function eventsFunction(){
 		        }).done(function(response) {
 
 		        	console.log(response);
-		        
+		        	
+		        	var picker = 0;
+		        	var rowAssign = 0;
+
 		        	for (var i=0;i<6;i++)
 		        	{
 		        		for (var j=0;j<response.events[i].performers.length;j++)
@@ -587,6 +594,14 @@ function eventsFunction(){
 		        			var venueAddress = response.events[i].venue.extended_address;
 		        			var ticketLink = response.events[i].url;
 
+		        			if (picker === 0 || picker === 2 || picker === 4)
+		        			{
+		        				rowAssign = 1;
+		        			}
+		        			if (picker === 1 || picker === 3 || picker === 5)
+		        			{
+		        				rowAssign = 2;
+		        			}
 
 				//checks if the event performer has a saved image,
 				//if it doesn't, print a default pic
@@ -595,16 +610,16 @@ function eventsFunction(){
 		        			{
 		        				
 
-							$('#eventsSuggestions').append('<div class="row suggestions-list-items" >\
-									<div class="col-md-4">\
+							$('#eventsSuggestions'+rowAssign).append('<div class="row suggestions-list-items" >\
+									<div class="col-md-6">\
 											<a href="#"><img class="thumbnail-suggestions" src="https://placehold.it/250x200" alt="test">\
 											</a>\
 										</div>\
-										<div class="col-md-8">\
+										<div class="col-md-6">\
 											<h2 class="suggestions-h2">'+performerName+'</h2>\
 											<h4>'+venueAddress+'</h4>\
 											<p class="suggestion" data-name="alamo">'+dateTime+'</p>\
-											<a href="#"><p class="suggestion" data-name="alamo">'+ticketLink+'</p></a>\
+											<a href="'+ticketLink+'" target="_blank"><p class="suggestion" data-name="alamo">Click here to buy tickets!</p></a>\
 										</div>\
 									</div>');
 		        			}
@@ -613,22 +628,24 @@ function eventsFunction(){
 		        			else
 		        			{
 
-	    					$('#eventsSuggestions').append('<div class="row suggestions-list-items" >\
-								<div class="col-md-4">\
-										<a href="#"><img class="thumbnail-suggestions" src="'+performerImage+'" alt="test">\
+	    					$('#eventsSuggestions'+rowAssign).append('<div class="row suggestions-list-items" >\
+								<div class="col-md-6">\
+										<a href="#"><img class="thumbnail-suggestions" width="250" src="'+performerImage+'" alt="test">\
 										</a>\
 									</div>\
-									<div class="col-md-8">\
+									<div class="col-md-6">\
 										<h2 class="suggestions-h2">'+performerName+'</h2>\
 										<h4>'+venueAddress+'</h4>\
 										<p class="suggestion" data-name="alamo">'+dateTime+'</p>\
-										<a href="#"><p class="suggestion" data-name="alamo">'+ticketLink+'</p></a>\
+										<a href="'+ticketLink+'" target="_blank"><p class="suggestion" data-name="alamo">Click here to buy tickets!</p></a>\
 									</div>\
 								</div>');
 
 
 		        			}
 		        		}
+
+		        		picker++;
 		        	}
 
 
