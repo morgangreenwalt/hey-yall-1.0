@@ -493,7 +493,7 @@ function submit(){
 
 
 
-var ryanQueryURL = "https://api.seatgeek.com/2/events?venue.city=Austin";
+var ryanQueryURL = "https://api.seatgeek.com/2/events?venue.city=Austin&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0";
 
 //var images = ['', 'images/music.jpg', 'images/sports.jpg', 'images/theater.jpg', 'images/comedy.jpg'];
 var image = 0;
@@ -518,21 +518,21 @@ function eventsFunction(){
 
 				ryanQueryURL += "&taxonomies.name=concert";
 								                        
-				ryanQueryURL += "&genres.slug=rock&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0";
+				ryanQueryURL += "&genres.slug=rock";
 			}
 
 			if (eventsArray[z] === 'Rap')
 			{
 				ryanQueryURL += "&taxonomies.name=concert";
 								                        
-				ryanQueryURL += "&genres.slug=rap&genres.slug=hip-hop&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0";
+				ryanQueryURL += "&genres.slug=rap&genres.slug=hip-hop";
 			}
 
 			if (eventsArray[z] === 'EDM')
 			{
 				ryanQueryURL += "&taxonomies.name=concert";
 		                            
-		        ryanQueryURL += "&genres.slug=electronic&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0";
+		        ryanQueryURL += "&genres.slug=electronic";
 
 			}
 
@@ -540,7 +540,7 @@ function eventsFunction(){
 			{
 				ryanQueryURL += "&taxonomies.name=concert";
 		                        
-		        ryanQueryURL += "&genres.slug=country&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0";
+		        ryanQueryURL += "&genres.slug=country";
 
 			}
 
@@ -548,24 +548,24 @@ function eventsFunction(){
 			{
 				ryanQueryURL += "&taxonomies.name=concert";
 		                            
-		        ryanQueryURL += "&genres.slug=pop&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0";
+		        ryanQueryURL += "&genres.slug=pop";
 
 			}
 
 			if (eventsArray[z] === 'Theater')
 			{
-			    ryanQueryURL += "&taxonomies.name=theater&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0"; 	
+			    ryanQueryURL += "&taxonomies.name=theater"; 	
 			}
 
 			if (eventsArray[z] === 'Comedy')
 			{
-				ryanQueryURL += "&taxonomies.name=comedy&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0";
+				ryanQueryURL += "&taxonomies.name=comedy";
 
 			}
 
 			if (eventsArray[z] === 'Sports')
 			{
-				ryanQueryURL += "&taxonomies.name=sports&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0";
+				ryanQueryURL += "&taxonomies.name=sports";
 
 			}
 
