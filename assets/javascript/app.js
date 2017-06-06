@@ -15,7 +15,7 @@ var database = firebase.database();
 var ref = database.ref("preferences");
 var foodArray = [];
 var drinksArray = [];
-var eventsArray = [];
+var eventsArray = ['Rock','Pop','Country'];
 
 $(".drinks-section").hide();
 $(".events-section").hide();
@@ -154,6 +154,7 @@ events();
 
 
 
+
 function submit(){
  	$("#submitBtn").on("click", function(event){
  		event.preventDefault();
@@ -167,7 +168,7 @@ function submit(){
  	   		events : eventsArray
  	   	});	
 
- 	   	//sets events ajax query url
+ 	   	//sets events ajax query url with events array and prints to suggestions page
  	   	eventsFunction();
 
 
@@ -499,136 +500,146 @@ var image = 0;
 
 //seat geek app secret: a44eefef28620b890494943cf09df0f1cee710ab733dd772d47b947311f5be58
 
-	
+console.log('yes');
 //category buttons, adds taxonomies to search ryanQueryURL
 function eventsFunction(){
 
-for (var z = 0; z < events.length ; z++)
+		for (var z = 0; z < eventsArray.length ; z++)
 
-{
+		{
 
-	if (events[z] === 'Rock')
-	{
-		console.log(ryanQueryURL);
+			if (eventsArray[z] === 'Rock')
+			{
+				console.log(ryanQueryURL);
 
-		ryanQueryURL += "&taxonomies.name=concert";
-						                        
-		ryanQueryURL += "&genres.slug=rock&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0";
-	}
+				ryanQueryURL += "&taxonomies.name=concert";
+								                        
+				ryanQueryURL += "&genres.slug=rock&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0";
+			}
 
-	if (events[z] === 'Rap')
-	{
-		ryanQueryURL += "&taxonomies.name=concert";
-						                        
-		ryanQueryURL += "&genres.slug=rap&genres.slug=hip-hop&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0";
-	}
+			if (eventsArray[z] === 'Rap')
+			{
+				ryanQueryURL += "&taxonomies.name=concert";
+								                        
+				ryanQueryURL += "&genres.slug=rap&genres.slug=hip-hop&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0";
+			}
 
-	if (events[z] === 'EDM')
-	{
-		ryanQueryURL += "&taxonomies.name=concert";
-                            
-        ryanQueryURL += "&genres.slug=electronic&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0";
+			if (eventsArray[z] === 'EDM')
+			{
+				ryanQueryURL += "&taxonomies.name=concert";
+		                            
+		        ryanQueryURL += "&genres.slug=electronic&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0";
 
-	}
+			}
 
-	if (events[z] === 'Country')
-	{
-		ryanQueryURL += "&taxonomies.name=concert";
-                        
-        ryanQueryURL += "&genres.slug=country&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0";
+			if (eventsArray[z] === 'Country')
+			{
+				ryanQueryURL += "&taxonomies.name=concert";
+		                        
+		        ryanQueryURL += "&genres.slug=country&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0";
 
-	}
+			}
 
-	if (events[z] === 'Pop')
-	{
-		ryanQueryURL += "&taxonomies.name=concert";
-                            
-        ryanQueryURL += "&genres.slug=pop&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0";
+			if (eventsArray[z] === 'Pop')
+			{
+				ryanQueryURL += "&taxonomies.name=concert";
+		                            
+		        ryanQueryURL += "&genres.slug=pop&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0";
 
-	}
+			}
 
-	if (events[z] === 'Theater')
-	{
-	    ryanQueryURL += "&taxonomies.name=theater&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0"; 	
-	}
+			if (eventsArray[z] === 'Theater')
+			{
+			    ryanQueryURL += "&taxonomies.name=theater&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0"; 	
+			}
 
-	if (events[z] === 'Comedy')
-	{
-		ryanQueryURL += "&taxonomies.name=comedy&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0";
+			if (eventsArray[z] === 'Comedy')
+			{
+				ryanQueryURL += "&taxonomies.name=comedy&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0";
 
-	}
+			}
 
-	if (events[z] === 'Sports')
-	{
-		ryanQueryURL += "&taxonomies.name=sports&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0";
+			if (eventsArray[z] === 'Sports')
+			{
+				ryanQueryURL += "&taxonomies.name=sports&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0";
 
-	}
+			}
 
-}
+		}
 
 
-//concerts 1, sports 2, theater 3, comedy 4  
-	
-        //sets the query url based on "type," concerts/ sports/ theater/ comedy/ all
+
+		 $.ajax({
+		          url: ryanQueryURL,
+		          method: "GET"
+		        }).done(function(response) {
+
+		        	console.log(response);
+		        
+		        	for (var i=0;i<6;i++)
+		        	{
+		        		for (var j=0;j<response.events[i].performers.length;j++)
+		        		{
+		        			var performerImage = response.events[i].performers[j].image;
+		        			var performerName = response.events[i].performers[j].name;
+		        			var eventType = response.events[i].type;
+		        			var dateTime = response.events[i].datetime_local;
+		        			var venueAddress = response.events[i].venue.extended_address;
+		        			var ticketLink = response.events[i].url;
+
+
+				//checks if the event performer has a saved image,
+				//if it doesn't, print a default pic
+
+		        			if (response.events[i].performers[j].image===null)
+		        			{
+		        				
+
+							$('#eventsSuggestions').append('<div class="row suggestions-list-items" >\
+									<div class="col-md-4">\
+											<a href="#"><img class="thumbnail-suggestions" src="https://placehold.it/250x200" alt="test">\
+											</a>\
+										</div>\
+										<div class="col-md-8">\
+											<h2 class="suggestions-h2">'+performerName+'</h2>\
+											<h4>'+venueAddress+'</h4>\
+											<p class="suggestion" data-name="alamo">'+dateTime+'</p>\
+											<a href="#"><p class="suggestion" data-name="alamo">'+ticketLink+'</p></a>\
+										</div>\
+									</div>');
+		        			}
+
+
+		        			else
+		        			{
+
+	    					$('#eventsSuggestions').append('<div class="row suggestions-list-items" >\
+								<div class="col-md-4">\
+										<a href="#"><img class="thumbnail-suggestions" src="'+performerImage+'" alt="test">\
+										</a>\
+									</div>\
+									<div class="col-md-8">\
+										<h2 class="suggestions-h2">'+performerName+'</h2>\
+										<h4>'+venueAddress+'</h4>\
+										<p class="suggestion" data-name="alamo">'+dateTime+'</p>\
+										<a href="#"><p class="suggestion" data-name="alamo">'+ticketLink+'</p></a>\
+									</div>\
+								</div>');
+
+
+		        			}
+		        		}
+		        	}
+
+
+		        	
+		        });
+
        
+		}
 
-        //genre select for concerts
-
-        		
-
-
-
-// //btn click that begins our ajax call
-
-
-// //$('#submitBtn').on('click', function() {
-
-
-
-//         // Creates AJAX call for the specific movie button being clicked
-//         $.ajax({
-//           url: ryanQueryURL,
-//           method: "GET"
-//         }).done(function(response) {
-
-//         	console.log(response);
-        
-//         	for (var i=0;i<6;i++)
-//         	{
-//         		for (var j=0;j<response.events[i].performers.length;j++)
-//         		{
-
-// 		//checks if the event performer has a saved image,
-// 		//if it doesn't, print a default pic
-
-//         		//	if (response.events[i].performers[j].image===null)
-        			
-
-//         				//performer image
-//         				//response.events[i].performers[j].image
-
-//                 		//performer name
-// 						//response.events[i].performers[j].name      
-
-// 						//event type
-// 						//response.events[i].type 
-
-// 						//local date and time
-// 						//response.events[i].datetime_local
-
-// 						//venue address
-// 						//response.events[i].venue.extended_address
-
-// 						//event url
-// 						//response.events[i].url
-//         			}
-//         		}
-//         	}
-
-
-        	
-//         });
-}
+console.log(eventsArray);
+eventsFunction();
       
 });
 
