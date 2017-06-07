@@ -130,6 +130,8 @@
 
 
 	<script>
+		var currentRestaurantLat = "";
+		var currentRestaurantLong ="";
 		var lat1, lat2, lat3, lat4, lng1, lng2, lng3, lng4, parking1, parking2, parking3, parking4, me, map, contentString, infowindow;
 		function initMap() {
 			var uluru = {lat: 30.2672, lng: -97.7431};
@@ -176,10 +178,17 @@
                 map.setCenter(currentCenter); // Re-set previous center
             });
 
+		$(document).on("click","#infoBtn", function() {
+			currentRestaurantLat=$(this).attr("data-lat");
+			currentRestaurantLong=$(this).attr("data-long");
+			console.log(currentRestaurantLat);
+			console.log(currentRestaurantLong);
+		});
+
 		$("#parking").on("click", function() {
-			console.log("hello")
-			var url = "https://api.parkwhiz.com/search/?lat=30.267153&lng=-97.7430608"
+			var url = "https://api.parkwhiz.com/search/?lat="+currentRestaurantLat+"&lng="+currentRestaurantLong
 			var apiKey = "&key=874619822654f3bbbf0587277df3bfbb167be451"
+			console.log(url+apiKey);
 
 			$.ajax({
 				url: url+apiKey,
