@@ -47,7 +47,7 @@
 				</div>
 				
 				<div class="modal-body">
-					<p>Hours:</p>
+					<p id="mapComments"></p>
 					<button id="parking">Find Parking</button>
 					<div id="map"></div>
 				</div>
@@ -148,11 +148,12 @@
 
 
 	<script>
+		var infowindowArray=[];
 		var currentRestaurantLat = "";
 		var currentRestaurantLong ="";
 		var lat1, lat2, lat3, lat4, lng1, lng2, lng3, lng4, parking1, parking2, parking3, parking4, me, map, contentString, infowindow;
 		function initMap() {
-			var uluru = {lat: 30.2672, lng: -97.7431};
+			var uluru = {lat: Number(currentRestaurantLat), lng: Number(currentRestaurantLong)};
 			parking1 = {lat: Number(lat1), lng: Number(lng1)};
 			parking2 = {lat: Number(lat2), lng: Number(lng2)};
 			parking3 = {lat: Number(lat3), lng: Number(lng3)};
@@ -167,34 +168,52 @@
 			});
 
 			var marker1 = new google.maps.Marker({
-				position: parking2,
+				position: parking1,
 				map: map
 			});
 			marker1.addListener('click', function() {
-				infowindow.open(map, marker1);
+				infowindowArray[0].open(map, marker1);
 			});
 			var marker2 = new google.maps.Marker({
-				position: parking3,
+				position: parking2,
 				map: map
 			});
 			marker2.addListener('click', function() {
-				infowindow.open(map, marker2);
+				infowindowArray[1].open(map, marker2);
 			});
 			var marker3 = new google.maps.Marker({
-				position: parking4,
+				position: parking3,
 				map: map
 			});
 			marker3.addListener('click', function() {
-				infowindow.open(map, marker3);
+				infowindowArray[2].open(map, marker3);
+			});
+			var marker4 = new google.maps.Marker({
+				position: parking4,
+				map: map
+			});
+			marker4.addListener('click', function() {
+				infowindowArray[3].open(map, marker4);
 			});
 			
 		}
 
 		$('#myModalInfo').on('shown.bs.modal', function() {
-        var currentCenter = map.getCenter();  // Get current center before resizing
-        google.maps.event.trigger(map, "resize");
-                map.setCenter(currentCenter); // Re-set previous center
-            });
+	        var currentCenter = map.getCenter();  // Get current center before resizing
+	        google.maps.event.trigger(map, "resize");
+	        map.setCenter(currentCenter); // Re-set previous center
+	        var uluru = {lat: Number(currentRestaurantLat), lng: Number(currentRestaurantLong)};
+			map = new google.maps.Map(document.getElementById('map'), {
+				zoom: 13,
+				center: uluru
+			});
+			var marker = new google.maps.Marker({
+				position: uluru,
+				map: map
+			});
+	    });
+
+
 
 		$(document).on("click","#infoBtn", function() {
 			currentRestaurantLat=$(this).attr("data-lat");
@@ -213,47 +232,63 @@
 				method: "GET"
 			}).done(function(data){
 				var parkingListing = data.parking_listings;
-		// console.log(parkingListing)
+				console.log(parkingListing==null)
+				console.log(parkingListing)
 
-		for (var i =0; i < 4; i++) {
-			// console.log(parkingListing[i])
+				if(parkingListing==null){
+					$("#mapComments").html("No available parking nearby!");
+					var uluru = {lat: Number(currentRestaurantLat), lng: Number(currentRestaurantLong)};
+					map = new google.maps.Map(document.getElementById('map'), {
+						zoom: 13,
+						center: uluru
+					});
+					var marker = new google.maps.Marker({
+						position: uluru,
+						map: map
+					});
+				}
+				else{
 
-			var street = parkingListing[i].address;
-			var city = parkingListing[i].city;
-			var state = parkingListing[i].state;
+					for (var i =0; i < 4; i++) {
+						// console.log(parkingListing[i])
 
-			lat1 = parkingListing[1].lat
-			lng1 = parkingListing[1].lng
+						var street = parkingListing[i].address;
+						var city = parkingListing[i].city;
+						var state = parkingListing[i].state;
 
-			lat2 = parkingListing[2].lat
-			lng2 = parkingListing[2].lng
+						lat1 = parkingListing[0].lat
+						lng1 = parkingListing[0].lng
 
-			lat3 = parkingListing[3].lat
-			lng3 = parkingListing[3].lng
+						lat2 = parkingListing[1].lat
+						lng2 = parkingListing[1].lng
 
-			lat4 = parkingListing[4].lat
-			lng4 = parkingListing[4].lng
-            // console.log(lat1, lng1)
-            
-            contentString = '<div id="content">'+
-            '<div id="siteNotice">'+
-            '</div>'+
-            '<h1 id="firstHeading" class="firstHeading">'+parkingListing[1].location_name+'</h1>'+
-            '<div id="bodyContent">'+
-            '<p><b>'+parkingListing[1].address+'<br>'+parkingListing[1].city+'<br>'+parkingListing[1].state+'</b></p>'+
-            '<p>Price: $'+parkingListing[1].price+'</p>'+
-            '<p>Available Spots: '+parkingListing[1].available_spots+'</p>'+
-            '<p>Buy Parking: '+ '<a href='+parkingListing[1].www_reserve_url+'>ParkWhiz</>'+'</p>'+
-            '</div>'+
-            '</div>';
+						lat3 = parkingListing[2].lat
+						lng3 = parkingListing[2].lng
 
-            infowindow = new google.maps.InfoWindow({
-            	content: contentString
-            });
+						lat4 = parkingListing[3].lat
+						lng4 = parkingListing[3].lng
+			  
 
-            initMap()
-        }
-    });
+			            contentString = '<div id="content">'+
+			            '<div id="siteNotice">'+
+			            '</div>'+
+			            '<h1 id="firstHeading" class="firstHeading">'+parkingListing[i].location_name+'</h1>'+
+			            '<div id="bodyContent">'+
+			            '<p><b>'+parkingListing[i].address+'<br>'+parkingListing[i].city+'<br>'+parkingListing[i].state+'</b></p>'+
+			            '<p>Price: $'+parkingListing[i].price+'</p>'+
+			            '<p>Available Spots: '+parkingListing[i].available_spots+'</p>'+
+			            '<p>Buy Parking: '+ '<a href='+parkingListing[i].www_reserve_url+'>ParkWhiz</>'+'</p>'+
+			            '</div>'+
+			            '</div>';
+
+			            infowindowArray[i] = new google.maps.InfoWindow({
+			            	content: contentString
+			            });
+
+			            initMap()
+			        }
+		        }
+			});
 
 		})
 
