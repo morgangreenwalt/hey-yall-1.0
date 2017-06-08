@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AllY'all Application Preferences | Project #1</title>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald" rel="stylesheet">
 <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
 <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="assets/css/morgan.css">
 <!-- <link rel="stylesheet" type="text/css" href="assets/css/responsive.css"> -->
 <script type="text/javascript" src="assets/javascript/app.js"></script>
@@ -13,24 +15,34 @@
 
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
-	<div class="container">
-		<ul class="nav navbar-nav navbar-left">
-	        <li class="logo"><a href="index.html"><img src="assets/images/cowboy.png" height="50px"> All+Y'all</a></li>
-		</ul>
-		<ul class="nav navbar-nav navbar-right">
-	        <li class="main-nav"><a href="preferences.html">Preferences</a></li>
-	        <li class="main-nav"><a href="suggestions.html">Suggestions</a></li>
-	        <li class="main-nav"><a href="#">Logout</a></li>
-		</ul>
-	</div>
+<!-- Static navbar -->
+<nav class="navbar navbar-default">
+<div class="container">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="developers.html"><img src="assets/images/cowboy.png" height="50px"></a>
+  </div>
+  <div id="navbar" class="navbar-collapse collapse">
+    <ul class="nav navbar-nav"></ul>
+    <ul class="nav navbar-nav navbar-right">
+		<li class="main-nav"><a href="preferences.html">Preferences</a></li>
+		<li class="main-nav"><a href="suggestions.html">Suggestions</a></li>
+		<li class="main-nav"><a href="#">Logout</a></li>
+    </ul>
+  </div><!--/.nav-collapse -->
+</div><!--/.container -->
 </nav>
 
 <div class="container">
 	<div class="jumbotron">
 		<h1>Welcome [username]</h1><br/>
 		<div class="container">
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ornare odio quis suscipit porttitor. Donec a molestie urna. Phasellus tempor scelerisque consectetur. Fusce at commodo ex, eget lacinia tortor. Fusce accumsan molestie risus, eget iaculis velit. Aliquam consectetur nisi nec gravida commodo.</p>
+			<p>Thanks for joining the All Y'all community! We're here to provide you suggestions to top eats, drinks and events in Austin. Tell us what you're feeling below, and start experiencing new Austin attractions!</p> 
 		</div>
 	</div>
 </div>
@@ -175,10 +187,10 @@
 	</div>	
 
 	<form class="text-right">
-		<!-- <button type="submit" id="nextBtn" class="btn btn-site btn-lg pref-btn">Next</button> -->
 		<button type="submit" id="submitBtn" class="btn btn-site btn-lg pref-btn">Submit</button>
 	</form>	
 </div>
-<script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>	
+<script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>	
 </body>
 </html>

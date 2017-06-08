@@ -490,8 +490,12 @@ function submit(){
 
 
 
+$(".devs").hover(function(){
+   	$(this).attr("src", $(this).attr("data-animate"));
+    }, function(){
+    $(this).attr("src", $(this).attr("data-still"));
 
-
+});
 
 var ryanQueryURL = "https://api.seatgeek.com/2/events?venue.city=Austin&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0";
 
@@ -620,13 +624,14 @@ function eventsFunction(){
 											</a>\
 										</div>\
 										<div class="col-md-6">\
-											<h2 class="suggestions-h2">'+performerName+'</h2>\
-											<h4>'+venueAddress+'</h4>\
-											<p class="suggestion" data-name="alamo">'+dateTime+'</p>\
-											<a href="'+ticketLink+'" target="_blank"><p class="suggestion" data-name="alamo">Click here to buy tickets!</p></a><br>\
-											<p><a class="btn btn-site btn-lg" href="#" id="infoBtn" role="button" data-toggle="modal" \
-											data-target="#myModalInfo" data-lat="'+venueLat+'" data-lon="'+venueLon+'">More Info</a></p>\
-										</div>\
+										<h2 class="suggestions-h2">'+performerName+'</h2>\
+										<h4>'+venueName+' '+venueAddress+'</h4>\
+										<p class="suggestion" data-name="alamo">'+dateTime+'</p>\
+										<p><a class="btn btn-site btn-lg" href="#" id="infoBtn" role="button" data-toggle="modal" \
+										data-target="#myModalInfo" data-lat="'+venueLat+'" data-lon="'+venueLon+'">More Info</a>\
+										&nbsp; <a class="btn btn-site btn-lg" href="'+ticketLink+'" id="infoBtn" role="button" data-toggle="modal" \
+										data-target="_blank" data-lat="'+venueLat+'" data-lon="'+venueLon+'">Buy Tickets</a></p>\
+									</div>\
 									</div>');
 		        			}
 
@@ -643,9 +648,10 @@ function eventsFunction(){
 										<h2 class="suggestions-h2">'+performerName+'</h2>\
 										<h4>'+venueName+' '+venueAddress+'</h4>\
 										<p class="suggestion" data-name="alamo">'+dateTime+'</p>\
-										<a href="'+ticketLink+'" target="_blank"><p class="suggestion" data-name="alamo">Click here to buy tickets!</p></a>\
 										<p><a class="btn btn-site btn-lg" href="#" id="infoBtn" role="button" data-toggle="modal" \
-										data-target="#myModalInfo" data-lat="'+venueLat+'" data-lon="'+venueLon+'">More Info</a></p>\
+										data-target="#myModalInfo" data-lat="'+venueLat+'" data-lon="'+venueLon+'">More Info</a>\
+										&nbsp; <a class="btn btn-site btn-lg" href="'+ticketLink+'" id="infoBtn" role="button" data-toggle="modal" \
+										data-target="_blank" data-lat="'+venueLat+'" data-lon="'+venueLon+'">Buy Tickets</a></p>\
 									</div>\
 								</div>');
 

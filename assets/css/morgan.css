@@ -22,13 +22,16 @@ p {
 	border: none;
 }
 
+
+.navbar-collapse {
+	border: none;
+}
+
 .jumbotron {
 	text-align: center;
 	width: 100%;
-	padding-top: 100px;
 	background-color: #FB7722;
 	color: #fff;
-	margin-top: 35px;
 }
 
 .jumbotron p {
@@ -39,7 +42,7 @@ p {
 	font-family: 'Oswald', sans-serif;
 	font-size: 16px;
 	letter-spacing: .5px;
-	font-weight: 300px;
+	font-weight: 300;
 }
 
 .navbar-default .navbar-nav>li>a {
@@ -48,7 +51,7 @@ p {
 }
 
 .main-nav {
-	padding-top: 12px;
+	padding-top: 10px;
 }
 
 .row {
@@ -56,9 +59,13 @@ p {
 	margin-left: 0px;
 }
 
-.col-md-12, .col-md-4, .col-md-6 {
+.col-md-12, .col-md-3, .col-md-6 {
 	padding-right: 0px;
 	padding-left: 0px;
+}
+
+.col-md-4 {
+	margin-bottom: 20px;
 }
 
 .btn {
@@ -66,6 +73,10 @@ p {
 	border-radius: 0px;
 	padding: 7px 14px;
 	background: #fff;
+}
+
+.devs {
+	border-radius: 4px;
 }
 
 /*Preferences Page*/
@@ -94,6 +105,7 @@ p {
 
 .caption {
     position: absolute;
+    font-size: 28px;
     top: 45%;
     left: 0;
     width: 100%;
@@ -132,6 +144,10 @@ p {
 .suggestions-list-items {
 	margin-top: 15px;
 	margin-bottom: 30px;
+}
+
+.thumbnail-suggestions {
+	width: 250px;
 }
 
 .suggestions-h2 {
@@ -183,5 +199,33 @@ p {
 @media only screen and (max-width: 1200px){
 	.thumbnail {
 		width: 100%;
+		margin-left: 0px;
+		margin-right: 0px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		height: auto;
 	}
+
+	.caption {
+		background-color: initial;
+		font-size: 30px;
+	}
+}
+
+@media only screen and (max-width: 768px){
+	.navbar-nav {
+   		float: none;
+	}
+	
+	.navbar-collapse.in {
+		overflow-y: initial;
+	}
+
+	.navbar-brand {
+    	padding: 0px 15px;
+	}
+
+	.navbar {
+    	margin-bottom: 5px;
+    }
 }

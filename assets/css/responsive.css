@@ -10,6 +10,10 @@
 	.thumbnail {
 		width: 100%;
 	}
+
+	.thumbnail-suggestions {
+		width: 220px;
+	}
 }
 
 @media only screen and (min-width: 992px){
@@ -25,10 +29,6 @@
 }
 
 @media only screen and (max-width: 768px){
-	.navbar {
-		display: none;
-	}
-
 	.jumbotron {
 		padding-top: 20px;
 	}
@@ -45,6 +45,20 @@
 	.hero-title {
 		top: 70px;
 		font-size: 55px;
+	}
+
+	.navbar-nav {
+   		margin: 2.5px -30px;
+   		float: none;
+	}
+
+	.main-nav {
+		padding-top: 6px;
+    	border-bottom: 1px solid #cec1c1;
+	}
+
+	.thumbnail-suggestions {
+    	width: 100%;
 	}
 }
 
