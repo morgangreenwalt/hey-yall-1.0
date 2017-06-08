@@ -1,9 +1,6 @@
 /*Login Page*/
 
 /*video*/
-
-
-
 .video-container {
     position: relative;
     bottom: 0%;
@@ -21,7 +18,7 @@
 
 }
 
-/*upper right hand log in button*/
+/*separate 'log in' button*/
 #login-button {
 	float: right;
 	position: relative;
@@ -30,7 +27,7 @@
 	padding: 0px 9px 0px 9px;
 }
 
-/*module*/
+/*modal*/
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'Poppins', sans-serif;
 }
@@ -55,7 +52,15 @@ button, input, a, p, span {
 	margin-right: 25px;
 }
 
-#addUser {
+#newUser {
+	background-color: #e56746;
+	color: white;
+	margin-left: 25px;
+	margin-right: 25px;
+	border: none;
+}
+
+#existingUser {
 	background-color: #e56746;
 	color: white;
 	margin-left: 25px;
@@ -99,5 +104,36 @@ button, input, a, p, span {
 @media only screen and (max-width: 883px) {
 	#modal-login {
 		min-width: 265px;
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	#login-button {
+		position: fixed;
+		bottom:-12px;
+		margin-bottom: 0;
+		left: 50%;
+		width: 30vw;
+		transform: translate(-50%, -50%);
+	}	
+	#modal-login {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		width: 30%;
+		height:70vh;
+		transform: translate(-50%, -50%);
+		overflow:scroll;
+	/*	test css issues with
+		border:2px solid red;*/
+	}
+	.video-container {
+	    position: fixed;
+	    bottom: 0%;
+	    left: 0%;
+	    height: 100vh;
+	    width: 100vw;
+	    overflow: hidden;
+	    background: #000;
 	}
 }

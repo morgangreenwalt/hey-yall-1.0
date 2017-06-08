@@ -628,12 +628,13 @@ function eventsFunction(){
 										<h4>'+venueName+' '+venueAddress+'</h4>\
 										<p class="suggestion" data-name="alamo">'+dateTime+'</p>\
 										<p><a class="btn btn-site btn-lg" href="#" id="infoBtn" role="button" data-toggle="modal" \
-										data-target="#myModalInfo" data-lat="'+venueLat+'" data-lon="'+venueLon+'">More Info</a>\
-										&nbsp; <a class="btn btn-site btn-lg" href="'+ticketLink+'" id="infoBtn" role="button" data-toggle="modal" \
-										data-target="_blank" data-lat="'+venueLat+'" data-lon="'+venueLon+'">Buy Tickets</a></p>\
+										data-target="#myModalInfo" data-lat="'+venueLat+'" data-lon="'+venueLon+'">More Info</a></p>\
 									</div>\
 									</div>');
+
+            					$("#buy-tickets").html("<a class='btn btn-site btn-lg' href='"+ ticketLink +"' role='button' data-target='_blank' data-lat='"+venueLat+"' data-lon='"+venueLon+"'> Buy Tickets </a>");
 		        			}
+		        			
 
 
 		        			else
@@ -649,13 +650,11 @@ function eventsFunction(){
 										<h4>'+venueName+' '+venueAddress+'</h4>\
 										<p class="suggestion" data-name="alamo">'+dateTime+'</p>\
 										<p><a class="btn btn-site btn-lg" href="#" id="infoBtn" role="button" data-toggle="modal" \
-										data-target="#myModalInfo" data-lat="'+venueLat+'" data-lon="'+venueLon+'">More Info</a>\
-										&nbsp; <a class="btn btn-site btn-lg" href="'+ticketLink+'" id="infoBtn" role="button" data-toggle="modal" \
-										data-target="_blank" data-lat="'+venueLat+'" data-lon="'+venueLon+'">Buy Tickets</a></p>\
+										data-target="#myModalInfo" data-lat="'+venueLat+'" data-lon="'+venueLon+'">More Info</a></p>\
 									</div>\
 								</div>');
 
-
+	    						$("#buy-tickets").html("<a class='btn btn-site btn-lg' href='"+ ticketLink +"' role='button' data-target='_blank' data-lat='"+venueLat+"' data-lon='"+venueLon+"'> Buy Tickets </a>");
 		        			}
 		        		}
 
