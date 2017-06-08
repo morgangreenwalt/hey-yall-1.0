@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 	<title>Suggestions Click Test</title>
-	<script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -52,16 +53,20 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">More Info</h4>
+				<h3 class="modal-title">More Info</h3>
 			</div>
 			
 			<div class="modal-body">
 				<p id="mapComments"></p>
 				<div class="row">
-				<div class="col-md-2">
+				<div id="event-name"></div>
+				<div id="event-address"></div>
+				<div id="event-date"></div>
+				<div id="event-time"></div>
+				<div class="col-md-2 modal-btns">
 					<button id="parking" class="btn btn-site btn-lg">Find Parking</button>
 				</div>
-				<div class="col-md-2">
+				<div class="col-md-2 modal-btns">
 					<div id="buy-tickets">Buy Tickets</div>
 				</div>	
 				</div>
