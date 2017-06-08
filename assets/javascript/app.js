@@ -495,10 +495,6 @@ function submit(){
 
 var ryanQueryURL = "https://api.seatgeek.com/2/events?venue.city=Austin&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0";
 
-//var images = ['', 'images/music.jpg', 'images/sports.jpg', 'images/theater.jpg', 'images/comedy.jpg'];
-var image = 0;
-
-
 
 //seat geek client id: NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0
 
