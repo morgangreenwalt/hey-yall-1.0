@@ -716,7 +716,7 @@ function eventsFunction(){
 		        			var dateTime = response.events[i].datetime_local;
 		        			var momentTime = moment(dateTime).format('LT');
 		        			var momentDate = moment(dateTime).format('LL');
-		        			var venueName = response.events[i].venue.extended_address;
+		        			var venueName = response.events[i].venue.name;
 		        			var venueAddress = response.events[i].venue.extended_address;
 		        			var venueLat = response.events[i].venue.location.lat;
 		        			var venueLon = response.events[i].venue.location.lon;
