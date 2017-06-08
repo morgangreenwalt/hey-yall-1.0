@@ -1,18 +1,188 @@
 $(document).ready(function(){
 
- // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyDbb4OYFm4EDFMLBPUSvSib8xQ38x6CVKE",
-    authDomain: "project-app-43963.firebaseapp.com",
-    databaseURL: "https://project-app-43963.firebaseio.com",
-    projectId: "project-app-43963",
-    storageBucket: "project-app-43963.appspot.com",
-    messagingSenderId: "416945318872"
+var userHtml = $("#username");
+var username;
+//  Initialize Firebase
+   var config = {
+    apiKey: "AIzaSyCgQFFxv6-cd0vRQesrZUD447sO7AEYklo",
+    authDomain: "clickevent-e44d0.firebaseapp.com",
+    databaseURL: "https://clickevent-e44d0.firebaseio.com",
+    projectId: "clickevent-e44d0",
+    storageBucket: "clickevent-e44d0.appspot.com",
+    messagingSenderId: "673662977249"
   };
   firebase.initializeApp(config);
 
 var database = firebase.database();
-var ref = database.ref("preferences");
+var ref = database.ref("user");
+var signedIn;
+
+
+// LOGIN SECTION==================================================================================
+ //instance of the goggle provider object
+var google = new firebase.auth.GoogleAuthProvider();
+var facebook = new firebase.auth.FacebookAuthProvider();
+
+// Create an Account with email and pass 
+function createAccountWithEmailandPassword() {
+	var displayName = $("#nameInput").val().trim();
+	var email = $("#emailInput").val().trim();
+	var password = $("#createPasswordInput").val().trim();
+	console.log(email, password)
+	firebase.auth().createUserWithEmailAndPassword(email, password)
+		.then(function(user) {
+			user.updateProfile({displayName: displayName})
+			console.log(displayName)
+			loadMainPage()
+		})
+
+}
+
+//Sign in with email and pass
+function signInWithEmailAndPassword() {
+	var email = $("#emailInput").val();
+	var password = $("#PasswordInput").val();
+	console.log("hello")
+	console.log(email, password)
+	firebase.auth().signInWithEmailAndPassword(email, password)
+		.then(function(user) {
+		// user.updateProfile({displayName: displayName})
+		loadMainPage()
+	})			 
+}
+
+//Sign in With Google
+function googleSignIn() {
+	firebase.auth().signInWithPopup(google).then(function(result) {
+		// This gives you a Google Access Token. You can use it to access the Google API.
+		var token = result.credential.accessToken;
+		// The signed-in user info.
+		var user = result.user;
+
+		loadMainPage()
+			
+		}).catch(function(error) {
+			  // Handle Errors here.
+			  var errorCode = error.code;
+			  var errorMessage = error.message;
+			  // The email of the user's account used.
+			  var email = error.email;
+			  // The firebase.auth.AuthCredential type that was used.
+			  var credential = error.credential;
+			  // ...
+			});
+  }
+//Sign in With FB
+function facebookSignIn() {
+	firebase.auth().signInWithPopup(facebook).then(function(result) {
+		  // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+		  var token = result.credential.accessToken;
+		  // The signed-in user info.
+		  var user = result.user;
+		
+           
+		  loadMainPage()
+		
+        }).catch(function(error) {
+			// Handle Errors here.
+			var errorCode = error.code;
+			var errorMessage = error.message;
+			// The email of the user's account used.
+			var email = error.email;
+			// The firebase.auth.AuthCredential type that was used.
+			var credential = error.credential;
+			// ...
+		});
+  }
+
+//Button click when new user signs up with email and pass
+$("#newUser").on("click", function(event) {
+	  event.preventDefault()
+	  createAccountWithEmailandPassword()
+})
+
+//Button click when user signs in with email and pass
+$("#loginin").on("click", function(event){
+	event.preventDefault()
+	signInWithEmailAndPassword()
+})
+
+// SIGNUP ON CLICK via Google or FB
+$(".signin").on("click", function(event) {
+    event.preventDefault()
+	var method = $(this).attr("data")
+	console.log("hello")
+        if (method === "google") {
+		googleSignIn();
+		
+        }
+	else if(method === "facebook") {
+		facebookSignIn();
+		
+    } 
+})
+// Button click to sign out
+$("#logout").on("click", function() {
+	firebase.auth().signOut().then(function() {
+  	// Sign-out successful.
+  	loadLoginPage();
+	}).catch(function(error) {
+  // An error happened.
+	});
+})
+// Firebase on auth change. Saves user name
+firebase.auth().onAuthStateChanged(function(firebaseUser){
+	if(firebaseUser) {
+       //USer is signed in
+		console.log(firebaseUser)
+		
+		username = firebaseUser.displayName
+		
+		userHtml.html("Welcome "+ firebaseUser.displayName)
+		
+		$("#usernameSuggestions").html(firebaseUser.displayName+"'s Suggestions" )
+		
+		signedIn = ref.child(firebaseUser.displayName) 
+        
+		signedIn.update({
+            name: firebaseUser.displayName,
+            email: firebaseUser.email
+	})
+		// $(".name").html("<h2>Hi "+firebaseUser+"!</h2>")
+	} else {
+
+		console.log("not lgged In")
+	}
+})
+
+//Loading different pages
+function loadMainPage() {
+     window.location.href = 'preferences.html';
+	 
+ }
+
+  function loadLoginPage() {
+     window.location.href = 'index.html';
+	
+ }
+
+  function loadReturnUser() {
+     window.location.href = 'user.html';
+
+	 
+ }
+   function loadSuggestionPage() {
+     window.location.href = 'suggestions.html';	 
+ }
+
+//  $("#usernameSuggestions").html(JSON.parse(localStorage['name'])+"'s Suggestions" )
+
+
+
+
+
+
+// MAIN APP SECTION================================================================================
 var foodArray = [];
 var drinksArray = [];
 var eventsArray = ['Rock','Country','Sports'];
@@ -156,9 +326,6 @@ food();
 drinks();
 events();
 
-
-
-
 function submit(){
  	$("#submitBtn").on("click", function(event){
  		event.preventDefault();
@@ -197,7 +364,7 @@ function submit(){
 
 
 
-// Food Suggestions Part
+// Food Suggestions Part==========================================================================
 
 var zomatoAPIkey = "4b4047ebe163df7deee6b42dd7828188"//"142b97a736485a30ff5b9a92ddbb8fde";
 var foodArray=["American", "Italian", "Chinese", "Mexican", "Japanese", "Thai", "BBQ", "Indian"];
@@ -610,7 +777,7 @@ $.ajax({
 
 
 
-
+//ABOUT US PAGE===================================================================================
 $(".devs").hover(function(){
    	$(this).attr("src", $(this).attr("data-animate"));
     }, function(){
@@ -619,7 +786,7 @@ $(".devs").hover(function(){
 });
 
 
-
+// EVents Section==================================================================================
 var ryanQueryURL = "https://api.seatgeek.com/2/events?venue.city=Austin&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0";
 
 
