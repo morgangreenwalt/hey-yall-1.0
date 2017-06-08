@@ -25,14 +25,14 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="developers.html"><img src="assets/images/cowboy.png" height="50px"></a>
+    <a class="navbar-brand" href="developers.html"><img src="assets/images/orangehat.png" height="50px"></a>
   </div>
   <div id="navbar" class="navbar-collapse collapse">
     <ul class="nav navbar-nav"></ul>
     <ul class="nav navbar-nav navbar-right">
 		<li class="main-nav"><a href="preferences.html">Preferences</a></li>
 		<li class="main-nav"><a href="suggestions.html">Suggestions</a></li>
-		<li class="main-nav"><a href="#">Logout</a></li>
+		<li class="main-nav"><a href="index.html">Logout</a></li>
     </ul>
   </div><!--/.nav-collapse -->
 </div><!--/.container -->
@@ -40,7 +40,7 @@
 
 <div class="container">
 	<div class="jumbotron">
-		<h1>Welcome [username]</h1><br/>
+		<h1 id="username"></h1>
 		<div class="container">
 			<p>Thanks for joining the All Y'all community! We're here to provide you suggestions to top eats, drinks and events in Austin. Tell us what you're feeling below, and start experiencing new Austin attractions!</p> 
 		</div>
@@ -55,11 +55,8 @@
 			<a class="btn btn-site btn-lg pref-btn" data-name="events" id="events-question" role="button">Question #3: Events</a></p>
 		</div>
 		
-
 		<div class="row">
-			<div class="panel-body">
-				<h2 class="section-title text-center">Select the type of food(s) you are craving:</h2> 
-			</div>
+			<h2 class="section-title text-center">Select the type of food(s) you are craving:</h2> 
 		</div> 
 	</div>
 
@@ -184,6 +181,7 @@
 				<h3 class="events caption" data-name="EDM" data-state="unclicked" data-type="caption" id="captionEDM">EDM</h3>	
 			</div>
 		</div>
+
 	</div>	
 
 	<form class="text-right">
