@@ -186,6 +186,10 @@ p {
     color: #fff;
 }
 
+.modal-btns {
+	margin-bottom: 20px;
+}
+
 .btn-site {
     font-weight: 300;
     border-radius: 10px;

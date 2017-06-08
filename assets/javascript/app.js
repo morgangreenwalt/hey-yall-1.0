@@ -1,18 +1,187 @@
 $(document).ready(function(){
 
- // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyDbb4OYFm4EDFMLBPUSvSib8xQ38x6CVKE",
-    authDomain: "project-app-43963.firebaseapp.com",
-    databaseURL: "https://project-app-43963.firebaseio.com",
-    projectId: "project-app-43963",
-    storageBucket: "project-app-43963.appspot.com",
-    messagingSenderId: "416945318872"
+var userHtml = $("#username");
+var username;
+//  Initialize Firebase
+   var config = {
+    apiKey: "AIzaSyCgQFFxv6-cd0vRQesrZUD447sO7AEYklo",
+    authDomain: "clickevent-e44d0.firebaseapp.com",
+    databaseURL: "https://clickevent-e44d0.firebaseio.com",
+    projectId: "clickevent-e44d0",
+    storageBucket: "clickevent-e44d0.appspot.com",
+    messagingSenderId: "673662977249"
   };
   firebase.initializeApp(config);
 
 var database = firebase.database();
-var ref = database.ref("preferences");
+var ref = database.ref("user");
+var signedIn;
+
+
+// LOGIN SECTION==================================================================================
+ //instance of the goggle provider object
+var google = new firebase.auth.GoogleAuthProvider();
+var facebook = new firebase.auth.FacebookAuthProvider();
+
+// Create an Account with email and pass 
+function createAccountWithEmailandPassword() {
+	var displayName = $("#nameInput").val().trim();
+	var email = $("#emailInput").val().trim();
+	var password = $("#createPasswordInput").val().trim();
+	console.log(email, password)
+	firebase.auth().createUserWithEmailAndPassword(email, password)
+		.then(function(user) {
+			user.updateProfile({displayName: displayName})
+			console.log(displayName)
+			loadMainPage()
+		})
+
+}
+
+//Sign in with email and pass
+function signInWithEmailAndPassword() {
+	var email = $("#emailInput").val();
+	var password = $("#PasswordInput").val();
+	console.log("hello")
+	console.log(email, password)
+	firebase.auth().signInWithEmailAndPassword(email, password)
+		.then(function(user) {
+		// user.updateProfile({displayName: displayName})
+		loadMainPage()
+	})			 
+}
+
+//Sign in With Google
+function googleSignIn() {
+	firebase.auth().signInWithPopup(google).then(function(result) {
+		// This gives you a Google Access Token. You can use it to access the Google API.
+		var token = result.credential.accessToken;
+		// The signed-in user info.
+		var user = result.user;
+
+		loadMainPage()
+			
+		}).catch(function(error) {
+			  // Handle Errors here.
+			  var errorCode = error.code;
+			  var errorMessage = error.message;
+			  // The email of the user's account used.
+			  var email = error.email;
+			  // The firebase.auth.AuthCredential type that was used.
+			  var credential = error.credential;
+			  // ...
+			});
+  }
+//Sign in With FB
+function facebookSignIn() {
+	firebase.auth().signInWithPopup(facebook).then(function(result) {
+		  // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+		  var token = result.credential.accessToken;
+		  // The signed-in user info.
+		  var user = result.user;
+		
+           
+		  loadMainPage()
+		
+        }).catch(function(error) {
+			// Handle Errors here.
+			var errorCode = error.code;
+			var errorMessage = error.message;
+			// The email of the user's account used.
+			var email = error.email;
+			// The firebase.auth.AuthCredential type that was used.
+			var credential = error.credential;
+			// ...
+		});
+  }
+
+//Button click when new user signs up with email and pass
+$("#newUser").on("click", function(event) {
+	  event.preventDefault()
+	  createAccountWithEmailandPassword()
+})
+
+//Button click when user signs in with email and pass
+$("#loginin").on("click", function(event){
+	event.preventDefault()
+	signInWithEmailAndPassword()
+})
+
+// SIGNUP ON CLICK via Google or FB
+$(".signin").on("click", function(event) {
+    event.preventDefault()
+	var method = $(this).attr("data")
+	console.log("hello")
+        if (method === "google") {
+		googleSignIn();
+		
+        }
+	else if(method === "facebook") {
+		facebookSignIn();
+		
+    } 
+})
+// Button click to sign out
+$("#logout").on("click", function() {
+	firebase.auth().signOut().then(function() {
+  	// Sign-out successful.
+  	loadLoginPage();
+	}).catch(function(error) {
+  // An error happened.
+	});
+})
+// Firebase on auth change. Saves user name
+firebase.auth().onAuthStateChanged(function(firebaseUser){
+	if(firebaseUser) {
+       //USer is signed in
+		console.log(firebaseUser)
+		
+		username = firebaseUser.displayName
+		
+		userHtml.html("Welcome "+ firebaseUser.displayName)
+		
+		$("#usernameSuggestions").html(firebaseUser.displayName+"'s Suggestions" )
+		
+		signedIn = ref.child(firebaseUser.displayName) 
+        
+		signedIn.update({
+            name: firebaseUser.displayName,
+            email: firebaseUser.email
+	})
+		// $(".name").html("<h2>Hi "+firebaseUser+"!</h2>")
+	} else {
+
+		console.log("not lgged In")
+	}
+})
+
+//Loading different pages
+function loadMainPage() {
+     window.location.href = 'preferences.html';
+	 
+ }
+
+  function loadLoginPage() {
+     window.location.href = 'index.html';
+	
+ }
+
+  function loadReturnUser() {
+     window.location.href = 'user.html';
+
+	 
+ }
+   function loadSuggestionPage() {
+     window.location.href = 'suggestions.html';	 
+ }
+
+//  $("#usernameSuggestions").html(JSON.parse(localStorage['name'])+"'s Suggestions" )
+
+
+
+
+
+
 var foodArray = [];
 var drinksArray = [];
 var eventsArray = ['Rock','Country','Sports'];
@@ -313,7 +482,9 @@ $.ajax({
             var drinkList = $("<div>");
             for(var i=0; i<drink.length;i++){
                 $("#drinkRow"+Math.floor(i/2)).append(
-                "<div class='col-md-6 suggestions-list-items'><div class='col-md-6'><a href='#'><img class='thumbnail-suggestions' width='200px' height='200px' src='"+drink[i].restaurant.thumb+"' alt='test'></a></div><div class='col-md-6'><h2 class='suggestions-h2'>"+drink[i].restaurant.name+"</h2><h4>"+drink[i].restaurant.location.address+"</h4><br/><p><br/><a class='btn btn-site btn-lg' href='#' id='infoBtn' role='button' data-toggle='modal' data-target='#myModalInfo' data-lat="+drink[i].restaurant.location.latitude+" data-long="+drink[i].restaurant.location.longitude+">More Info</a></p></div></div>")
+                "<div class='col-md-6 suggestions-list-items'><div class='col-md-6'><a href='#'><img class='thumbnail-suggestions' width='200px' height='200px' src='"+drink[i].restaurant.thumb+"' alt='test'></a></div><div class='col-md-6'><h2 class='suggestions-h2'>"+drink[i].restaurant.name+"</h2><h4>"+drink[i].restaurant.location.address+"</h4><br/><p><br/><a class='btn btn-site btn-lg' href='#' id='infoBtn' role='button' data-toggle='modal' data-target='#myModalInfo' data-lat="+drink[i].restaurant.location.latitude+" data-long="+drink[i].restaurant.location.longitude+">More Info</a></p></div></div>");
+    //             $("#event-name").html("<h2 class='suggestions-h2'>"+performerName+"</h2>");
+				// $("#event-address").html("<h4>'"+venueName+"' '"+venueAddress+"'</h4>");
             }
         }); 
     }
@@ -717,6 +888,10 @@ function eventsFunction(){
 		        			var momentTime = moment(dateTime).format('LT');
 		        			var momentDate = moment(dateTime).format('LL');
 		        			var venueName = response.events[i].venue.name;
+<<<<<<< HEAD
+=======
+		        			var venueStreetName = response.events[i].venue.address;
+>>>>>>> cc1330b10ec0b4ded38c4ed62f2e13aa562451c7
 		        			var venueAddress = response.events[i].venue.extended_address;
 		        			var venueLat = response.events[i].venue.location.lat;
 		        			var venueLon = response.events[i].venue.location.lon;
@@ -756,7 +931,11 @@ function eventsFunction(){
 									</div>\
 									</div>');
 
-            					$("#buy-tickets").html("<a class='btn btn-site btn-lg' href='"+ ticketLink +"' role='button' data-target='_blank' data-lat='"+venueLat+"' data-lon='"+venueLon+"'> Buy Tickets </a>");
+            					$("#buy-tickets").html("<a class='btn btn-site btn-lg' href='"+ ticketLink +"' role='button' target='_blank' data-lat='"+venueLat+"' data-lon='"+venueLon+"'> Buy Tickets </a>");
+            					$("#event-name").html("<h2 class='suggestions-h2'>"+performerName+"</h2>");
+								$("#event-address").html("<h4>'"+venueName+"' '"+venueAddress+"'</h4>");
+								$("#event-date").html("<h5 class='suggestion' data-name='alamo'>Date: &nbsp; '"+momentDate+"'</h5>");
+								$("#event-time").html("<h5 class='suggestion' data-name='alamo'>Time: &nbsp; '"+momentTime+"'</h5>");
 		        			}
 		        			
 
@@ -779,7 +958,11 @@ function eventsFunction(){
 									</div>\
 								</div>');
 
-	    						$("#buy-tickets").html("<a class='btn btn-site btn-lg' href='"+ ticketLink +"' role='button' data-target='_blank' data-lat='"+venueLat+"' data-lon='"+venueLon+"'> Buy Tickets </a>");
+	    						$("#buy-tickets").html("<a class='btn btn-site btn-lg' href='"+ ticketLink +"' role='button' target='_blank' data-lat='"+venueLat+"' data-lon='"+venueLon+"'> Buy Tickets </a>");
+	    						$("#event-name").html("<h2 class='suggestions-h2'>"+performerName+"</h2>");
+								$("#event-address").html("<h4>'"+venueName+"' '"+venueAddress+"'</h4>");
+								$("#event-date").html("<h5 class='suggestion' data-name='alamo'>Date: &nbsp; '"+momentDate+"'</h5>");
+								$("#event-time").html("<h5 class='suggestion' data-name='alamo'>Time: &nbsp; '"+momentTime+"'</h5>");
 		        			}
 		        		}
 
