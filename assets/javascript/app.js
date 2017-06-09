@@ -921,9 +921,9 @@ function eventsFunction(){
 										</div>\
 										<div class="col-md-6">\
 										<h2 class="suggestions-h2">'+performerName+'</h2>\
-										<h4>'+venueName+' '+venueAddress+'</h4>\
+										<h4>'+venueName+'</h4><h4>'+venueAddress+'</h4>\
 										<h5 class="suggestion" data-name="alamo">Date: &nbsp; '+momentDate+'</h5>\
-										<h5 class="suggestion" data-name="alamo">Time: &nbsp; '+momentTime+'</h5><br/>\
+										<h5 class="suggestion" data-name="alamo">Time: &nbsp; '+momentTime+'</h5>\
 										<p><a class="btn btn-site btn-lg" href="#" id="infoBtn" role="button" data-toggle="modal" \
 										data-target="#myModalInfo" data-lat="'+venueLat+'" data-long="'+venueLon+'">More Info</a>\
 										&nbsp; <a class="btn btn-site btn-lg" href="'+ticketLink+'" role="button" target="_blank"\
@@ -946,9 +946,9 @@ function eventsFunction(){
 									</div>\
 									<div class="col-md-6">\
 										<h2 class="suggestions-h2">'+performerName+'</h2>\
-										<h4>'+venueName+' '+venueAddress+'</h4>\
+										<h4>'+venueName+'</h4><h4>'+venueAddress+'</h4>\
 										<h5 class="suggestion" data-name="alamo">Date: &nbsp; '+momentDate+'</h5>\
-										<h5 class="suggestion" data-name="alamo">Time: &nbsp; '+momentTime+'</h5><br/>\
+										<h5 class="suggestion" data-name="alamo">Time: &nbsp; '+momentTime+'</h5>\
 										<p><a class="btn btn-site btn-lg" href="#" id="infoBtn" role="button" data-toggle="modal" \
 										data-target="#myModalInfo" data-lat="'+venueLat+'" data-long="'+venueLon+'">More Info</a>\
 										&nbsp; <a class="btn btn-site btn-lg" href="'+ticketLink+'" role="button" target="_blank"\
