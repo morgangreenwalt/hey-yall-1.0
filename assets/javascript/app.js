@@ -136,7 +136,9 @@ firebase.auth().onAuthStateChanged(function(firebaseUser){
        //USer is signed in
 		console.log(firebaseUser)
 		
-		username = firebaseUser.displayName
+		var name = firebaseUser.displayName
+
+		localStorage.setItem("name", name);
 		
 		userHtml.html("Welcome "+ firebaseUser.displayName)
 		
@@ -215,7 +217,7 @@ function food() {
 	$(".food").on("click", function(){
 		if($(this).attr("data-state")=="unclicked"){
 			var selection = $(this).attr("data-name");
-			foodArray.push(selection);
+			foodArray.push(selection.toUpperCase());
 			if($(this).attr("data-type")!="caption"){
 				$(this).addClass("clicked");
 				$("#caption"+$(this).attr("data-name")).attr("data-state","clicked");
@@ -251,7 +253,7 @@ function drinks() {
 		if($(this).attr("data-state")=="unclicked"){
 			if(drinksArray.length<2){
 				var selection = $(this).attr("data-name");
-				drinksArray.push(selection);
+				drinksArray.push(selection.toUpperCase());
 
 				if($(this).attr("data-type")!="caption"){
 					$(this).addClass("clicked");
@@ -342,7 +344,7 @@ function submit(){
  	   	});	
 
  	   	//sets events ajax query url with events array and prints to suggestions page
- 	   	eventsFunction();
+ 	   	// eventsFunction();
  	   	loadSuggestionPage();
 
 
@@ -366,11 +368,12 @@ function submit(){
 
 
 
+var userName = localStorage.getItem("name");
 
 // Food Suggestions Part
 
 var zomatoAPIkey = "4b4047ebe163df7deee6b42dd7828188"//"142b97a736485a30ff5b9a92ddbb8fde";
-var foodArray=["American", "Italian", "Chinese", "Mexican", "Japanese", "Thai", "BBQ", "Indian"];
+// var foodArray=["American", "Italian", "Chinese", "Mexican", "Japanese", "Thai", "BBQ", "Indian"];
 var foodPickedArray=[];
 var foodCode=[];
 var foodType="";
@@ -381,10 +384,15 @@ $.ajax({
     method:"GET"
 }).done(function(response){
     foodCode=response.cuisines;
-    if(foodPickedArray.length>0){
+
+	database.ref(userName +"/food").on('value', function(snapshot) {
+	console.log(snapshot.val())
+	var foodArray = snapshot.val();
+
+    if(foodArray.length>0){
         foodType="";
         for(var i=0; i<foodCode.length;i++){
-            if(foodPickedArray.indexOf(foodCode[i].cuisine.cuisine_name.toUpperCase())>-1){
+            if(foodArray.indexOf(foodCode[i].cuisine.cuisine_name.toUpperCase())>-1){
                 if(foodType!=""){
                     foodType=foodType+"%2C"+foodCode[i].cuisine.cuisine_id.toString();
                 }
@@ -417,14 +425,15 @@ $.ajax({
             }
         });
     }
+	});
 
 })
 
 
 // Drink Suggestions Part
 
-var drinkArray=["Bar", "Coffee shop", "Wine Bar","Juice Bar", "Beer Garden", "Brewery", "Lounge"]
-var drinkPickedArray= [];
+// var drinkArray=["Bar", "Coffee shop", "Wine Bar","Juice Bar", "Beer Garden", "Brewery", "Lounge"]
+// var drinkPickedArray= [];
 var drinkCode=[];
 var drinkType="";
 
@@ -436,8 +445,12 @@ $.ajax({
     drinkType="";
     var drinkTypeArray=[];
 
+	database.ref(userName +"/drinks").on('value', function(snapshot) {
+	console.log(snapshot.val())
+	var drinksArray = snapshot.val();
+
     for(var i=0; i<drinkCode.length;i++){
-        if(drinkPickedArray.indexOf(drinkCode[i].establishment.name.toUpperCase())>-1){
+        if(drinksArray.indexOf(drinkCode[i].establishment.name.toUpperCase())>-1){
             drinkTypeArray.push(drinkCode[i].establishment.id);
         }
         console.log(drinkTypeArray);
@@ -487,6 +500,7 @@ $.ajax({
             }
         }); 
     }
+	})
 });
 
 
@@ -799,7 +813,12 @@ var ryanQueryURL = "https://api.seatgeek.com/2/events?venue.city=Austin&client_i
 
 console.log('yes');
 //category buttons, adds taxonomies to search ryanQueryURL
-function eventsFunction(){
+// function eventsFunction(){
+
+database.ref(userName +"/events").on('value', function(snapshot) {
+	console.log(snapshot.val())
+	var eventsArray = snapshot.val();
+	console.log(eventsArray)
 
 		for (var z = 0; z < eventsArray.length ; z++)
 
@@ -864,7 +883,7 @@ function eventsFunction(){
 
 		}
 
-
+});
 
 		 $.ajax({
 		          url: ryanQueryURL,
@@ -964,10 +983,10 @@ function eventsFunction(){
 		        	}
 		        	
 		        });
-		}
+		// }
 
 console.log(eventsArray);
-eventsFunction();
+// eventsFunction();
       
 });
 
