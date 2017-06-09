@@ -363,7 +363,7 @@ function submit(){
 var userName = localStorage.getItem("name");
 // Food Suggestions Part
 
-var zomatoAPIkey = "4b4047ebe163df7deee6b42dd7828188"//"142b97a736485a30ff5b9a92ddbb8fde";
+var zomatoAPIkey = "da51b0411a010e8e491e49072febfe07"//"142b97a736485a30ff5b9a92ddbb8fde";
 // var foodArray=["American", "Italian", "Chinese", "Mexican", "Japanese", "Thai", "BBQ", "Indian"];
 
 var foodPickedArray=[];
