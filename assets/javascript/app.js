@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 var userHtml = $("#username");
-var username;
+
 //  Initialize Firebase
    var config = {
     apiKey: "AIzaSyCgQFFxv6-cd0vRQesrZUD447sO7AEYklo",
@@ -131,6 +131,7 @@ $("#logout").on("click", function() {
 	});
 })
 // Firebase on auth change. Saves user name
+var name;
 firebase.auth().onAuthStateChanged(function(firebaseUser){
 	if(firebaseUser) {
        //USer is signed in
@@ -186,7 +187,7 @@ function loadMainPage() {
 
 var foodArray = [];
 var drinksArray = [];
-var eventsArray = ['Rock','Country','Sports'];
+var eventsArray = [];
 
 $(".drinks-section").hide();
 $(".events-section").hide();
@@ -281,7 +282,7 @@ function drinks() {
 			}
 			$(this).attr("data-state","unclicked");
 		}
-	    console.log(drinksArray);
+	    // console.log(drinksArray);
 	});
 }
 
@@ -319,7 +320,7 @@ function events() {
 			}
 			$(this).attr("data-state","unclicked");
 		}
-	    console.log(eventsArray);
+	    // console.log(eventsArray);
 	});
 }
 
@@ -337,7 +338,7 @@ function submit(){
  	    console.log(foodArray);
  	    console.log(drinksArray);
 
- 	   	ref.update({
+ 	   	 database.ref(userName).update({
  	   		food : foodArray,
  	   		drinks : drinksArray,
  	   		events : eventsArray
@@ -359,25 +360,15 @@ function submit(){
 
 
 
-
-
-
-
-
-
-
-
-
 var userName = localStorage.getItem("name");
-
 // Food Suggestions Part
 
 var zomatoAPIkey = "4b4047ebe163df7deee6b42dd7828188"//"142b97a736485a30ff5b9a92ddbb8fde";
 // var foodArray=["American", "Italian", "Chinese", "Mexican", "Japanese", "Thai", "BBQ", "Indian"];
+
 var foodPickedArray=[];
 var foodCode=[];
 var foodType="";
-
 
 $.ajax({
     url:"https://developers.zomato.com/api/v2.1/cuisines?city_id=278&apikey="+zomatoAPIkey,
@@ -385,9 +376,10 @@ $.ajax({
 }).done(function(response){
     foodCode=response.cuisines;
 
-	database.ref(userName +"/food").on('value', function(snapshot) {
+database.ref(userName +"/food").on('value', function(snapshot) {
 	console.log(snapshot.val())
 	var foodArray = snapshot.val();
+// });
 
     if(foodArray.length>0){
         foodType="";
@@ -409,7 +401,7 @@ $.ajax({
             var restaurants=response.restaurants;
             for(var i=0; i<restaurants.length;i++){
                 $("#foodRow"+Math.floor(i/2)).append(
-                "<div class='col-md-6 suggestions-list-items'><div class='col-md-6'><a href='#'><img class='thumbnail-suggestions img-responsive' src='"+restaurants[i].restaurant.thumb+"' alt='"+restaurants[i].restaurant.thumb+"'></a></div><div class='col-md-6'><h2 class='suggestions-h2'>"+restaurants[i].restaurant.name+"</h2><h4>"+restaurants[i].restaurant.location.address+"</h4><p><a class='btn btn-site btn-lg' href='#' id='infoBtn' role='button' data-toggle='modal' data-target='#myModalInfo' data-lat="+restaurants[i].restaurant.location.latitude+" data-long="+restaurants[i].restaurant.location.longitude+">More Info</a></p></div></div>")
+                "<div class='col-md-6 suggestions-list-items'><div class='col-md-6'><a href='#'><img class='thumbnail-suggestions' width='200px' height='200px' src='"+restaurants[i].restaurant.thumb+"' alt='test'></a></div><div class='col-md-6'><h2 class='suggestions-h2'>"+restaurants[i].restaurant.name+"</h2><h4>"+restaurants[i].restaurant.location.address+"</h4><br/><p><br/><a class='btn btn-site btn-lg' href='#' id='infoBtn' role='button' data-toggle='modal' data-target='#myModalInfo' data-lat="+restaurants[i].restaurant.location.latitude+" data-long="+restaurants[i].restaurant.location.longitude+">More Info</a></p></div></div>")
             }
         });
     }
@@ -421,7 +413,7 @@ $.ajax({
             var restaurants=response.restaurants;
             for(var i=0; i<restaurants.length & i<4; i++){
                 $("#foodRow"+Math.floor(i/2)).append(
-                "<div class='col-md-6 suggestions-list-items'><div class='col-md-6'><a href='#'><img class='thumbnail-suggestions img-responsive' src='"+restaurants[i].restaurant.thumb+"' alt='"+restaurants[i].restaurant.thumb+"'></a></div><div class='col-md-6'><h2 class='suggestions-h2'>"+restaurants[i].restaurant.name+"</h2><h4>"+restaurants[i].restaurant.location.address+"</h4><p><a class='btn btn-site btn-lg' href='#' id='infoBtn' role='button' data-toggle='modal' data-target='#myModalInfo' data-lat="+restaurants[i].restaurant.location.latitude+" data-long="+restaurants[i].restaurant.location.longitude+">More Info</a></p></div></div>")
+                "<div class='col-md-6 suggestions-list-items'><div class='col-md-6'><a href='#'><img class='thumbnail-suggestions' width='200px' height='200px' src='"+restaurants[i].restaurant.thumb+"' alt='test'></a></div><div class='col-md-6'><h2 class='suggestions-h2'>"+restaurants[i].restaurant.name+"</h2><h4>"+restaurants[i].restaurant.location.address+"</h4><br/><p><br/><a class='btn btn-site btn-lg' href='#' id='infoBtn' role='button' data-toggle='modal' data-target='#myModalInfo' data-lat="+restaurants[i].restaurant.location.latitude+" data-long="+restaurants[i].restaurant.location.longitude+">More Info</a></p></div></div>")
             }
         });
     }
@@ -442,6 +434,7 @@ $.ajax({
     method:"GET"
 }).done(function(response){
     drinkCode=response.establishments;
+	console.log(drinkCode)
     drinkType="";
     var drinkTypeArray=[];
 
@@ -465,7 +458,9 @@ $.ajax({
             var drinkList = $("<div>");
             for(var i=0; i<drink.length;i++){
                 $("#drinkRow"+Math.floor(i/2)).append(
-                "<div class='col-md-6 suggestions-list-items'><div class='col-md-6'><a href='#'><img class='thumbnail-suggestions img-responsive' src='"+drink[i].restaurant.thumb+"' alt='"+drink[i].restaurant.thumb+"'></a></div><div class='col-md-6'><h2 class='suggestions-h2'>"+drink[i].restaurant.name+"</h2><h4>"+drink[i].restaurant.location.address+"</h4><p><a class='btn btn-site btn-lg' href='#' id='infoBtn' role='button' data-toggle='modal' data-target='#myModalInfo' data-lat="+drink[i].restaurant.location.latitude+" data-long="+drink[i].restaurant.location.longitude+">More Info</a></p></div></div>")
+                "<div class='col-md-6 suggestions-list-items'><div class='col-md-6'><a href='#'><img class='thumbnail-suggestions' width='200px' height='200px' src='"+drink[i].restaurant.thumb+"' alt='test'></a></div><div class='col-md-6'><h2 class='suggestions-h2'>"+drink[i].restaurant.name+"</h2><h4>"+drink[i].restaurant.location.address+"</h4><br/><p><br/><a class='btn btn-site btn-lg' href='#' id='infoBtn' role='button' data-toggle='modal' data-target='#myModalInfo' data-lat="+drink[i].restaurant.location.latitude+" data-long="+drink[i].restaurant.location.longitude+">More Info</a></p></div></div>")
+    //              $("#event-name").html("<h2 class='suggestions-h2'>"+drink[i].restaurant.name+"</h2>");
+				// $("#event-address").html("<h4>'"+drink[i].restaurant.location.address+"'</h4>");
             }
         }); 
     }
@@ -481,7 +476,9 @@ $.ajax({
                 var drinkList = $("<div>");
                 for(var i=0; i<drink.length;i++){
                     $("#drinkRow"+Math.floor(counter/2)).append(
-                    "<div class='col-md-6 suggestions-list-items'><div class='col-md-6'><a href='#'><img class='thumbnail-suggestions img-responsive' src='"+drink[i].restaurant.thumb+"' alt='"+drink[i].restaurant.thumb+"'></a></div><div class='col-md-6'><h2 class='suggestions-h2'>"+drink[i].restaurant.name+"</h2><h4>"+drink[i].restaurant.location.address+"</h4><p><a class='btn btn-site btn-lg' href='#' id='infoBtn' role='button' data-toggle='modal' data-target='#myModalInfo' data-lat="+drink[i].restaurant.location.latitude+" data-long="+drink[i].restaurant.location.longitude+">More Info</a></p></div></div>")
+                    "<div class='col-md-6 suggestions-list-items'><div class='col-md-6'><a href='#'><img class='thumbnail-suggestions' width='200px' height='200px' src='"+drink[i].restaurant.thumb+"' alt='test'></a></div><div class='col-md-6'><h2 class='suggestions-h2'>"+drink[i].restaurant.name+"</h2><h4>"+drink[i].restaurant.location.address+"</h4><br/><p><br/><a class='btn btn-site btn-lg' href='#' id='infoBtn' role='button' data-toggle='modal' data-target='#myModalInfo' data-lat="+drink[i].restaurant.location.latitude+" data-long="+drink[i].restaurant.location.longitude+">More Info</a></p></div></div>")
+    //                  $("#event-name").html("<h2 class='suggestions-h2'>"+drink[i].restaurant.name+"</h2>");
+				// $("#event-address").html("<h4>'"+drink[i].restaurant.location.address+"'</h4>");
                     counter++;
                 }
             });
@@ -496,11 +493,13 @@ $.ajax({
             var drinkList = $("<div>");
             for(var i=0; i<drink.length;i++){
                 $("#drinkRow"+Math.floor(i/2)).append(
-                "<div class='col-md-6 suggestions-list-items'><div class='col-md-6'><a href='#'><img class='thumbnail-suggestions img-responsive' src='"+drink[i].restaurant.thumb+"' alt='"+drink[i].restaurant.thumb+"'></a></div><div class='col-md-6'><h2 class='suggestions-h2'>"+drink[i].restaurant.name+"</h2><h4>"+drink[i].restaurant.location.address+"</h4><p><a class='btn btn-site btn-lg' href='#' id='infoBtn' role='button' data-toggle='modal' data-target='#myModalInfo' data-lat="+drink[i].restaurant.location.latitude+" data-long="+drink[i].restaurant.location.longitude+">More Info</a></p></div></div>");
+                "<div class='col-md-6 suggestions-list-items'><div class='col-md-6'><a href='#'><img class='thumbnail-suggestions' width='200px' height='200px' src='"+drink[i].restaurant.thumb+"' alt='test'></a></div><div class='col-md-6'><h2 class='suggestions-h2'>"+drink[i].restaurant.name+"</h2><h4>"+drink[i].restaurant.location.address+"</h4><br/><p><br/><a class='btn btn-site btn-lg' href='#' id='infoBtn' role='button' data-toggle='modal' data-target='#myModalInfo' data-lat="+drink[i].restaurant.location.latitude+" data-long="+drink[i].restaurant.location.longitude+">More Info</a></p></div></div>");
+    //             $("#event-name").html("<h2 class='suggestions-h2'>"+drink[i].restaurant.name+"</h2>");
+				// $("#event-address").html("<h4>'"+drink[i].restaurant.location.address+"'</h4>");
             }
         }); 
     }
-	})
+	});
 });
 
 
@@ -804,18 +803,19 @@ $(".devs").hover(function(){
 
 
 
-var ryanQueryURL = "https://api.seatgeek.com/2/events?venue.city=Austin&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0";
+
 
 
 //seat geek client id: NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0
 
 //seat geek app secret: a44eefef28620b890494943cf09df0f1cee710ab733dd772d47b947311f5be58
 
-console.log('yes');
+// console.log('yes');
 //category buttons, adds taxonomies to search ryanQueryURL
 // function eventsFunction(){
+	var ryanQueryURL = "https://api.seatgeek.com/2/events?venue.city=Austin&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0";
 
-database.ref(userName +"/events").on('value', function(snapshot) {
+	database.ref(userName +"/events").on('value', function(snapshot) {
 	console.log(snapshot.val())
 	var eventsArray = snapshot.val();
 	console.log(eventsArray)
@@ -826,7 +826,7 @@ database.ref(userName +"/events").on('value', function(snapshot) {
 
 			if (eventsArray[z] === 'Rock')
 			{
-				console.log(ryanQueryURL);
+				// console.log(ryanQueryURL);
 
 				ryanQueryURL += "&taxonomies.name=concert";
 								                        
@@ -882,15 +882,16 @@ database.ref(userName +"/events").on('value', function(snapshot) {
 			}
 
 		}
+	})
 
-});
+
 
 		 $.ajax({
 		          url: ryanQueryURL,
 		          method: "GET"
 		        }).done(function(response) {
 
-		        	console.log(response);
+		        	// console.log(response);
 		        	
 		        	var picker = 0;
 		        	var rowAssign = 0;
@@ -913,8 +914,8 @@ database.ref(userName +"/events").on('value', function(snapshot) {
 		        			var venueLat = response.events[i].venue.location.lat;
 		        			var venueLon = response.events[i].venue.location.lon;
 		        			var ticketLink = response.events[i].url;
-		        			console.log(momentTime);
-		        			console.log(momentDate);
+		        			// console.log(momentTime);
+		        			// console.log(momentDate);
 
 
 		        			if (picker === 0 || picker === 2 || picker === 4)
@@ -935,22 +936,29 @@ database.ref(userName +"/events").on('value', function(snapshot) {
 
 							$('#eventsSuggestions'+rowAssign).append('<div class="row suggestions-list-items" >\
 									<div class="col-md-6">\
-											<a href="#"><img class="thumbnail-suggestions img-responsive" src="'+performerImage+'" alt="'+performerImage+'">\
-										</a>\
+											<a href="#"><img class="thumbnail-suggestions" src="https://placehold.it/250x200" alt="test">\
+											</a>\
 										</div>\
 										<div class="col-md-6">\
 										<h2 class="suggestions-h2">'+performerName+'</h2>\
-										<h4>'+venueName+'</h4><h4>'+venueAddress+'</h4>\
+										<h4>'+venueName+' '+venueAddress+'</h4>\
 										<h5 class="suggestion" data-name="alamo">Date: &nbsp; '+momentDate+'</h5>\
-										<h5 class="suggestion" data-name="alamo">Time: &nbsp; '+momentTime+'</h5>\
+										<h5 class="suggestion" data-name="alamo">Time: &nbsp; '+momentTime+'</h5><br/>\
 										<p><a class="btn btn-site btn-lg" href="#" id="infoBtn" role="button" data-toggle="modal" \
-										data-target="#myModalInfo" data-lat="'+venueLat+'" data-long="'+venueLon+'">More Info</a>\
-										&nbsp; <a class="btn btn-site btn-lg" href="'+ticketLink+'" role="button" target="_blank"\
-										data-lat="'+venueLat+'" data-long="'+venueLon+'">Buy Tickets</a></p>\
+										data-target="#myModalInfo" data-lat="'+venueLat+'" data-long="'+venueLon+'">More Info</a></p>\
 									</div>\
 									</div>');
 
-								console.log(ticketLink);
+        //     					$("#buy-tickets").html("<a class='btn btn-site btn-lg' href='"+ ticketLink +"' role='button' target='_blank' data-lat='"+venueLat+"' data-lon='"+venueLon+"'> Buy Tickets </a>");
+        //     					$("#event-name").html("<h2 class='suggestions-h2'>"+performerName+"</h2>");
+								// $("#event-address").html("<h4>'"+venueName+"' '"+venueAddress+"'</h4>");
+								// $("#event-date").html("<h5 class='suggestion' data-name='alamo'>Date: &nbsp; '"+momentDate+"'</h5>");
+								// $("#event-time").html("<h5 class='suggestion' data-name='alamo'>Time: &nbsp; '"+momentTime+"'</h5>");
+								// console.log(ticketLink);
+
+
+
+								
 		        			}
 		        			
 
@@ -960,38 +968,43 @@ database.ref(userName +"/events").on('value', function(snapshot) {
 
 	    					$('#eventsSuggestions'+rowAssign).append('<div class="row suggestions-list-items" >\
 								<div class="col-md-6">\
-										<a href="#"><img class="thumbnail-suggestions img-responsive" src="'+performerImage+'" alt="'+performerImage+'">\
+										<a href="#"><img class="thumbnail-suggestions" width="250" src="'+performerImage+'" alt="test">\
 										</a>\
 									</div>\
 									<div class="col-md-6">\
 										<h2 class="suggestions-h2">'+performerName+'</h2>\
-										<h4>'+venueName+'</h4><h4>'+venueAddress+'</h4>\
+										<h4>'+venueName+' '+venueAddress+'</h4>\
 										<h5 class="suggestion" data-name="alamo">Date: &nbsp; '+momentDate+'</h5>\
-										<h5 class="suggestion" data-name="alamo">Time: &nbsp; '+momentTime+'</h5>\
+										<h5 class="suggestion" data-name="alamo">Time: &nbsp; '+momentTime+'</h5><br/>\
 										<p><a class="btn btn-site btn-lg" href="#" id="infoBtn" role="button" data-toggle="modal" \
-										data-target="#myModalInfo" data-lat="'+venueLat+'" data-long="'+venueLon+'">More Info</a>\
-										&nbsp; <a class="btn btn-site btn-lg" href="'+ticketLink+'" role="button" target="_blank"\
-										data-lat="'+venueLat+'" data-long="'+venueLon+'">Buy Tickets</a></p>\
+										data-target="#myModalInfo" data-lat="'+venueLat+'" data-long="'+venueLon+'">More Info</a></p>\
 									</div>\
 								</div>');
 
-								console.log(ticketLink);
+	    			// 			$("#buy-tickets").html("<a class='btn btn-site btn-lg' href='"+ ticketLink +"' role='button' target='_blank' data-lat='"+venueLat+"' data-lon='"+venueLon+"'> Buy Tickets </a>");
+	    			// 			$("#event-name").html("<h2 class='suggestions-h2'>"+performerName+"</h2>");
+								// $("#event-address").html("<h4>'"+venueName+"' '"+venueAddress+"'</h4>");
+								// $("#event-date").html("<h5 class='suggestion' data-name='alamo'>Date: &nbsp; '"+momentDate+"'</h5>");
+								// $("#event-time").html("<h5 class='suggestion' data-name='alamo'>Time: &nbsp; '"+momentTime+"'</h5>");
+								// console.log(ticketLink);
+
 		        			}
 		        		}
 
 		        		picker++;
 		        	}
+
+
 		        	
 		        });
+
+       
 		// }
 
-console.log(eventsArray);
+// console.log(eventsArray);
 // eventsFunction();
       
 });
-
-
-
 
 
 
