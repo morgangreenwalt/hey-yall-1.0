@@ -893,10 +893,9 @@ function eventsFunction(){
 		        			var momentTime = moment(dateTime).format('LT');
 		        			var momentDate = moment(dateTime).format('LL');
 		        			var venueName = response.events[i].venue.name;
-<<<<<<< HEAD
-=======
+
 		        			var venueStreetName = response.events[i].venue.address;
->>>>>>> cc1330b10ec0b4ded38c4ed62f2e13aa562451c7
+
 		        			var venueAddress = response.events[i].venue.extended_address;
 		        			var venueLat = response.events[i].venue.location.lat;
 		        			var venueLon = response.events[i].venue.location.lon;
@@ -932,15 +931,20 @@ function eventsFunction(){
 										<h5 class="suggestion" data-name="alamo">Date: &nbsp; '+momentDate+'</h5>\
 										<h5 class="suggestion" data-name="alamo">Time: &nbsp; '+momentTime+'</h5><br/>\
 										<p><a class="btn btn-site btn-lg" href="#" id="infoBtn" role="button" data-toggle="modal" \
-										data-target="#myModalInfo" data-lat="'+venueLat+'" data-lon="'+venueLon+'">More Info</a></p>\
+										data-target="#myModalInfo" data-lat="'+venueLat+'" data-long="'+venueLon+'">More Info</a></p>\
 									</div>\
 									</div>');
 
-            					$("#buy-tickets").html("<a class='btn btn-site btn-lg' href='"+ ticketLink +"' role='button' target='_blank' data-lat='"+venueLat+"' data-lon='"+venueLon+"'> Buy Tickets </a>");
-            					$("#event-name").html("<h2 class='suggestions-h2'>"+performerName+"</h2>");
-								$("#event-address").html("<h4>'"+venueName+"' '"+venueAddress+"'</h4>");
-								$("#event-date").html("<h5 class='suggestion' data-name='alamo'>Date: &nbsp; '"+momentDate+"'</h5>");
-								$("#event-time").html("<h5 class='suggestion' data-name='alamo'>Time: &nbsp; '"+momentTime+"'</h5>");
+        //     					$("#buy-tickets").html("<a class='btn btn-site btn-lg' href='"+ ticketLink +"' role='button' target='_blank' data-lat='"+venueLat+"' data-lon='"+venueLon+"'> Buy Tickets </a>");
+        //     					$("#event-name").html("<h2 class='suggestions-h2'>"+performerName+"</h2>");
+								// $("#event-address").html("<h4>'"+venueName+"' '"+venueAddress+"'</h4>");
+								// $("#event-date").html("<h5 class='suggestion' data-name='alamo'>Date: &nbsp; '"+momentDate+"'</h5>");
+								// $("#event-time").html("<h5 class='suggestion' data-name='alamo'>Time: &nbsp; '"+momentTime+"'</h5>");
+								console.log(ticketLink);
+
+
+
+								
 		        			}
 		        			
 
@@ -959,15 +963,17 @@ function eventsFunction(){
 										<h5 class="suggestion" data-name="alamo">Date: &nbsp; '+momentDate+'</h5>\
 										<h5 class="suggestion" data-name="alamo">Time: &nbsp; '+momentTime+'</h5><br/>\
 										<p><a class="btn btn-site btn-lg" href="#" id="infoBtn" role="button" data-toggle="modal" \
-										data-target="#myModalInfo" data-lat="'+venueLat+'" data-lon="'+venueLon+'">More Info</a></p>\
+										data-target="#myModalInfo" data-lat="'+venueLat+'" data-long="'+venueLon+'">More Info</a></p>\
 									</div>\
 								</div>');
 
-	    						$("#buy-tickets").html("<a class='btn btn-site btn-lg' href='"+ ticketLink +"' role='button' target='_blank' data-lat='"+venueLat+"' data-lon='"+venueLon+"'> Buy Tickets </a>");
-	    						$("#event-name").html("<h2 class='suggestions-h2'>"+performerName+"</h2>");
-								$("#event-address").html("<h4>'"+venueName+"' '"+venueAddress+"'</h4>");
-								$("#event-date").html("<h5 class='suggestion' data-name='alamo'>Date: &nbsp; '"+momentDate+"'</h5>");
-								$("#event-time").html("<h5 class='suggestion' data-name='alamo'>Time: &nbsp; '"+momentTime+"'</h5>");
+	    			// 			$("#buy-tickets").html("<a class='btn btn-site btn-lg' href='"+ ticketLink +"' role='button' target='_blank' data-lat='"+venueLat+"' data-lon='"+venueLon+"'> Buy Tickets </a>");
+	    			// 			$("#event-name").html("<h2 class='suggestions-h2'>"+performerName+"</h2>");
+								// $("#event-address").html("<h4>'"+venueName+"' '"+venueAddress+"'</h4>");
+								// $("#event-date").html("<h5 class='suggestion' data-name='alamo'>Date: &nbsp; '"+momentDate+"'</h5>");
+								// $("#event-time").html("<h5 class='suggestion' data-name='alamo'>Time: &nbsp; '"+momentTime+"'</h5>");
+								console.log(ticketLink);
+
 		        			}
 		        		}
 
