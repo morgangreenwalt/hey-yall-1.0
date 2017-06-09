@@ -8,6 +8,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h4 {
 	color: #FB7722;
+	font-size: 16px;
 }
 
 p {
@@ -59,7 +60,7 @@ p {
 	margin-left: 0px;
 }
 
-.col-md-12, .col-md-3, .col-md-6, .col-md-2 {
+.col-md-12, .col-md-3, .col-md-2 {
 	padding-right: 0px;
 	padding-left: 0px;
 }
@@ -151,10 +152,6 @@ p {
 .suggestions-list-items {
 	margin-top: 15px;
 	margin-bottom: 30px;
-}
-
-.thumbnail-suggestions {
-	width: 250px;
 }
 
 .suggestions-h2 {

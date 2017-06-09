@@ -11,9 +11,9 @@
 		width: 100%;
 	}
 
-	.thumbnail-suggestions {
+	/*.thumbnail-suggestions {
 		width: 220px;
-	}
+	}*/
 }
 
 @media only screen and (min-width: 992px){
@@ -48,6 +48,11 @@
 	.hero-title {
 		top: 85px;
 		font-size: 55px;
+	}
+
+	.col-md-6 {
+		padding-left: 0px;
+		padding-right: 0px;
 	}
 }
 
