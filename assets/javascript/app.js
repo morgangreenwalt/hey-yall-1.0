@@ -349,6 +349,10 @@ function submit(){
  	   	loadSuggestionPage();
 
 
+
+
+
+
  	});
  }
   
@@ -363,7 +367,7 @@ function submit(){
 var userName = localStorage.getItem("name");
 // Food Suggestions Part
 
-var zomatoAPIkey = "49c55e85367c3cdbace131c0527538a8"//"da51b0411a010e8e491e49072febfe07"//"142b97a736485a30ff5b9a92ddbb8fde";
+var zomatoAPIkey = "a08320eec6b5e9b8be951aab1ae4b453" // "49c55e85367c3cdbace131c0527538a8" "da51b0411a010e8e491e49072febfe07"//"142b97a736485a30ff5b9a92ddbb8fde";
 // var foodArray=["American", "Italian", "Chinese", "Mexican", "Japanese", "Thai", "BBQ", "Indian"];
 
 var foodPickedArray=[];
@@ -882,15 +886,7 @@ $(".devs").hover(function(){
 
 
 
-var ryanQueryURL = "https://api.seatgeek.com/2/events?venue.city=Austin&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0";
 
-
-//seat geek client id: NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0
-
-//seat geek app secret: a44eefef28620b890494943cf09df0f1cee710ab733dd772d47b947311f5be58
-
-console.log('yes');
-//category buttons, adds taxonomies to search ryanQueryURL
 
 // function eventsFunction(){
 // function eventsFunction(){
@@ -965,7 +961,7 @@ console.log('yes');
 
 		}
 
-
+		console.log(ryanQueryURL);
 
 		 $.ajax({
 		          url: ryanQueryURL,
@@ -1017,7 +1013,7 @@ console.log('yes');
 
 							$('#eventsSuggestions'+rowAssign).append('<div class="row suggestions-list-items" >\
 									<div class="col-md-6">\
-											<a href="#"><img class="thumbnail-suggestions img-responsive" src="'+performerImage+'" alt="'+performerImage+'">\
+											<a href="#"><img class="thumbnail-suggestions img-responsive" src="assets/images/concert_placeholder.jpg" alt="concert image">\
 										</a>\
 										</div>\
 										<div class="col-md-6">\
@@ -1067,5 +1063,5 @@ console.log('yes');
 		        });
 		// }
       
-});
+	});
 });
