@@ -458,7 +458,7 @@ $.ajax({
             var drinkList = $("<div>");
             for(var i=0; i<drink.length;i++){
             	var drinkThumb="";
-            	if(drink[i].restaurant.thumb!=null){
+            	if(drink[i].restaurant.thumb!=null||$.type(drink[i].restaurant.thumb) === "string"){
             		drinkThumb=drink[i].restaurant.thumb;
             	}
             	else{
@@ -483,7 +483,7 @@ $.ajax({
                 var drinkList = $("<div>");
                 for(var i=0; i<drink.length;i++){
                 	var drinkThumb="";
-	            	if(drink[i].restaurant.thumb!=null){
+	            	if(drink[i].restaurant.thumb!=null||$.type(drink[i].restaurant.thumb) === "string"){
 	            		drinkThumb=drink[i].restaurant.thumb;
 	            	}
 	            	else{
@@ -507,7 +507,7 @@ $.ajax({
             var drinkList = $("<div>");
             for(var i=0; i<drink.length;i++){
             	var drinkThumb="";
-            	if(drink[i].restaurant.thumb!=null){
+            	if(drink[i].restaurant.thumb!=null||$.type(drink[i].restaurant.thumb) === "string"){
             		drinkThumb=drink[i].restaurant.thumb;
             	}
             	else{
