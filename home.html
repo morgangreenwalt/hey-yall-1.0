@@ -46,7 +46,7 @@
 							<input type="password" class="form-control" id="createPasswordInput" placeholder="Create a password">
 						</div>
 						<button type="submit" class="btn btn-default" id="newUser">Continue</button>
-						 <button type="submit" class="hidden btn btn-default" id="loginin">login</button>
+						 <button type="submit" class="hidden btn btn-default" id="loginin">Log In</button>
 						<hr>
 						<div class="row">
 							<div class="col-md-12 text-center">
@@ -66,6 +66,7 @@
 <script type="text/javascript">
 // click login - load existing user prompt
 $("#login-button").on("click", function() {
+    $("#login-button").hide();
     $("#loginin").removeClass("hidden");
     $("#modal-login-label").html("Log in to see more");
     $("#newUser").addClass("hidden");
