@@ -838,7 +838,7 @@ $(".devs").hover(function(){
 
 	database.ref(userName +"/events").on('value', function(snapshot) {
 	console.log(snapshot.val())
-	var eventsArray = snapshot.val();
+	eventsArray = snapshot.val();
 	console.log(eventsArray)
 
 		for (var z = 0; z < eventsArray.length ; z++)
@@ -955,10 +955,27 @@ $(".devs").hover(function(){
 		        			{
 		        				
 
+
+							$('#eventsSuggestions'+rowAssign).append('<div class="row suggestions-list-items" >\
+									<div class="col-md-6">\
+											<a href="#"><img class="thumbnail-suggestions" src="https://placehold.it/250x200" alt="test">\
+											</a>\
+										</div>\
+										<div class="col-md-6">\
+										<h2 class="suggestions-h2">'+performerName+'</h2>\
+										<h4>'+venueName+' '+venueAddress+'</h4>\
+										<h5 class="suggestion" data-name="alamo">Date: &nbsp; '+momentDate+'</h5>\
+										<h5 class="suggestion" data-name="alamo">Time: &nbsp; '+momentTime+'</h5><br/>\
+										<p><a class="btn btn-site btn-lg" href="#" id="infoBtn" role="button" data-toggle="modal" \
+										data-target="#myModalInfo" data-lat="'+venueLat+'" data-long="'+venueLon+'" data-i = "'+i+'">More Info</a></p>\
+									</div>\
+									</div>');
+
 							$('#eventsSuggestions'+rowAssign).append('<div class="row suggestions-list-items" ><div class="col-md-6">\
 							<a href="#"><img class="thumbnail-suggestions img-responsive" src="'+performerImage+'" alt="'+performerImage+'"></a></div>\					<div class="col-md-6"><h2 class="suggestions-h2">'+performerName+'</h2>\
 							<h4>'+venueName+' '+venueAddress+'</h4><h5 class="suggestion" data-name="alamo">Date: &nbsp; '+momentDate+'</h5><h5 class="suggestion" data-name="alamo">Time: &nbsp; '+momentTime+'</h5><br/><p><a class="btn btn-site btn-lg" href="#" id="infoBtn" role="button" data-toggle="modal" \
 							data-target="#myModalInfo" data-lat="'+venueLat+'" data-long="'+venueLon+'">More Info</a> &nbsp; <a class="btn btn-site btn-lg" href="'+ticketLink+'" role="button" target="_blank"data-lat="'+venueLat+'" data-long="'+venueLon+'">Buy Tickets</a></p></div></div>');
+
 
         //     					$("#buy-tickets").html("<a class='btn btn-site btn-lg' href='"+ ticketLink +"' role='button' target='_blank' data-lat='"+venueLat+"' data-lon='"+venueLon+"'> Buy Tickets </a>");
         //     					$("#event-name").html("<h2 class='suggestions-h2'>"+performerName+"</h2>");
@@ -984,6 +1001,8 @@ $(".devs").hover(function(){
 										<h4>'+venueName+' '+venueAddress+'</h4>\
 										<h5 class="suggestion" data-name="alamo">Date: &nbsp; '+momentDate+'</h5>\
 										<h5 class="suggestion" data-name="alamo">Time: &nbsp; '+momentTime+'</h5><br/>\
+										<p><a class="btn btn-site btn-lg" href="#" id="infoBtn" role="button" data-toggle="modal" \
+										data-target="#myModalInfo" data-lat="'+venueLat+'" data-long="'+venueLon+'" data-i = "'+i+'">More Info</a></p>\
 										<p><a class="btn btn-site btn-lg" href="#" id="infoBtn" role="button" data-toggle="modal" \			data-target="#myModalInfo" data-lat="'+venueLat+'" data-long="'+venueLon+'">More Info</a>\
 										&nbsp; <a class="btn btn-site btn-lg" href="'+ticketLink+'" role="button" target="_blank"\
 										data-lat="'+venueLat+'" data-long="'+venueLon+'">Buy Tickets</a></p>\
