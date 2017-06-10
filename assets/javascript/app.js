@@ -290,6 +290,7 @@ function events() {
 
 
 	$(".events").on("click", function(){
+
 		if($(this).attr("data-state")=="unclicked"){
 			var selection = $(this).attr("data-name");
 			eventsArray.push(selection);
@@ -362,8 +363,7 @@ function submit(){
 var userName = localStorage.getItem("name");
 // Food Suggestions Part
 
-var zomatoAPIkey = "142b97a736485a30ff5b9a92ddbb8fde"
-//"49c55e85367c3cdbace131c0527538a8"//"da51b0411a010e8e491e49072febfe07"//"142b97a736485a30ff5b9a92ddbb8fde";
+var zomatoAPIkey = "49c55e85367c3cdbace131c0527538a8"//"da51b0411a010e8e491e49072febfe07"//"142b97a736485a30ff5b9a92ddbb8fde";
 // var foodArray=["American", "Italian", "Chinese", "Mexican", "Japanese", "Thai", "BBQ", "Indian"];
 
 var foodPickedArray=[];
@@ -377,7 +377,7 @@ $.ajax({
     foodCode=response.cuisines;
 
 database.ref(userName +"/food").on('value', function(snapshot) {
-	console.log("foodArray:"+snapshot.val())
+	console.log(snapshot.val())
 	var foodArray = snapshot.val();
 // });
 
@@ -439,7 +439,7 @@ $.ajax({
     var drinkTypeArray=[];
 
 	database.ref(userName +"/drinks").on('value', function(snapshot) {
-	console.log("drinksArray:"+snapshot.val())
+	console.log(snapshot.val())
 	var drinksArray = snapshot.val();
 
     for(var i=0; i<drinkCode.length;i++){
@@ -892,17 +892,16 @@ var ryanQueryURL = "https://api.seatgeek.com/2/events?venue.city=Austin&client_i
 console.log('yes');
 //category buttons, adds taxonomies to search ryanQueryURL
 
-function eventsFunction(){
+// function eventsFunction(){
 // function eventsFunction(){
 	var ryanQueryURL = "https://api.seatgeek.com/2/events?venue.city=Austin&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0";
 
 	database.ref(userName +"/events").on('value', function(snapshot) {
-	console.log("eventsArray Firebase:"+snapshot.val())
+	console.log(snapshot.val())
 	if(snapshot.val()!=null){
-		eventsArray = snapshot.val();
+		//eventsArray = snapshot.val();
 	}
 
-	console.log("eventsArray:"+eventsArray)
 		for (var z = 0; z < eventsArray.length ; z++)
 
 		{
@@ -1066,9 +1065,7 @@ function eventsFunction(){
 		        	}
 		        	
 		        });
-		}
-
-console.log(eventsArray);
-eventsFunction();
+		// }
       
+});
 });
