@@ -482,8 +482,15 @@ $.ajax({
                 drink=response.restaurants;
                 var drinkList = $("<div>");
                 for(var i=0; i<drink.length;i++){
+                	var drinkThumb="";
+	            	if(drink[i].restaurant.thumb!=null){
+	            		drinkThumb=drink[i].restaurant.thumb;
+	            	}
+	            	else{
+	            		drinkThumb="assets/images/drinkThumb.jpg";
+	            	}
                     $("#drinkRow"+Math.floor(counter/2)).append(
-                    "<div class='col-md-6 suggestions-list-items'><div class='col-md-6'><a href='#'><img class='thumbnail-suggestions' width='200px' height='200px' src='"+drink[i].restaurant.thumb+"' alt='test'></a></div><div class='col-md-6'><h2 class='suggestions-h2'>"+drink[i].restaurant.name+"</h2><h4>"+drink[i].restaurant.location.address+"</h4><br/><p><br/><a class='btn btn-site btn-lg' href='#' id='infoBtn' role='button' data-toggle='modal' data-target='#myModalInfo' data-lat="+drink[i].restaurant.location.latitude+" data-long="+drink[i].restaurant.location.longitude+">More Info</a></p></div></div>")
+                    "<div class='col-md-6 suggestions-list-items'><div class='col-md-6'><a href='#'><img class='thumbnail-suggestions' width='200px' height='200px' src='"+drinkThumb+"' alt='test'></a></div><div class='col-md-6'><h2 class='suggestions-h2'>"+drink[i].restaurant.name+"</h2><h4>"+drink[i].restaurant.location.address+"</h4><br/><p><br/><a class='btn btn-site btn-lg' href='#' id='infoBtn' role='button' data-toggle='modal' data-target='#myModalInfo' data-lat="+drink[i].restaurant.location.latitude+" data-long="+drink[i].restaurant.location.longitude+">More Info</a></p></div></div>")
     //                  $("#event-name").html("<h2 class='suggestions-h2'>"+drink[i].restaurant.name+"</h2>");
 				// $("#event-address").html("<h4>'"+drink[i].restaurant.location.address+"'</h4>");
                     counter++;
@@ -499,8 +506,15 @@ $.ajax({
             drink=response.restaurants;
             var drinkList = $("<div>");
             for(var i=0; i<drink.length;i++){
+            	var drinkThumb="";
+            	if(drink[i].restaurant.thumb!=null){
+            		drinkThumb=drink[i].restaurant.thumb;
+            	}
+            	else{
+            		drinkThumb="assets/images/drinkThumb.jpg";
+            	}
                 $("#drinkRow"+Math.floor(i/2)).append(
-                "<div class='col-md-6 suggestions-list-items'><div class='col-md-6'><a href='#'><img class='thumbnail-suggestions' width='200px' height='200px' src='"+drink[i].restaurant.thumb+"' alt='test'></a></div><div class='col-md-6'><h2 class='suggestions-h2'>"+drink[i].restaurant.name+"</h2><h4>"+drink[i].restaurant.location.address+"</h4><br/><p><br/><a class='btn btn-site btn-lg' href='#' id='infoBtn' role='button' data-toggle='modal' data-target='#myModalInfo' data-lat="+drink[i].restaurant.location.latitude+" data-long="+drink[i].restaurant.location.longitude+">More Info</a></p></div></div>");
+                "<div class='col-md-6 suggestions-list-items'><div class='col-md-6'><a href='#'><img class='thumbnail-suggestions' width='200px' height='200px' src='"+drinkThumb+"' alt='test'></a></div><div class='col-md-6'><h2 class='suggestions-h2'>"+drink[i].restaurant.name+"</h2><h4>"+drink[i].restaurant.location.address+"</h4><br/><p><br/><a class='btn btn-site btn-lg' href='#' id='infoBtn' role='button' data-toggle='modal' data-target='#myModalInfo' data-lat="+drink[i].restaurant.location.latitude+" data-long="+drink[i].restaurant.location.longitude+">More Info</a></p></div></div>");
     //             $("#event-name").html("<h2 class='suggestions-h2'>"+drink[i].restaurant.name+"</h2>");
 				// $("#event-address").html("<h4>'"+drink[i].restaurant.location.address+"'</h4>");
             }
