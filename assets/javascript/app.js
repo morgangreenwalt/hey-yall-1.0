@@ -891,7 +891,16 @@ var ryanQueryURL = "https://api.seatgeek.com/2/events?venue.city=Austin&client_i
 
 console.log('yes');
 //category buttons, adds taxonomies to search ryanQueryURL
+
 function eventsFunction(){
+// function eventsFunction(){
+	var ryanQueryURL = "https://api.seatgeek.com/2/events?venue.city=Austin&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0";
+
+	database.ref(userName +"/events").on('value', function(snapshot) {
+	console.log(snapshot.val())
+	if(snapshot.val()!=null){
+		//eventsArray = snapshot.val();
+	}
 
 		for (var z = 0; z < eventsArray.length ; z++)
 
