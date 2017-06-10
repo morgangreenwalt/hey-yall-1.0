@@ -290,7 +290,6 @@ function events() {
 
 
 	$(".events").on("click", function(){
-
 		if($(this).attr("data-state")=="unclicked"){
 			var selection = $(this).attr("data-name");
 			eventsArray.push(selection);
@@ -377,7 +376,7 @@ $.ajax({
     foodCode=response.cuisines;
 
 database.ref(userName +"/food").on('value', function(snapshot) {
-	console.log(snapshot.val())
+	console.log("foodArray:"+snapshot.val())
 	var foodArray = snapshot.val();
 // });
 
@@ -439,7 +438,7 @@ $.ajax({
     var drinkTypeArray=[];
 
 	database.ref(userName +"/drinks").on('value', function(snapshot) {
-	console.log(snapshot.val())
+	console.log("drinksArray:"+snapshot.val())
 	var drinksArray = snapshot.val();
 
     for(var i=0; i<drinkCode.length;i++){
@@ -896,7 +895,7 @@ $(".devs").hover(function(){
 	if(snapshot.val()!=null){
 		eventsArray = snapshot.val();
 	}
-	console.log(eventsArray)
+	console.log("eventsArray:"+eventsArray)
 
 		for (var z = 0; z < eventsArray.length ; z++)
 
