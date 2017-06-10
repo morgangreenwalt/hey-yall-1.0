@@ -1,0 +1,11 @@
+{
+  "name": "allyall",
+  "version": "1.0.0",
+  "description": "App to suggest places to eat, drinks and enjoy in your preferences.",
+  "scripts": {
+    "start": "harp server --port $PORT"
+  },
+  "dependencies": {
+    "harp": "^0.24.0"
+  }
+}

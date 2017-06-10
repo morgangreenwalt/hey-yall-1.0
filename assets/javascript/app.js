@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 var userHtml = $("#username");
-var username;
+
 //  Initialize Firebase
    var config = {
     apiKey: "AIzaSyCgQFFxv6-cd0vRQesrZUD447sO7AEYklo",
@@ -131,12 +131,15 @@ $("#logout").on("click", function() {
 	});
 })
 // Firebase on auth change. Saves user name
+var name;
 firebase.auth().onAuthStateChanged(function(firebaseUser){
 	if(firebaseUser) {
        //USer is signed in
 		console.log(firebaseUser)
 		
-		username = firebaseUser.displayName
+		var name = firebaseUser.displayName
+
+		localStorage.setItem("name", name);
 		
 		userHtml.html("Welcome "+ firebaseUser.displayName)
 		
@@ -184,7 +187,7 @@ function loadMainPage() {
 
 var foodArray = [];
 var drinksArray = [];
-var eventsArray = ['Rock','Country','Sports'];
+var eventsArray = [];
 
 $(".drinks-section").hide();
 $(".events-section").hide();
@@ -214,8 +217,8 @@ $("#food-question").on("click", function(){
 function food() {
 	$(".food").on("click", function(){
 		if($(this).attr("data-state")=="unclicked"){
-			var selection = $(this).attr("data-name");
-			foodArray.push(selection);
+			var selection = $(this).attr("data-name").toUpperCase();
+			foodArray.push(selection.toUpperCase());
 			if($(this).attr("data-type")!="caption"){
 				$(this).addClass("clicked");
 				$("#caption"+$(this).attr("data-name")).attr("data-state","clicked");
@@ -227,7 +230,7 @@ function food() {
 			$(this).attr("data-state","clicked");
 		}
 		else if ($(this).attr("data-state")=="clicked"){
-			var selection = $(this).attr("data-name");
+			var selection = $(this).attr("data-name").toUpperCase();
 			var index = foodArray.indexOf(selection);
 			foodArray.splice(index, 1);
 
@@ -250,32 +253,32 @@ function drinks() {
 	$(".drinks").on("click", function(){
 		if($(this).attr("data-state")=="unclicked"){
 			if(drinksArray.length<2){
-				var selection = $(this).attr("data-name");
-				drinksArray.push(selection);
+				var selection = $(this).attr("data-name").toUpperCase();
+				drinksArray.push(selection.toUpperCase());
 
 				if($(this).attr("data-type")!="caption"){
 					$(this).addClass("clicked");
-					$("#caption"+$(this).attr("data-name")).attr("data-state","clicked");
+					$("#caption"+$(this).attr("id")).attr("data-state","clicked");
 				}
 				else if($(this).attr("data-type")=="caption"){
-					$("#"+$(this).attr("data-name")).addClass("clicked");
-					$("#"+$(this).attr("data-name")).attr("data-state","clicked");
+					$("#"+$(this).attr("data-id")).addClass("clicked");
+					$("#"+$(this).attr("data-id")).attr("data-state","clicked");
 				}
 				$(this).attr("data-state","clicked");
 			}
 		}
 		else if ($(this).attr("data-state")=="clicked"){
-			var selection = $(this).attr("data-name");
+			var selection = $(this).attr("data-name").toUpperCase();
 			var index = drinksArray.indexOf(selection);
 			drinksArray.splice(index, 1);
 			
 			if($(this).attr("data-type")!="caption"){
 				$(this).removeClass("clicked");
-				$("#caption"+$(this).attr("data-name")).attr("data-state","unclicked");
+				$("#caption"+$(this).attr("id")).attr("data-state","unclicked");
 			}
 			else if($(this).attr("data-type")=="caption"){
-				$("#"+$(this).attr("data-name")).removeClass("clicked");
-				$("#"+$(this).attr("data-name")).attr("data-state","unclicked");
+				$("#"+$(this).attr("data-id")).removeClass("clicked");
+				$("#"+$(this).attr("data-id")).attr("data-state","unclicked");
 			}
 			$(this).attr("data-state","unclicked");
 		}
@@ -317,7 +320,7 @@ function events() {
 			}
 			$(this).attr("data-state","unclicked");
 		}
-	    console.log(eventsArray);
+	    // console.log(eventsArray);
 	});
 }
 
@@ -335,14 +338,14 @@ function submit(){
  	    console.log(foodArray);
  	    console.log(drinksArray);
 
- 	   	ref.update({
+ 	   	 database.ref(userName).update({
  	   		food : foodArray,
  	   		drinks : drinksArray,
  	   		events : eventsArray
  	   	});	
 
  	   	//sets events ajax query url with events array and prints to suggestions page
- 	   	eventsFunction();
+ 	   	// eventsFunction();
  	   	loadSuggestionPage();
 
 
@@ -357,34 +360,31 @@ function submit(){
 
 
 
-
-
-
-
-
-
-
-
-
-
+var userName = localStorage.getItem("name");
 // Food Suggestions Part
 
-var zomatoAPIkey = "4b4047ebe163df7deee6b42dd7828188"//"142b97a736485a30ff5b9a92ddbb8fde";
-var foodArray=["American", "Italian", "Chinese", "Mexican", "Japanese", "Thai", "BBQ", "Indian"];
+var zomatoAPIkey = "da51b0411a010e8e491e49072febfe07"//"142b97a736485a30ff5b9a92ddbb8fde";
+// var foodArray=["American", "Italian", "Chinese", "Mexican", "Japanese", "Thai", "BBQ", "Indian"];
+
 var foodPickedArray=[];
 var foodCode=[];
 var foodType="";
-
 
 $.ajax({
     url:"https://developers.zomato.com/api/v2.1/cuisines?city_id=278&apikey="+zomatoAPIkey,
     method:"GET"
 }).done(function(response){
     foodCode=response.cuisines;
-    if(foodPickedArray.length>0){
+
+database.ref(userName +"/food").on('value', function(snapshot) {
+	console.log(snapshot.val())
+	var foodArray = snapshot.val();
+// });
+
+    if(foodArray.length>0){
         foodType="";
         for(var i=0; i<foodCode.length;i++){
-            if(foodPickedArray.indexOf(foodCode[i].cuisine.cuisine_name.toUpperCase())>-1){
+            if(foodArray.indexOf(foodCode[i].cuisine.cuisine_name.toUpperCase())>-1){
                 if(foodType!=""){
                     foodType=foodType+"%2C"+foodCode[i].cuisine.cuisine_id.toString();
                 }
@@ -393,7 +393,7 @@ $.ajax({
                 };
             }
         }
-        console.log(foodType);
+        console.log("Food Type:" + foodType);
         $.ajax({
         url:"https://developers.zomato.com/api/v2.1/search?entity_id=278&entity_type=city&apikey="+zomatoAPIkey+"&count=4&sort=rating&order=desc&cuisines="+foodType,
         method:"GET"
@@ -417,14 +417,15 @@ $.ajax({
             }
         });
     }
+	});
 
 })
 
 
 // Drink Suggestions Part
 
-var drinkArray=["Bar", "Coffee shop", "Wine Bar","Juice Bar", "Beer Garden", "Brewery", "Lounge"]
-var drinkPickedArray= [];
+// var drinkArray=["Bar", "Coffee shop", "Wine Bar","Juice Bar", "Beer Garden", "Brewery", "Lounge"]
+// var drinkPickedArray= [];
 var drinkCode=[];
 var drinkType="";
 
@@ -433,11 +434,16 @@ $.ajax({
     method:"GET"
 }).done(function(response){
     drinkCode=response.establishments;
+	console.log(drinkCode)
     drinkType="";
     var drinkTypeArray=[];
 
+	database.ref(userName +"/drinks").on('value', function(snapshot) {
+	console.log(snapshot.val())
+	var drinksArray = snapshot.val();
+
     for(var i=0; i<drinkCode.length;i++){
-        if(drinkPickedArray.indexOf(drinkCode[i].establishment.name.toUpperCase())>-1){
+        if(drinksArray.indexOf(drinkCode[i].establishment.name.toUpperCase())>-1){
             drinkTypeArray.push(drinkCode[i].establishment.id);
         }
         console.log(drinkTypeArray);
@@ -493,6 +499,7 @@ $.ajax({
             }
         }); 
     }
+	});
 });
 
 
@@ -796,16 +803,22 @@ $(".devs").hover(function(){
 
 
 
-var ryanQueryURL = "https://api.seatgeek.com/2/events?venue.city=Austin&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0";
+
 
 
 //seat geek client id: NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0
 
 //seat geek app secret: a44eefef28620b890494943cf09df0f1cee710ab733dd772d47b947311f5be58
 
-console.log('yes');
+// console.log('yes');
 //category buttons, adds taxonomies to search ryanQueryURL
-function eventsFunction(){
+// function eventsFunction(){
+	var ryanQueryURL = "https://api.seatgeek.com/2/events?venue.city=Austin&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0";
+
+	database.ref(userName +"/events").on('value', function(snapshot) {
+	console.log(snapshot.val())
+	var eventsArray = snapshot.val();
+	console.log(eventsArray)
 
 		for (var z = 0; z < eventsArray.length ; z++)
 
@@ -813,7 +826,7 @@ function eventsFunction(){
 
 			if (eventsArray[z] === 'Rock')
 			{
-				console.log(ryanQueryURL);
+				// console.log(ryanQueryURL);
 
 				ryanQueryURL += "&taxonomies.name=concert";
 								                        
@@ -869,6 +882,7 @@ function eventsFunction(){
 			}
 
 		}
+	})
 
 
 
@@ -877,7 +891,7 @@ function eventsFunction(){
 		          method: "GET"
 		        }).done(function(response) {
 
-		        	console.log(response);
+		        	// console.log(response);
 		        	
 		        	var picker = 0;
 		        	var rowAssign = 0;
@@ -900,8 +914,8 @@ function eventsFunction(){
 		        			var venueLat = response.events[i].venue.location.lat;
 		        			var venueLon = response.events[i].venue.location.lon;
 		        			var ticketLink = response.events[i].url;
-		        			console.log(momentTime);
-		        			console.log(momentDate);
+		        			// console.log(momentTime);
+		        			// console.log(momentDate);
 
 
 		        			if (picker === 0 || picker === 2 || picker === 4)
@@ -920,6 +934,7 @@ function eventsFunction(){
 		        			{
 		        				
 
+
 							$('#eventsSuggestions'+rowAssign).append('<div class="row suggestions-list-items" >\
 									<div class="col-md-6">\
 											<a href="#"><img class="thumbnail-suggestions" src="https://placehold.it/250x200" alt="test">\
@@ -935,12 +950,18 @@ function eventsFunction(){
 									</div>\
 									</div>');
 
+							$('#eventsSuggestions'+rowAssign).append('<div class="row suggestions-list-items" ><div class="col-md-6">\
+							<a href="#"><img class="thumbnail-suggestions img-responsive" src="'+performerImage+'" alt="'+performerImage+'"></a></div>\					<div class="col-md-6"><h2 class="suggestions-h2">'+performerName+'</h2>\
+							<h4>'+venueName+' '+venueAddress+'</h4><h5 class="suggestion" data-name="alamo">Date: &nbsp; '+momentDate+'</h5><h5 class="suggestion" data-name="alamo">Time: &nbsp; '+momentTime+'</h5><br/><p><a class="btn btn-site btn-lg" href="#" id="infoBtn" role="button" data-toggle="modal" \
+							data-target="#myModalInfo" data-lat="'+venueLat+'" data-long="'+venueLon+'">More Info</a> &nbsp; <a class="btn btn-site btn-lg" href="'+ticketLink+'" role="button" target="_blank"data-lat="'+venueLat+'" data-long="'+venueLon+'">Buy Tickets</a></p></div></div>');
+
+
         //     					$("#buy-tickets").html("<a class='btn btn-site btn-lg' href='"+ ticketLink +"' role='button' target='_blank' data-lat='"+venueLat+"' data-lon='"+venueLon+"'> Buy Tickets </a>");
         //     					$("#event-name").html("<h2 class='suggestions-h2'>"+performerName+"</h2>");
 								// $("#event-address").html("<h4>'"+venueName+"' '"+venueAddress+"'</h4>");
 								// $("#event-date").html("<h5 class='suggestion' data-name='alamo'>Date: &nbsp; '"+momentDate+"'</h5>");
 								// $("#event-time").html("<h5 class='suggestion' data-name='alamo'>Time: &nbsp; '"+momentTime+"'</h5>");
-								console.log(ticketLink);
+								// console.log(ticketLink);
 
 
 
@@ -951,11 +972,8 @@ function eventsFunction(){
 
 		        			else
 		        			{
-
-	    					$('#eventsSuggestions'+rowAssign).append('<div class="row suggestions-list-items" >\
-								<div class="col-md-6">\
-										<a href="#"><img class="thumbnail-suggestions" width="250" src="'+performerImage+'" alt="test">\
-										</a>\
+							$('#eventsSuggestions'+rowAssign).append('<div class="row suggestions-list-items" ><div class="col-md-6">\
+							<a href="#"><img class="thumbnail-suggestions img-responsive" src="'+performerImage+'" alt="'+performerImage+'"></a>\
 									</div>\
 									<div class="col-md-6">\
 										<h2 class="suggestions-h2">'+performerName+'</h2>\
@@ -964,6 +982,9 @@ function eventsFunction(){
 										<h5 class="suggestion" data-name="alamo">Time: &nbsp; '+momentTime+'</h5><br/>\
 										<p><a class="btn btn-site btn-lg" href="#" id="infoBtn" role="button" data-toggle="modal" \
 										data-target="#myModalInfo" data-lat="'+venueLat+'" data-long="'+venueLon+'" data-i = "'+i+'">More Info</a></p>\
+										<p><a class="btn btn-site btn-lg" href="#" id="infoBtn" role="button" data-toggle="modal" \			data-target="#myModalInfo" data-lat="'+venueLat+'" data-long="'+venueLon+'">More Info</a>\
+										&nbsp; <a class="btn btn-site btn-lg" href="'+ticketLink+'" role="button" target="_blank"\
+										data-lat="'+venueLat+'" data-long="'+venueLon+'">Buy Tickets</a></p>\
 									</div>\
 								</div>');
 
@@ -972,7 +993,7 @@ function eventsFunction(){
 								// $("#event-address").html("<h4>'"+venueName+"' '"+venueAddress+"'</h4>");
 								// $("#event-date").html("<h5 class='suggestion' data-name='alamo'>Date: &nbsp; '"+momentDate+"'</h5>");
 								// $("#event-time").html("<h5 class='suggestion' data-name='alamo'>Time: &nbsp; '"+momentTime+"'</h5>");
-								console.log(ticketLink);
+								// console.log(ticketLink);
 
 		        			}
 		        		}
@@ -985,15 +1006,12 @@ function eventsFunction(){
 		        });
 
        
-		}
+		// }
 
-console.log(eventsArray);
-eventsFunction();
+// console.log(eventsArray);
+// eventsFunction();
       
 });
-
-
-
 
 
 

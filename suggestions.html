@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Suggestions Click Test</title>
+	<title>Suggestions | All Y'all</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald" rel="stylesheet">
@@ -33,7 +33,7 @@
     <ul class="nav navbar-nav navbar-right">
 		<li class="main-nav"><a href="preferences.html">Preferences</a></li>
 		<li class="main-nav"><a href="suggestions.html">Suggestions</a></li>
-		<li class="main-nav"><a href="index.html">Logout</a></li>
+		<li class="main-nav"><a href="home.html" id="logout">Logout</a></li>
     </ul>
   </div><!--/.nav-collapse -->
 </div><!--/.container -->
@@ -65,10 +65,10 @@
 				<div class="col-md-2 modal-btns">
 					<button id="parking" class="btn btn-site btn-lg">Find Parking</button>
 				</div>
-				<p id="mapComments"></p>
-				<div class="col-md-2 modal-btns">
+				<div class="col-md-12"><p id="mapComments"></p></div>
+				<!-- <div class="col-md-2 modal-btns">
 					<div id="buy-tickets">Buy Tickets</div>
-				</div>	
+				</div> -->	
 				</div>
 				<div id="map"></div>
 			</div>
@@ -235,7 +235,7 @@
 					});
 				}
 				else{
-
+					$("#mapComments").html("");
 					for (var i =0; i < 4; i++) {
 						// console.log(parkingListing[i])
 
