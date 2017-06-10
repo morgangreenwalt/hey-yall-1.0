@@ -217,7 +217,7 @@ $("#food-question").on("click", function(){
 function food() {
 	$(".food").on("click", function(){
 		if($(this).attr("data-state")=="unclicked"){
-			var selection = $(this).attr("data-name");
+			var selection = $(this).attr("data-name").toUpperCase();
 			foodArray.push(selection.toUpperCase());
 			if($(this).attr("data-type")!="caption"){
 				$(this).addClass("clicked");
@@ -230,7 +230,7 @@ function food() {
 			$(this).attr("data-state","clicked");
 		}
 		else if ($(this).attr("data-state")=="clicked"){
-			var selection = $(this).attr("data-name");
+			var selection = $(this).attr("data-name").toUpperCase();
 			var index = foodArray.indexOf(selection);
 			foodArray.splice(index, 1);
 
@@ -253,36 +253,36 @@ function drinks() {
 	$(".drinks").on("click", function(){
 		if($(this).attr("data-state")=="unclicked"){
 			if(drinksArray.length<2){
-				var selection = $(this).attr("data-name");
+				var selection = $(this).attr("data-name").toUpperCase();
 				drinksArray.push(selection.toUpperCase());
 
 				if($(this).attr("data-type")!="caption"){
 					$(this).addClass("clicked");
-					$("#caption"+$(this).attr("data-name")).attr("data-state","clicked");
+					$("#caption"+$(this).attr("id")).attr("data-state","clicked");
 				}
 				else if($(this).attr("data-type")=="caption"){
-					$("#"+$(this).attr("data-name")).addClass("clicked");
-					$("#"+$(this).attr("data-name")).attr("data-state","clicked");
+					$("#"+$(this).attr("data-id")).addClass("clicked");
+					$("#"+$(this).attr("data-id")).attr("data-state","clicked");
 				}
 				$(this).attr("data-state","clicked");
 			}
 		}
 		else if ($(this).attr("data-state")=="clicked"){
-			var selection = $(this).attr("data-name");
+			var selection = $(this).attr("data-name").toUpperCase();
 			var index = drinksArray.indexOf(selection);
 			drinksArray.splice(index, 1);
 			
 			if($(this).attr("data-type")!="caption"){
 				$(this).removeClass("clicked");
-				$("#caption"+$(this).attr("data-name")).attr("data-state","unclicked");
+				$("#caption"+$(this).attr("id")).attr("data-state","unclicked");
 			}
 			else if($(this).attr("data-type")=="caption"){
-				$("#"+$(this).attr("data-name")).removeClass("clicked");
-				$("#"+$(this).attr("data-name")).attr("data-state","unclicked");
+				$("#"+$(this).attr("data-id")).removeClass("clicked");
+				$("#"+$(this).attr("data-id")).attr("data-state","unclicked");
 			}
 			$(this).attr("data-state","unclicked");
 		}
-	    // console.log(drinksArray);
+	    console.log(drinksArray);
 	});
 }
 
