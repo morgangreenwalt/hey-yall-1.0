@@ -27,6 +27,15 @@
 	padding: 0px 9px 0px 9px;
 }
 
+/*continue 'log in' button*/
+#loginin {
+	background-color: #e56746;
+	color: white;
+	margin-left: 25px;
+	margin-right: 25px;
+	border: none;
+}
+
 /*modal*/
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'Oswald', sans-serif;
@@ -53,14 +62,6 @@ button, input, a, p, span {
 }
 
 #newUser {
-	background-color: #e56746;
-	color: white;
-	margin-left: 25px;
-	margin-right: 25px;
-	border: none;
-}
-
-#existingUser {
 	background-color: #e56746;
 	color: white;
 	margin-left: 25px;
@@ -97,7 +98,12 @@ button, input, a, p, span {
 
 @media only screen and (max-width: 1308px) {
 	#facebook-btn {
-		margin-bottom: 10px;
+		margin-top: 2px;
+		margin-bottom: 2px;
+	}
+	#google-btn {
+		margin-top: 2px;
+		margin-bottom: 2px;
 	}
 }
 
