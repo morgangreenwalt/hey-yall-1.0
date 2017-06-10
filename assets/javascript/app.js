@@ -144,7 +144,7 @@ firebase.auth().onAuthStateChanged(function(firebaseUser){
 		userHtml.html("Welcome "+ firebaseUser.displayName)
 		
 		$("#usernameSuggestions").html(firebaseUser.displayName+"'s Suggestions" )
-		
+		$("#userNameLogin").html("<h3 class='text-center'>Welcome Back "+firebaseUser.displayName+"!</h3>")
 		signedIn = ref.child(firebaseUser.displayName) 
         
 		signedIn.update({
