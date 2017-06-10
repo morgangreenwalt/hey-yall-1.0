@@ -362,7 +362,8 @@ function submit(){
 var userName = localStorage.getItem("name");
 // Food Suggestions Part
 
-var zomatoAPIkey = "49c55e85367c3cdbace131c0527538a8"//"da51b0411a010e8e491e49072febfe07"//"142b97a736485a30ff5b9a92ddbb8fde";
+var zomatoAPIkey = "142b97a736485a30ff5b9a92ddbb8fde"
+//"49c55e85367c3cdbace131c0527538a8"//"da51b0411a010e8e491e49072febfe07"//"142b97a736485a30ff5b9a92ddbb8fde";
 // var foodArray=["American", "Italian", "Chinese", "Mexican", "Japanese", "Thai", "BBQ", "Indian"];
 
 var foodPickedArray=[];
@@ -893,7 +894,7 @@ $(".devs").hover(function(){
 	database.ref(userName +"/events").on('value', function(snapshot) {
 	console.log("eventsArray Firebase:"+snapshot.val())
 	if(snapshot.val()!=null){
-		//eventsArray = snapshot.val();
+		eventsArray = snapshot.val();
 	}
 	console.log("eventsArray:"+eventsArray)
 
