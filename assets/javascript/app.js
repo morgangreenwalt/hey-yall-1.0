@@ -401,7 +401,7 @@ database.ref(userName +"/food").on('value', function(snapshot) {
             var restaurants=response.restaurants;
             for(var i=0; i<restaurants.length;i++){
                 $("#foodRow"+Math.floor(i/2)).append(
-                "<div class='col-md-6 suggestions-list-items'><div class='col-md-6'><a href='#'><img class='thumbnail-suggestions img-responsive' src='"+restaurants[i].restaurant.thumb+"' alt='test'></a></div><div class='col-md-6'><h2 class='suggestions-h2'>"+restaurants[i].restaurant.name+"</h2><h4>"+restaurants[i].restaurant.location.address+"</h4><br/><p><br/><a class='btn btn-site btn-lg' href='#' id='infoBtn' role='button' data-toggle='modal' data-target='#myModalInfo' data-lat="+restaurants[i].restaurant.location.latitude+" data-long="+restaurants[i].restaurant.location.longitude+">More Info</a></p></div></div>")
+                "<div class='col-md-6 suggestions-list-items'><div class='col-md-6'><a href='#'><img class='thumbnail-suggestions img-responsive' src='"+restaurants[i].restaurant.thumb+"' alt='test'></a></div><div class='col-md-6'><h2 class='suggestions-h2'>"+restaurants[i].restaurant.name+"</h2><h4>"+restaurants[i].restaurant.location.address+"</h4><p><a class='btn btn-site btn-lg' href='#' id='infoBtn' role='button' data-toggle='modal' data-target='#myModalInfo' data-lat="+restaurants[i].restaurant.location.latitude+" data-long="+restaurants[i].restaurant.location.longitude+">More Info</a></p></div></div>")
             }
         });
     }
@@ -413,7 +413,7 @@ database.ref(userName +"/food").on('value', function(snapshot) {
             var restaurants=response.restaurants;
             for(var i=0; i<restaurants.length & i<4; i++){
                 $("#foodRow"+Math.floor(i/2)).append(
-                "<div class='col-md-6 suggestions-list-items'><div class='col-md-6'><a href='#'><img class='thumbnail-suggestions img-responsive' src='"+restaurants[i].restaurant.thumb+"' alt='test'></a></div><div class='col-md-6'><h2 class='suggestions-h2'>"+restaurants[i].restaurant.name+"</h2><h4>"+restaurants[i].restaurant.location.address+"</h4><br/><p><br/><a class='btn btn-site btn-lg' href='#' id='infoBtn' role='button' data-toggle='modal' data-target='#myModalInfo' data-lat="+restaurants[i].restaurant.location.latitude+" data-long="+restaurants[i].restaurant.location.longitude+">More Info</a></p></div></div>")
+                "<div class='col-md-6 suggestions-list-items'><div class='col-md-6'><a href='#'><img class='thumbnail-suggestions img-responsive' src='"+restaurants[i].restaurant.thumb+"' alt='test'></a></div><div class='col-md-6'><h2 class='suggestions-h2'>"+restaurants[i].restaurant.name+"</h2><h4>"+restaurants[i].restaurant.location.address+"</h4><p><a class='btn btn-site btn-lg' href='#' id='infoBtn' role='button' data-toggle='modal' data-target='#myModalInfo' data-lat="+restaurants[i].restaurant.location.latitude+" data-long="+restaurants[i].restaurant.location.longitude+">More Info</a></p></div></div>")
             }
         });
     }
@@ -465,7 +465,7 @@ $.ajax({
             		drinkThumb="assets/images/drinkThumb.jpg";
             	}
                 $("#drinkRow"+Math.floor(i/2)).append(
-                "<div class='col-md-6 suggestions-list-items'><div class='col-md-6'><a href='#'><img class='thumbnail-suggestions img-responsive' src='"+drinkThumb+"' alt='test'></a></div><div class='col-md-6'><h2 class='suggestions-h2'>"+drink[i].restaurant.name+"</h2><h4>"+drink[i].restaurant.location.address+"</h4><br/><p><br/><a class='btn btn-site btn-lg' href='#' id='infoBtn' role='button' data-toggle='modal' data-target='#myModalInfo' data-lat="+drink[i].restaurant.location.latitude+" data-long="+drink[i].restaurant.location.longitude+">More Info</a></p></div></div>")
+                "<div class='col-md-6 suggestions-list-items'><div class='col-md-6'><a href='#'><img class='thumbnail-suggestions img-responsive' src='"+drinkThumb+"' alt='test'></a></div><div class='col-md-6'><h2 class='suggestions-h2'>"+drink[i].restaurant.name+"</h2><h4>"+drink[i].restaurant.location.address+"</h4><p><a class='btn btn-site btn-lg' href='#' id='infoBtn' role='button' data-toggle='modal' data-target='#myModalInfo' data-lat="+drink[i].restaurant.location.latitude+" data-long="+drink[i].restaurant.location.longitude+">More Info</a></p></div></div>")
     //              $("#event-name").html("<h2 class='suggestions-h2'>"+drink[i].restaurant.name+"</h2>");
 				// $("#event-address").html("<h4>'"+drink[i].restaurant.location.address+"'</h4>");
             }
@@ -490,7 +490,7 @@ $.ajax({
 	            		drinkThumb="assets/images/drinkThumb.jpg";
 	            	}
                     $("#drinkRow"+Math.floor(counter/2)).append(
-                    "<div class='col-md-6 suggestions-list-items'><div class='col-md-6'><a href='#'><img class='thumbnail-suggestions img-responsive' src='"+drinkThumb+"' alt='test'></a></div><div class='col-md-6'><h2 class='suggestions-h2'>"+drink[i].restaurant.name+"</h2><h4>"+drink[i].restaurant.location.address+"</h4><br/><p><br/><a class='btn btn-site btn-lg' href='#' id='infoBtn' role='button' data-toggle='modal' data-target='#myModalInfo' data-lat="+drink[i].restaurant.location.latitude+" data-long="+drink[i].restaurant.location.longitude+">More Info</a></p></div></div>")
+                    "<div class='col-md-6 suggestions-list-items'><div class='col-md-6'><a href='#'><img class='thumbnail-suggestions img-responsive' src='"+drinkThumb+"' alt='test'></a></div><div class='col-md-6'><h2 class='suggestions-h2'>"+drink[i].restaurant.name+"</h2><h4>"+drink[i].restaurant.location.address+"</h4><p><a class='btn btn-site btn-lg' href='#' id='infoBtn' role='button' data-toggle='modal' data-target='#myModalInfo' data-lat="+drink[i].restaurant.location.latitude+" data-long="+drink[i].restaurant.location.longitude+">More Info</a></p></div></div>")
     //                  $("#event-name").html("<h2 class='suggestions-h2'>"+drink[i].restaurant.name+"</h2>");
 				// $("#event-address").html("<h4>'"+drink[i].restaurant.location.address+"'</h4>");
                     counter++;
@@ -514,7 +514,7 @@ $.ajax({
             		drinkThumb="assets/images/drinkThumb.jpg";
             	}
                 $("#drinkRow"+Math.floor(i/2)).append(
-                "<div class='col-md-6 suggestions-list-items'><div class='col-md-6'><a href='#'><img class='thumbnail-suggestions img-responsive' src='"+drinkThumb+"' alt='test'></a></div><div class='col-md-6'><h2 class='suggestions-h2'>"+drink[i].restaurant.name+"</h2><h4>"+drink[i].restaurant.location.address+"</h4><br/><p><br/><a class='btn btn-site btn-lg' href='#' id='infoBtn' role='button' data-toggle='modal' data-target='#myModalInfo' data-lat="+drink[i].restaurant.location.latitude+" data-long="+drink[i].restaurant.location.longitude+">More Info</a></p></div></div>");
+                "<div class='col-md-6 suggestions-list-items'><div class='col-md-6'><a href='#'><img class='thumbnail-suggestions img-responsive' src='"+drinkThumb+"' alt='test'></a></div><div class='col-md-6'><h2 class='suggestions-h2'>"+drink[i].restaurant.name+"</h2><h4>"+drink[i].restaurant.location.address+"</h4><p><a class='btn btn-site btn-lg' href='#' id='infoBtn' role='button' data-toggle='modal' data-target='#myModalInfo' data-lat="+drink[i].restaurant.location.latitude+" data-long="+drink[i].restaurant.location.longitude+">More Info</a></p></div></div>");
     //             $("#event-name").html("<h2 class='suggestions-h2'>"+drink[i].restaurant.name+"</h2>");
 				// $("#event-address").html("<h4>'"+drink[i].restaurant.location.address+"'</h4>");
             }
@@ -882,12 +882,17 @@ $(".devs").hover(function(){
 
 
 
+var ryanQueryURL = "https://api.seatgeek.com/2/events?venue.city=Austin&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0";
+
+
 //seat geek client id: NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0
 
 //seat geek app secret: a44eefef28620b890494943cf09df0f1cee710ab733dd772d47b947311f5be58
 
-// console.log('yes');
+console.log('yes');
 //category buttons, adds taxonomies to search ryanQueryURL
+
+function eventsFunction(){
 // function eventsFunction(){
 	var ryanQueryURL = "https://api.seatgeek.com/2/events?venue.city=Austin&client_id=NzY1OTcwOHwxNDk1NjQ4MzM0Ljk0";
 
@@ -896,15 +901,15 @@ $(".devs").hover(function(){
 	if(snapshot.val()!=null){
 		eventsArray = snapshot.val();
 	}
-	console.log("eventsArray:"+eventsArray)
 
+	console.log("eventsArray:"+eventsArray)
 		for (var z = 0; z < eventsArray.length ; z++)
 
 		{
 
 			if (eventsArray[z] === 'Rock')
 			{
-				// console.log(ryanQueryURL);
+				console.log(ryanQueryURL);
 
 				ryanQueryURL += "&taxonomies.name=concert";
 								                        
@@ -960,7 +965,6 @@ $(".devs").hover(function(){
 			}
 
 		}
-	})
 
 
 
@@ -968,7 +972,7 @@ $(".devs").hover(function(){
 		          url: ryanQueryURL,
 		          method: "GET"
 		        }).done(function(response) {
-		        	console.log(ryanQueryURL);
+
 		        	console.log(response);
 		        	
 		        	var picker = 0;
@@ -992,8 +996,8 @@ $(".devs").hover(function(){
 		        			var venueLat = response.events[i].venue.location.lat;
 		        			var venueLon = response.events[i].venue.location.lon;
 		        			var ticketLink = response.events[i].url;
-		        			// console.log(momentTime);
-		        			// console.log(momentDate);
+		        			console.log(momentTime);
+		        			console.log(momentDate);
 
 
 		        			if (picker === 0 || picker === 2 || picker === 4)
@@ -1012,105 +1016,59 @@ $(".devs").hover(function(){
 		        			{
 		        				
 
-
 							$('#eventsSuggestions'+rowAssign).append('<div class="row suggestions-list-items" >\
 									<div class="col-md-6">\
-											<a href="#"><img class="thumbnail-suggestions img-responsive" src="https://placehold.it/250x200" alt="test">\
-											</a>\
+											<a href="#"><img class="thumbnail-suggestions img-responsive" src="'+performerImage+'" alt="'+performerImage+'">\
+										</a>\
 										</div>\
 										<div class="col-md-6">\
 										<h2 class="suggestions-h2">'+performerName+'</h2>\
-										<h4>'+venueName+' '+venueAddress+'</h4>\
+										<h4>'+venueName+'</h4><h4>'+venueAddress+'</h4>\
 										<h5 class="suggestion" data-name="alamo">Date: &nbsp; '+momentDate+'</h5>\
-										<h5 class="suggestion" data-name="alamo">Time: &nbsp; '+momentTime+'</h5><br/>\
+										<h5 class="suggestion" data-name="alamo">Time: &nbsp; '+momentTime+'</h5>\
 										<p><a class="btn btn-site btn-lg" href="#" id="infoBtn" role="button" data-toggle="modal" \
-										data-target="#myModalInfo" data-lat="'+venueLat+'" data-long="'+venueLon+'" data-i = "'+i+'">More Info</a></p>\
+										data-target="#myModalInfo" data-lat="'+venueLat+'" data-long="'+venueLon+'">More Info</a>\
+										&nbsp; <a class="btn btn-site btn-lg" href="'+ticketLink+'" role="button" target="_blank"\
+										data-lat="'+venueLat+'" data-long="'+venueLon+'">Buy Tickets</a></p>\
 									</div>\
 									</div>');
 
-							$('#eventsSuggestions'+rowAssign).append('<div class="row suggestions-list-items" ><div class="col-md-6">\
-							<a href="#"><img class="thumbnail-suggestions img-responsive" src="'+performerImage+'" alt="'+performerImage+'"></a></div>\					<div class="col-md-6"><h2 class="suggestions-h2">'+performerName+'</h2>\
-							<h4>'+venueName+' '+venueAddress+'</h4><h5 class="suggestion" data-name="alamo">Date: &nbsp; '+momentDate+'</h5><h5 class="suggestion" data-name="alamo">Time: &nbsp; '+momentTime+'</h5><br/><p><a class="btn btn-site btn-lg" href="#" id="infoBtn" role="button" data-toggle="modal" \
-							data-target="#myModalInfo" data-lat="'+venueLat+'" data-long="'+venueLon+'">More Info</a> &nbsp; <a class="btn btn-site btn-lg" href="'+ticketLink+'" role="button" target="_blank"data-lat="'+venueLat+'" data-long="'+venueLon+'">Buy Tickets</a></p></div></div>');
-
-
-        //     					$("#buy-tickets").html("<a class='btn btn-site btn-lg' href='"+ ticketLink +"' role='button' target='_blank' data-lat='"+venueLat+"' data-lon='"+venueLon+"'> Buy Tickets </a>");
-        //     					$("#event-name").html("<h2 class='suggestions-h2'>"+performerName+"</h2>");
-								// $("#event-address").html("<h4>'"+venueName+"' '"+venueAddress+"'</h4>");
-								// $("#event-date").html("<h5 class='suggestion' data-name='alamo'>Date: &nbsp; '"+momentDate+"'</h5>");
-								// $("#event-time").html("<h5 class='suggestion' data-name='alamo'>Time: &nbsp; '"+momentTime+"'</h5>");
-								// console.log(ticketLink);
-
-
-
-								
+								console.log(ticketLink);
 		        			}
 		        			
 
 
 		        			else
 		        			{
-							$('#eventsSuggestions'+rowAssign).append('<div class="row suggestions-list-items" ><div class="col-md-6">\
-							<a href="#"><img class="thumbnail-suggestions img-responsive" src="'+performerImage+'" alt="'+performerImage+'"></a>\
+
+	    					$('#eventsSuggestions'+rowAssign).append('<div class="row suggestions-list-items" >\
+								<div class="col-md-6">\
+										<a href="#"><img class="thumbnail-suggestions img-responsive" src="'+performerImage+'" alt="'+performerImage+'">\
+										</a>\
 									</div>\
 									<div class="col-md-6">\
 										<h2 class="suggestions-h2">'+performerName+'</h2>\
-										<h4>'+venueName+' '+venueAddress+'</h4>\
+										<h4>'+venueName+'</h4><h4>'+venueAddress+'</h4>\
 										<h5 class="suggestion" data-name="alamo">Date: &nbsp; '+momentDate+'</h5>\
-										<h5 class="suggestion" data-name="alamo">Time: &nbsp; '+momentTime+'</h5><br/>\
+										<h5 class="suggestion" data-name="alamo">Time: &nbsp; '+momentTime+'</h5>\
 										<p><a class="btn btn-site btn-lg" href="#" id="infoBtn" role="button" data-toggle="modal" \
-										data-target="#myModalInfo" data-lat="'+venueLat+'" data-long="'+venueLon+'" data-i = "'+i+'">More Info</a></p>\
-										<p><a class="btn btn-site btn-lg" href="#" id="infoBtn" role="button" data-toggle="modal" \			data-target="#myModalInfo" data-lat="'+venueLat+'" data-long="'+venueLon+'">More Info</a>\
+										data-target="#myModalInfo" data-lat="'+venueLat+'" data-long="'+venueLon+'">More Info</a>\
 										&nbsp; <a class="btn btn-site btn-lg" href="'+ticketLink+'" role="button" target="_blank"\
 										data-lat="'+venueLat+'" data-long="'+venueLon+'">Buy Tickets</a></p>\
 									</div>\
 								</div>');
 
-	    			// 			$("#buy-tickets").html("<a class='btn btn-site btn-lg' href='"+ ticketLink +"' role='button' target='_blank' data-lat='"+venueLat+"' data-lon='"+venueLon+"'> Buy Tickets </a>");
-	    			// 			$("#event-name").html("<h2 class='suggestions-h2'>"+performerName+"</h2>");
-								// $("#event-address").html("<h4>'"+venueName+"' '"+venueAddress+"'</h4>");
-								// $("#event-date").html("<h5 class='suggestion' data-name='alamo'>Date: &nbsp; '"+momentDate+"'</h5>");
-								// $("#event-time").html("<h5 class='suggestion' data-name='alamo'>Time: &nbsp; '"+momentTime+"'</h5>");
-								// console.log(ticketLink);
-
+								console.log(ticketLink);
 		        			}
 		        		}
 
 		        		picker++;
 		        	}
-
-
 		        	
 		        });
+		}
 
-       
-		// }
-
-// console.log(eventsArray);
-// eventsFunction();
+console.log(eventsArray);
+eventsFunction();
       
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

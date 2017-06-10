@@ -4,10 +4,11 @@
 <title>Homepage | All Y'all!</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald" rel="stylesheet">
-<link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon-96x96.png">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="assets/css/topher.css">
 <!-- <script src="https://use.fontawesome.com/fcbf3ec2ad.js"></script> -->
+<link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon-96x96.png">
 </head>
 <body>
 
@@ -23,8 +24,6 @@
             <source src="assets/images/Background-Video/WEBM/Austin.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser to Google Chrome.
         </video>
 </div>
-
-
 
 <div class="container">
 	<!-- MODAL -->
@@ -47,7 +46,7 @@
 							<input type="password" class="form-control" id="createPasswordInput" placeholder="Create a password">
 						</div>
 						<button type="submit" class="btn btn-default" id="newUser">Continue</button>
-						 <button type="submit" class="hidden btn btn-default" id="loginin">Log In</button>
+						 <button type="submit" class="hidden btn btn-default" id="loginin">login</button>
 						<hr>
 						<div class="row">
 							<div class="col-md-12 text-center">
@@ -69,14 +68,10 @@
 <script type="text/javascript">
 // click login - load existing user prompt
 $("#login-button").on("click", function() {
-
     $("#facebook-btn").addClass("hidden")
     $("#google-btn").addClass("hidden")
     $(".fbLogin").removeClass("hidden");
     $(".gLogin").removeClass("hidden");
-
-    $("#login-button").hide();
-
     $("#loginin").removeClass("hidden");
     $("#modal-login-label").html("Log in to see more");
     $("#newUser").addClass("hidden");
