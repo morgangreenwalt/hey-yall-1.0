@@ -893,7 +893,9 @@ $(".devs").hover(function(){
 
 	database.ref(userName +"/events").on('value', function(snapshot) {
 	console.log(snapshot.val())
-	eventsArray = snapshot.val();
+	if(snapshot.val()!=null){
+		eventsArray = snapshot.val();
+	}
 	console.log(eventsArray)
 
 		for (var z = 0; z < eventsArray.length ; z++)
