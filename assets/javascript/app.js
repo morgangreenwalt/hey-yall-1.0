@@ -142,7 +142,7 @@ firebase.auth().onAuthStateChanged(function(firebaseUser){
 		localStorage.setItem("name", name);
 		
 		userHtml.html("Welcome "+ firebaseUser.displayName)
-		
+		$("#userNameLoginName").text(firebaseUser.displayName)
 		$("#usernameSuggestions").html(firebaseUser.displayName+"'s Suggestions" )
 		$("#userNameLogin").html("<h3 class='text-center'>Welcome Back "+firebaseUser.displayName+"!</h3>")
 		signedIn = ref.child(firebaseUser.displayName) 
