@@ -931,7 +931,7 @@ function eventsFunction(){
 										<h5 class="suggestion" data-name="alamo">Date: &nbsp; '+momentDate+'</h5>\
 										<h5 class="suggestion" data-name="alamo">Time: &nbsp; '+momentTime+'</h5><br/>\
 										<p><a class="btn btn-site btn-lg" href="#" id="infoBtn" role="button" data-toggle="modal" \
-										data-target="#myModalInfo" data-lat="'+venueLat+'" data-long="'+venueLon+'">More Info</a></p>\
+										data-target="#myModalInfo" data-lat="'+venueLat+'" data-long="'+venueLon+'" data-i = "'+i+'">More Info</a></p>\
 									</div>\
 									</div>');
 
@@ -963,7 +963,7 @@ function eventsFunction(){
 										<h5 class="suggestion" data-name="alamo">Date: &nbsp; '+momentDate+'</h5>\
 										<h5 class="suggestion" data-name="alamo">Time: &nbsp; '+momentTime+'</h5><br/>\
 										<p><a class="btn btn-site btn-lg" href="#" id="infoBtn" role="button" data-toggle="modal" \
-										data-target="#myModalInfo" data-lat="'+venueLat+'" data-long="'+venueLon+'">More Info</a></p>\
+										data-target="#myModalInfo" data-lat="'+venueLat+'" data-long="'+venueLon+'" data-i = "'+i+'">More Info</a></p>\
 									</div>\
 								</div>');
 
