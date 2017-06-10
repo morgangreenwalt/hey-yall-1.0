@@ -393,7 +393,7 @@ database.ref(userName +"/food").on('value', function(snapshot) {
                 };
             }
         }
-        console.log(foodType);
+        console.log("Food Type:" + foodType);
         $.ajax({
         url:"https://developers.zomato.com/api/v2.1/search?entity_id=278&entity_type=city&apikey="+zomatoAPIkey+"&count=4&sort=rating&order=desc&cuisines="+foodType,
         method:"GET"
