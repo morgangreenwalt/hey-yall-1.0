@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald" rel="stylesheet">
+<script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="assets/css/morgan.css">
+<script type="text/javascript" src="assets/javascript/app.js"></script>
+          <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/normalize.css">
+        <link rel="stylesheet" href="assets/css/skeleton.css">
+        <style>
+            .fooder {
+                float: left;    
+                margin: 10px
+            }
+        </style>
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar navbar-default">
+<div class="container">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="developers.html"><img src="assets/images/orangehat.png" height="50px"></a>
+  </div>
+  <div id="navbar" class="navbar-collapse collapse">
+    <ul class="nav navbar-nav"></ul>
+    <ul class="nav navbar-nav navbar-right">
+		<li class="main-nav"><a href="preferences.html">Preferences</a></li>
+		<li class="main-nav"><a href="suggestions.html">Suggestions</a></li>
+		<li class="main-nav"><a id="logout" href="index.html">Logout</a></li>
+    </ul>
+  </div><!--/.nav-collapse -->
+</div><!--/.container -->
+</nav>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="four columns">
+                <div class="panel panel-default">
+                <div class="panel-body">
+                    <div>
+                    <img class="text-center" src="http://s3.amazonaws.com/37assets/svn/765-default-avatar.png" width="200px" alt="">
+                    </div>
+                    <h2 id="userNameLoginName"></h2>
+                    <h5>Austin, TX</h5>
+
+
+
+                </div>
+                    </div>
+            </div>
+
+             <div class="eight columns">
+                <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <div class="row"  id="userNameLogin"><hr></div>
+                    <div class="row">
+                        <div class="twelve columns text-">
+                            <h4>Last Search</h4>
+                            <hr>
+                            <div class="twelve columns text-">
+                            <h5>Food</h5>
+                            <div class="five columns thumbnail text-center">
+                                <img class="food preference-images img-responsive" data-name="Indian" id="Indian" data-state="unclicked" src="assets/images/indian.jpeg">
+                                <h3 class="food caption" data-name="Indian" data-state="unclicked" data-type="caption" id="captionIndian">Indian</h3>
+                            </div>
+                            <div class="five columns thumbnail text-center">
+                                <img class="food preference-images img-responsive" id="American" data-name="American" data-state="unclicked" src="assets/images/american.jpeg">
+                              <h3 class="food caption" data-name="American" data-state="unclicked" data-type="caption" id="captionAmerican">American</h3>
+                        </div>
+                        </div>
+                        <div class="twelve columns text-">
+                            <h5>Drinks</h5>
+                          <div class="five columns thumbnail text-center">
+                              <img class="drinks preference-images img-responsive" id="Coffee" data-name="Coffee" data-state="unclicked" src="assets/images/coffee.jpg">
+                              <h3 class="drinks caption" data-name="Coffee" data-state="unclicked" data-type="caption" id="captionCoffee">Coffee Bar</h3>
+                          </div>
+                          <div class="five columns thumbnail text-center">
+                              <img class="drinks preference-images img-responsive" id="Brewery" data-name="Brewery" data-state="unclicked" src="assets/images/brewery.jpg">
+                              <h3 class="drinks caption" data-name="Brewery" data-state="unclicked" data-type="caption" id="captionBrewery">Brewery</h3>
+                          </div>
+                          </div>
+                          <div class="twelve columns text-">
+                            <h5>Events</h5>
+                          <div class="five columns thumbnail text-center">
+                              <img class="events preference-images img-responsive" id="Country" data-name="Country" data-state="unclicked" src="assets/images/country.jpg">
+                              <h3 class="events caption" data-name="Country" data-state="unclicked" data-type="caption" id="captionCountry">Country</h3>
+                          </div>
+                          <div class="five columns thumbnail text-center">
+                              <img class="events preference-images img-responsive" id="Sports" data-name="Sports" data-state="unclicked" src="assets/images/sports.jpeg">
+                              <h3 class="events caption" data-name="Sports" data-state="unclicked" data-type="caption" id="captionSports">Sports</h3> 
+                          </div>
+                          </div>
+
+
+                          <!--  <ul>
+                                <li>Food
+                                    <ul>
+                                        <li class="foodLogin">Indian, Thai, Japanese</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Drinks
+                                    <ul>
+                                        <li>Jucie Bar, Coffe Shop, Bar</li>
+                                    </ul>
+                                </li>
+                                <li>Events
+                                    <ul>
+                                        <li>Sports, Hip-Hop</li>
+                                    </ul>
+                                </li>
+                                </ul> --><br/>
+                             <button class="btn btn-site btn-lg pref-btn"><a style="color: inherit; text-decoration: none;" href="preferences.html">New Search</a></button>
+
+                        </div>
+                        <br>
+                         <br>
+                          <br>
+                        <div class="twelve columns">
+                            <h4>Feedback</h4> 
+                            <hr>
+
+
+<form>
+  <div class="row">
+    <div class="six columns">
+      <label for="exampleEmailInput">Your email</label>
+      <input class="u-full-width" type="email" placeholder="test@mailbox.com" id="exampleEmailInput">
+    </div>
+    <div class="six columns">
+      <label for="exampleRecipientInput">Reason for contacting</label>
+      <select class="u-full-width" id="exampleRecipientInput">
+        <option value="Option 1">Questions</option>
+        <option value="Option 2">Admiration</option>
+        <option value="Option 3">Can I get your number?</option>
+      </select>
+    </div>
+  </div>
+  <label for="exampleMessage">Message</label>
+  <textarea class="u-full-width" placeholder="Hi Dave …" id="exampleMessage"></textarea>
+  <label class="example-send-yourself-copy">
+    <input type="checkbox">
+    <span class="label-body">Send a copy to yourself</span>
+  </label>
+  <input class="button-primary" type="submit" value="Submit">
+</form>
+
+</div>
+                    </div>
+                    
+                </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+</html>
