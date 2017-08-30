@@ -9,3 +9,4 @@ Technologies used:
 3. Javascript
 4. jQuery
 5. AJAX
+6. Zomato API
